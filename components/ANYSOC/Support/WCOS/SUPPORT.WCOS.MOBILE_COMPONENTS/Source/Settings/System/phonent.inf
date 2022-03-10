@@ -1,0 +1,31 @@
+;
+; phonent.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 09/09/2016,1.0.0.0000
+PnpLockdown = 1
+
+CatalogFile.NTARM   = phonent.arm.cat
+CatalogFile.NTARM64 = phonent.arm64.cat
+
+;*****************************************
+; phonent  Install Section
+;*****************************************
+
+[DefaultInstall.NTARM]
+Addreg    = phonentReg
+
+[DefaultInstall.NTARM64]
+Addreg    = phonentReg
+
+[phonentReg]
+HKLM, "SYSTEM\ControlSet001\Control\ProductOptions", "AnotherSuite", 0x00010000,  "PhoneNT"
+
+[Strings]
+IHV                    = "LumiaWoA authors"
+

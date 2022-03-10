@@ -1,0 +1,81 @@
+;
+; MobileHapticsService.inf
+;
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 03/14/2021,1.0.0.11
+PnpLockdown = 1
+
+CatalogFile.NTARM   = MobileHapticsService.arm.cat
+CatalogFile.NTARM64 = MobileHapticsService.arm64.cat
+
+[DestinationDirs]
+MobileHapticsService.Files = 13                      ; \system32 directory on Windows 2000 and later versions
+
+[SourceDisksNames]
+0 = "Disk"
+
+[SourceDisksFiles.ARM]
+MobileHapticsService.exe  = 0,arm,
+
+[SourceDisksFiles.ARM64]
+MobileHapticsService.exe  = 0,arm64,
+
+[DefaultInstall.NTARM]
+CopyFiles = MobileHapticsService.Files
+AddReg    = HapticsNotifications_Reg
+
+[DefaultInstall.NTARM64]
+CopyFiles = MobileHapticsService.Files
+AddReg    = HapticsNotifications_Reg
+
+[DefaultInstall.NTARM.Services]
+AddService = MobileHapticsServiceUserSvc, 0x00000000, MobileHapticsServiceSvc_Service,
+
+[DefaultInstall.NTARM64.Services]
+AddService = MobileHapticsServiceUserSvc, 0x00000000, MobileHapticsServiceSvc_64_Service,
+
+[MobileHapticsServiceSvc_Service]
+DisplayName   = "Mobile Haptics Service"
+Description   = "Mobile Haptics Service for the Desktop Windows Platform"
+ServiceType   = 0x10
+StartType     = 2
+ErrorControl  = 1
+ServiceBinary = "%13%\arm\MobileHapticsService.exe"
+AddReg        = MobileHapticsServiceSvc.AddReg
+
+[MobileHapticsServiceSvc_64_Service]
+DisplayName   = "Mobile Haptics Service"
+Description   = "Mobile Haptics Service for the Desktop Windows Platform"
+ServiceType   = 0x10
+StartType     = 2
+ErrorControl  = 1
+ServiceBinary = "%13%\arm64\MobileHapticsService.exe"
+AddReg        = MobileHapticsServiceSvc.AddReg
+
+[MobileHapticsServiceSvc.AddReg]
+HKR,, "Type", %REG_DWORD%, 0x50
+
+[MobileHapticsService.Files]
+MobileHapticsService.exe
+
+[HapticsNotifications_Reg]
+HKLM, "SOFTWARE\OEM\Vibra",                                     "Duration",      %REG_DWORD%, 0x5
+HKLM, "SOFTWARE\OEM\Vibra",                                     "Intensity",     %REG_DWORD%, 0x50
+HKLM, "SOFTWARE\OEM\Vibra",                                     "Enabled",       %REG_DWORD%, 0x1
+
+[HapticsNotifications_Reg.Security]
+"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;AU)(A;;GA;;;BG)(A;;GA;;;S-1-15-2-1)(A;;GA;;;WD)"
+
+[Strings]
+IHV           = "LumiaWoA authors"
+
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_DWORD     = 0x00010001
+REG_BINARY    = 0x00000001
+

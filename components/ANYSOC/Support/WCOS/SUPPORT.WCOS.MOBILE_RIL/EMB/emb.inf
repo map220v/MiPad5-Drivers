@@ -1,0 +1,254 @@
+
+; CellMux.INF -- Microsoft CellMux Driver
+; Installs CellMux.sys as the Function driver for MODEM\MUX devices
+
+
+[Version]                                   ; predefined name
+signature   = "$WINDOWS NT$"
+Class       = System
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+CatalogFile = emb.cat
+Provider    = %Msft%
+DriverVer   = 01/01/2020,10.0.14903.1000
+PnpLockdown = 1
+
+CatalogFile.NTARM   = emb.arm.cat
+CatalogFile.NTARM64 = emb.arm64.cat
+
+[SourceDisksNames]                          ; predefined name
+1 = %CellMux.Disk%,disk1,,,,,
+
+[SourceDisksFiles.ARM]                          ; predefined name
+CellUsermodeInterconnect.sys = 1,arm
+CellNetmon.sys               = 1,arm
+CellMux.sys                  = 1,arm
+Msril.sys                    = 1,arm
+
+[SourceDisksFiles.ARM64]                          ; predefined name
+CellUsermodeInterconnect.sys = 1,arm64
+CellNetmon.sys               = 1,arm64
+CellMux.sys                  = 1,arm64
+Msril.sys                    = 1,arm64
+
+[DestinationDirs]                           ; predefined name
+DefaultDestDir = 13
+
+[Manufacturer]                              ; predefined name
+%Msft% = MSFT,NTARM,NTARM64
+
+[MSFT.NTARM]
+%CellUserModeInterconnect.DeviceDescription% = CellUserModeInterconnect,ROOT\CellUserModeInterconnect
+%CELLMUX.DeviceDescription%                  = CELLMUX     ,MODEM\MUX
+%MSRIL.DeviceDescription%                    = MSRIL     ,MODEM\MSRIL
+%Netmon.DeviceDescription%                   = Netmon     ,MODEM\Netmon
+
+[MSFT.NTARM64]
+%CellUserModeInterconnect.DeviceDescription% = CellUserModeInterconnect_64,ROOT\CellUserModeInterconnect
+%CELLMUX.DeviceDescription%                  = CELLMUX_64     ,MODEM\MUX
+%MSRIL.DeviceDescription%                    = MSRIL_64     ,MODEM\MSRIL
+%Netmon.DeviceDescription%                   = Netmon_64     ,MODEM\Netmon
+
+[ControlFlags]                              ; predefined name
+ExcludeFromSelect = *
+
+;
+;
+;  Interconnect
+;
+;
+[CellUserModeInterconnect]
+CopyFiles = CellUserModeInterconnect.CopyFiles
+
+[CellUserModeInterconnect.Services]                                            
+AddService = CellUserModeInterconnect,2,CellUserModeInterconnect.CellUserModeInterconnectService
+
+[CellUserModeInterconnect_64]
+CopyFiles = CellUserModeInterconnect.CopyFiles
+
+[CellUserModeInterconnect_64.Services]                                            
+AddService = CellUserModeInterconnect,2,CellUserModeInterconnect.CellUserModeInterconnectService_64
+
+[CellUserModeInterconnect.CopyFiles]
+CellUserModeInterconnect.sys
+
+[CellUserModeInterconnect.CellUserModeInterconnectService]                          
+DisplayName   = %CellUserModeInterconnect.ServiceDisplayName%
+Description   = %CellUserModeInterconnect.ServiceDescription%
+ServiceType   = 1                             ; kernel driver
+StartType     = 1                             ; demand start
+ErrorControl  = 1                             ; normal
+ServiceBinary = %13%\arm\CellUserModeInterconnect.sys
+
+[CellUserModeInterconnect.CellUserModeInterconnectService_64]                          
+DisplayName   = %CellUserModeInterconnect.ServiceDisplayName%
+Description   = %CellUserModeInterconnect.ServiceDescription%
+ServiceType   = 1                             ; kernel driver
+StartType     = 1                             ; demand start
+ErrorControl  = 1                             ; normal
+ServiceBinary = %13%\arm64\CellUserModeInterconnect.sys
+
+;
+;
+;  CELLMUX
+;
+;
+[CELLMUX]                                     ; name comes from [MSFT] section
+CopyFiles = CELLMUX.CopyFiles
+
+[CELLMUX.Services]                            ; name comes from [MSFT] sectionl .Services is literal
+AddService = CellMux,2,CELLMUX.CELLMUXService ; 2
+
+[CELLMUX.HW]
+AddReg = LowerFilterAddReg                      ; Add CellNetmon as a lower filter
+AddReg = CellMux_SecurityAddReg
+
+[CELLMUX_64]                                     ; name comes from [MSFT] section
+CopyFiles = CELLMUX.CopyFiles
+
+[CELLMUX_64.Services]                            ; name comes from [MSFT] sectionl .Services is literal
+AddService = CellMux,2,CELLMUX.CELLMUXService_64 ; 2
+
+[CELLMUX_64.HW]
+AddReg = LowerFilterAddReg                      ; Add CellNetmon as a lower filter
+AddReg = CellMux_SecurityAddReg
+
+[CELLMUX.CopyFiles]                           ; name comes from [CELLMUX] CopyFiles directive
+CellMux.sys
+
+[CELLMUX.CELLMUXService]                      ; name comes from [CELLMUX.Services} AddService directive
+DisplayName   = %CELLMUX.ServiceDisplayName%
+Description   = %CELLMUX.ServiceDescription%
+ServiceType   = 1                             ; kernel driver
+StartType     = 3                             ; demand start
+ErrorControl  = 1                             ; normal
+ServiceBinary = %13%\arm\CellMux.sys
+
+[CELLMUX.CELLMUXService_64]                      ; name comes from [CELLMUX.Services} AddService directive
+DisplayName   = %CELLMUX.ServiceDisplayName%
+Description   = %CELLMUX.ServiceDescription%
+ServiceType   = 1                             ; kernel driver
+StartType     = 3                             ; demand start
+ErrorControl  = 1                             ; normal
+ServiceBinary = %13%\arm64\CellMux.sys
+
+[LowerFilterAddReg]
+HKR, , "LowerFilters", 0x00010000,  "cellnetmon"
+
+[CellMux_SecurityAddReg]
+; FILE_DEVICE_SECURE_OPEN
+HKR, , DeviceCharacteristics, 0x10001,  0x100
+
+;
+;
+;  MSRIL
+;
+;
+[MSRIL]                                       ; name comes from [MSFT] section
+CopyFiles = MSRIL.CopyFiles
+
+[MSRIL.Services]                              ; name comes from [MSFT] sectionl .Services is literal
+AddService = MSRil,2,MSRIL.MSRILService       ; 2
+
+[MSRIL_64]                                       ; name comes from [MSFT] section
+CopyFiles = MSRIL.CopyFiles
+
+[MSRIL_64.Services]                              ; name comes from [MSFT] sectionl .Services is literal
+AddService = MSRil,2,MSRIL.MSRILService_64       ; 2
+
+[MSRIL.CopyFiles]                             ; name comes from [MSRIL] CopyFiles directive
+MSRil.sys
+
+[MSRIL.MSRILService]                          ; name comes from [MSRIL.Services} AddService directive
+DisplayName   = %MSRIL.ServiceDisplayName%
+Description   = %MSRIL.ServiceDescription%
+ServiceType   = 1                             ; kernel driver
+StartType     = 3                             ; demand start
+ErrorControl  = 1                             ; normal
+ServiceBinary = %13%\arm\MSRil.sys
+
+[MSRIL.MSRILService_64]                          ; name comes from [MSRIL.Services} AddService directive
+DisplayName   = %MSRIL.ServiceDisplayName%
+Description   = %MSRIL.ServiceDescription%
+ServiceType   = 1                             ; kernel driver
+StartType     = 3                             ; demand start
+ErrorControl  = 1                             ; normal
+ServiceBinary = %13%\arm64\MSRil.sys
+
+[MSRIL.HW]
+AddReg = MSRIL_SecurityAddReg
+ 
+[MSRIL_64.HW]
+AddReg = MSRIL_SecurityAddReg
+ 
+[MSRIL_SecurityAddReg]
+; FILE_DEVICE_SECURE_OPEN
+HKR, , DeviceCharacteristics, 0x10001,  0x100
+; Allowing Read access to ImsService by SID for ImsSvc
+HKR, , Security             ,        ,  "D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;IU)(A;;GA;;;S-1-5-80-512643105-2644060240-3946469211-1024615288-2648212978)(A;;GA;;;S-1-5-80-2950457502-2299174248-3328245479-1326271200-3113355612)(A;;GA;;;S-1-5-19)"
+
+;
+;
+;  CellNetmon
+;
+;
+[Netmon]                                      ; name comes from [MSFT] section
+CopyFiles = Netmon.CopyFiles
+
+[Netmon.Services]                             ; name comes from [MSFT] sectionl .Services is literal
+AddService = CellNetmon,2,Netmon.NetmonService; 2
+
+[Netmon_64]                                      ; name comes from [MSFT] section
+CopyFiles = Netmon.CopyFiles
+
+[Netmon_64.Services]                             ; name comes from [MSFT] sectionl .Services is literal
+AddService = CellNetmon,2,Netmon.NetmonService_64; 2
+
+[Netmon.CopyFiles]                            ; name comes from [Netmon] CopyFiles directive
+CellNetmon.sys
+
+[Netmon.NetmonService]                        ; name comes from [Netmon.Services} AddService directive
+DisplayName   = %Netmon.ServiceDisplayName%
+Description   = %Netmon.ServiceDescription%
+ServiceType   = 1                             ; kernel driver
+StartType     = 3                             ; demand start
+ErrorControl  = 1                             ; normal
+ServiceBinary = %13%\arm\CellNetmon.sys
+
+[Netmon.NetmonService_64]                        ; name comes from [Netmon.Services} AddService directive
+DisplayName   = %Netmon.ServiceDisplayName%
+Description   = %Netmon.ServiceDescription%
+ServiceType   = 1                             ; kernel driver
+StartType     = 3                             ; demand start
+ErrorControl  = 1                             ; normal
+ServiceBinary = %13%\arm64\CellNetmon.sys
+
+;
+;
+;  String tables
+;
+;
+[Strings]  
+
+CellUserModeInterconnect.Disk               = "Usermode interconnect source disk"
+CellUserModeInterconnect.DeviceDescription  = "MSFT Usermode Cellular interconnect - links RILAdaptationService to the EMB stack"
+CellUserModeInterconnect.ServiceDisplayName = "Usermode Interconnect Driver"
+CellUserModeInterconnect.ServiceDescription = "Service for the Cellular Usermode Interconnect Driver"
+
+CELLMUX.Disk                                = "CellMux source disk"
+CELLMUX.DeviceDescription                   = "MSFT Radio Interface Layer - provides many to one relationship between apps and a driver instance"
+CELLMUX.ServiceDisplayName                  = "CellMux Driver"
+CELLMUX.ServiceDescription                  = "Service for the CellMux Driver"
+
+MSRil.Disk                                  = "MSRil source disk"
+MSRil.DeviceDescription                     = "Cell Modem Queue that responds to Read/Write IRPs"
+MSRIL.ServiceDisplayName                    = "MSRil Driver"
+MSRIL.ServiceDescription                    = "Service for the MSRil Driver"
+
+Netmon.Disk                                 = "CellNetmon source disk"
+Netmon.DeviceDescription                    = "Cellular filter driver used to trace received messages from the modem"
+Netmon.ServiceDisplayName                   = "Cellular Netmon Filter Driver"
+Netmon.ServiceDescription                   = "Filter driver for cellular netmon"
+
+Msft                                        = "LumiaWoA authors"
+
+

@@ -1,0 +1,83 @@
+;
+; FM Radio Interface.inf
+; 
+; Installs a service to proxy FM radio requests to the FM miniport driver.
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = "LumiaWoA authors"
+DriverVer   = 03/14/2021,1.2.3.7
+
+CatalogFile.NTARM   = "FM Radio Interface.arm.cat"
+CatalogFile.NTARM64 = "FM Radio Interface.arm64.cat"
+
+;
+; \system32 directory on Windows 2000 and later versions
+;
+[DestinationDirs]
+MiniportInterface.Files = 13
+
+[SourceDisksNames]
+0 = "FM Radio Interface Installation Disk"
+
+[SourceDisksFiles.ARM]
+FMInterfaceSvc.exe = 0,arm,
+
+[SourceDisksFiles.ARM64]
+FMInterfaceSvc.exe = 0,arm64,
+
+[MiniportInterface.Files]
+FMInterfaceSvc.exe
+
+;
+; DefaultInstall: "right clicking on the INF file and selecting Install"
+; Two tasks: copy the executable, and add the display name and description keys
+;
+[DefaultInstall.NTARM]
+CopyFiles = MiniportInterface.Files
+
+[DefaultInstall.NTARM64]
+CopyFiles = MiniportInterface.Files
+
+;
+; Add a service with this name and then start it
+;
+[DefaultInstall.NTARM.Services]
+AddService = FM Radio Miniport Interface,0x00000800,MiniportInterfaceService
+
+[DefaultInstall.NTARM64.Services]
+AddService = FM Radio Miniport Interface,0x00000800,MiniportInterfaceService_64
+
+;
+; The service should run in its own process, start on system launch, and only print an error if it fails to start
+;
+[MiniportInterfaceService]
+ServiceType = 0x10
+StartType = 0x2
+ErrorControl = 0x1
+ServiceBinary = "%13%\arm\FMInterfaceSvc.exe"
+AddReg = MiniportInterfaceRegistry
+
+[MiniportInterfaceService_64]
+ServiceType = 0x10
+StartType = 0x2
+ErrorControl = 0x1
+ServiceBinary = "%13%\arm64\FMInterfaceSvc.exe"
+AddReg = MiniportInterfaceRegistry_64
+
+;
+; Add localised strings for the display name and description using registry string redirection
+; Ensure the service runs with minimal privileges in NT AUTHORITY\LocalService
+;
+[MiniportInterfaceRegistry]
+HKR,,"DisplayName",,"@%13%\arm\FMInterfaceSvc.exe,-1"
+HKR,,"Description",,"@%13%\arm\FMInterfaceSvc.exe,-2"
+HKR,,"ObjectName",,"NT AUTHORITY\LocalService"
+
+[MiniportInterfaceRegistry_64]
+HKR,,"DisplayName",,"@%13%\arm64\FMInterfaceSvc.exe,-1"
+HKR,,"Description",,"@%13%\arm64\FMInterfaceSvc.exe,-2"
+HKR,,"ObjectName",,"NT AUTHORITY\LocalService"

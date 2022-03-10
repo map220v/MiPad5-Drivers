@@ -1,0 +1,31 @@
+;
+; phonereleaseversion.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 10/01/2021,1.0.0.0001
+PnpLockdown = 1
+
+CatalogFile.NTARM   = phonereleaseversion.arm.cat
+CatalogFile.NTARM64 = phonereleaseversion.arm64.cat
+
+;*****************************************
+; phonereleaseversion  Install Section
+;*****************************************
+
+[DefaultInstall.NTARM]
+Addreg    = phonereleaseversionReg
+
+[DefaultInstall.NTARM64]
+Addreg    = phonereleaseversionReg
+
+[phonereleaseversionReg]
+HKLM, "SYSTEM\Platform\DeviceTargetingInfo", "PhoneReleaseVersion", 0x0,  "2111.1"
+
+[Strings]
+IHV                    = "LumiaWoA authors"
+

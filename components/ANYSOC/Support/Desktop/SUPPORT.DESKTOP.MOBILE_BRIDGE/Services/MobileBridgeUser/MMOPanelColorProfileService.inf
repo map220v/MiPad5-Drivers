@@ -1,0 +1,94 @@
+;
+; MMOPanelColorProfileService.inf
+;
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 08/17/2021,1.0.0.12
+PnpLockdown = 1
+
+CatalogFile.NTARM   = MMOPanelColorProfileService.arm.cat
+CatalogFile.NTARM64 = MMOPanelColorProfileService.arm64.cat
+
+[DestinationDirs]
+MMOPanelColorProfileService.Files = 13                      ; \system32 directory on Windows 2000 and later versions
+Profiles.Files     = 11, spool\drivers\color ; Color profiles must be placed in the spool color driver directory
+
+[SourceDisksNames]
+0 = "Disk"
+
+[SourceDisksFiles.ARM]
+MMOPanelColorProfileService.exe  = 0,arm,
+Advanced.icm      = 0,,
+Cool.icm          = 0,,
+Standard.icm      = 0,,
+Vivid.icm         = 0,,
+"Night light.icm" = 0,,
+
+[SourceDisksFiles.ARM64]
+MMOPanelColorProfileService.exe  = 0,arm64,
+Advanced.icm      = 0,,
+Cool.icm          = 0,,
+Standard.icm      = 0,,
+Vivid.icm         = 0,,
+"Night light.icm" = 0,,
+
+[DefaultInstall.NTARM]
+CopyFiles = MMOPanelColorProfileService.Files,Profiles.Files
+AddReg    = ProfileAction.Reg
+
+[DefaultInstall.NTARM64]
+CopyFiles = MMOPanelColorProfileService.Files,Profiles.Files
+AddReg    = ProfileAction.Reg
+
+[DefaultInstall.NTARM.Services]
+AddService = MMOPanelColorProfileServiceUserSvc, 0x00000000, MMOPanelColorProfileServiceSvc_Service,
+
+[DefaultInstall.NTARM64.Services]
+AddService = MMOPanelColorProfileServiceUserSvc, 0x00000000, MMOPanelColorProfileServiceSvc_64_Service,
+
+[MMOPanelColorProfileServiceSvc_Service]
+DisplayName   = "Microsoft Mobile Panel Color Profile Service"
+Description   = "Enables Color Profile Functionality for the Desktop Windows Platform"
+ServiceType   = 0x10
+StartType     = 2
+ErrorControl  = 1
+ServiceBinary = "%13%\arm\MMOPanelColorProfileService.exe"
+AddReg        = MMOPanelColorProfileServiceSvc.AddReg
+
+[MMOPanelColorProfileServiceSvc_64_Service]
+DisplayName   = "Microsoft Mobile Panel Color Profile Service"
+Description   = "Enables Color Profile Functionality for the Desktop Windows Platform"
+ServiceType   = 0x10
+StartType     = 2
+ErrorControl  = 1
+ServiceBinary = "%13%\arm64\MMOPanelColorProfileService.exe"
+AddReg        = MMOPanelColorProfileServiceSvc.AddReg
+
+[MMOPanelColorProfileServiceSvc.AddReg]
+HKR,, "Type", %REG_DWORD%, 0x50
+
+[MMOPanelColorProfileService.Files]
+MMOPanelColorProfileService.exe
+
+[Profiles.Files]
+Advanced.icm
+Cool.icm
+Standard.icm
+Vivid.icm
+"Night light.icm"
+
+[ProfileAction.Reg]
+HKLM, "Software\Microsoft\Windows\Shell\OEM\QuickActions", "ColorProfileQuickAction", 0x10001, 0x1 ; Enable the color profile quick action
+
+[Strings]
+IHV           = "LumiaWoA authors"
+
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_DWORD     = 0x00010001
+REG_BINARY    = 0x00000001
+

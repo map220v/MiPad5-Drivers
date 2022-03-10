@@ -1,0 +1,100 @@
+;
+; MMODeviceProvisioningPartitionService.inf
+;
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 03/14/2021,1.0.0.5
+PnpLockdown = 1
+
+CatalogFile.NTARM   = MMODeviceProvisioningPartitionService.arm.cat
+CatalogFile.NTARM64 = MMODeviceProvisioningPartitionService.arm64.cat
+
+[DestinationDirs]
+MMODeviceProvisioningPartitionService.Files = 13 ; \system32 directory on Windows 2000 and later versions
+OEMAssets.Files       = 11, OEM
+
+[SourceDisksNames]
+0 = "Disk"
+
+[SourceDisksFiles]
+MMO.bmp = 0,,
+
+[SourceDisksFiles.ARM]
+MMODeviceProvisioningPartitionService.exe = 0,arm,
+
+[SourceDisksFiles.ARM64]
+MMODeviceProvisioningPartitionService.exe = 0,arm64,
+
+[DefaultInstall.NTARM]
+CopyFiles = MMODeviceProvisioningPartitionService.Files,OEMAssets.Files
+
+[DefaultInstall.NTARM64]
+CopyFiles = MMODeviceProvisioningPartitionService.Files,OEMAssets.Files
+
+[DefaultInstall.NTARM.Services]
+AddService = MMODeviceProvisioningPartitionService, 0x00000000, MMODeviceProvisioningPartitionService_Service,
+
+[DefaultInstall.NTARM64.Services]
+AddService = MMODeviceProvisioningPartitionService, 0x00000000, MMODeviceProvisioningPartitionService_64_Service,
+
+[MMODeviceProvisioningPartitionService_Service]
+DisplayName   = "Microsoft Mobile Device Provisioning Partition Service"
+Description   = "Syncs Information between DPP and the Desktop Windows Platform"
+ServiceType   = 0x10
+StartType     = 2
+ErrorControl  = 1
+ServiceBinary = "%13%\arm\MMODeviceProvisioningPartitionService.exe"
+AddReg        = MMODeviceProvisioningPartitionService_32_Reg, MMODeviceProvisioningPartitionService_Reg
+
+[MMODeviceProvisioningPartitionService_64_Service]
+DisplayName   = "Microsoft Mobile Device Provisioning Partition Service"
+Description   = "Syncs Information between DPP and the Desktop Windows Platform"
+ServiceType   = 0x10
+StartType     = 2
+ErrorControl  = 1
+ServiceBinary = "%13%\arm64\MMODeviceProvisioningPartitionService.exe"
+AddReg        = MMODeviceProvisioningPartitionService_64_Reg, MMODeviceProvisioningPartitionService_Reg
+
+[MMODeviceProvisioningPartitionService_32_Reg]
+HKR,, "ImagePath", 0x20000, "%13%\arm\MMODeviceProvisioningPartitionService.exe"
+
+[MMODeviceProvisioningPartitionService_64_Reg]
+HKR,, "ImagePath", 0x20000, "%13%\arm64\MMODeviceProvisioningPartitionService.exe"
+
+[MMODeviceProvisioningPartitionService_Reg]
+HKR,, "Start", 0x10001, 0x2
+HKR,, "Type", 0x10001, 0x10
+HKR,, "ErrorControl", 0x10001, 0x1
+HKR,, "DisplayName", 0x0, "Microsoft Mobile Device Provisioning Partition Service"
+HKR,, "Description", 0x0, "Syncs Information between DPP and the Desktop Windows Platform"
+HKR,, "ObjectName", 0x0, "localSystem"
+HKR,, "RequiredPrivileges", 0x10000, \
+	  "SeShutdownPrivilege","SeTcbPrivilege","SeTakeOwnershipPrivilege","SeImpersonatePrivilege","SeLoadDriverPrivilege","SeBackupPrivilege","SeRestore"\
+	  "Privilege","SeDebugPrivilege","SeAssignPrimaryTokenPrivilege","SeLockMemoryPrivilege","SeSecurityPrivilege","SeCreatePagefilePrivilege","SeCreat"\
+	  "ePermanentPrivilege","SeIncreaseQuotaPrivilege","SeManageVolumePrivilege","SeSystemEnvironmentPrivilege","SeCreateSymbolicLinkPrivilege","SeChang"\
+	  "eNotifyPrivilege","SeIncreaseWorkingSetPrivilege","SeCreateGlobalPrivilege"
+HKR,, "ServiceSidType", 0x10001, 0x1
+HKR, "Security", "Security", 0x1, \
+	  01,00,04,80,9c,00,00,00,a8,00,00,00,00,00,00,00,14,00,00,00,02,00,88,00,06,00,00,00,00,00,14,00,fd,01,02,00,01,01,00,00,00,00,00,05,12,00,00,00,00,00,\
+	  18,00,ff,01,0f,00,01,02,00,00,00,00,00,05,20,00,00,00,20,02,00,00,00,00,14,00,8d,01,02,00,01,01,00,00,00,00,00,05,04,00,00,00,00,00,14,00,8d,01,02,00,\
+	  01,01,00,00,00,00,00,05,06,00,00,00,00,00,14,00,95,00,00,00,01,01,00,00,00,00,00,05,13,00,00,00,00,00,18,00,04,00,00,00,01,02,00,00,00,00,00,0f,02,00,\
+	  00,00,01,00,00,00,01,01,00,00,00,00,00,05,12,00,00,00,01,01,00,00,00,00,00,05,12,00,00,00
+
+[MMODeviceProvisioningPartitionService.Files]
+MMODeviceProvisioningPartitionService.exe
+
+[OEMAssets.Files]
+MMO.bmp
+
+[Strings]
+IHV           = "LumiaWoA authors"
+
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_DWORD     = 0x00010001
+REG_BINARY    = 0x00000001
+

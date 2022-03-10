@@ -1,0 +1,142 @@
+;
+; usbdefaults.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 01/08/2021,1.0.0.0000
+PnpLockdown = 1
+
+CatalogFile.NTARM   = usbdefaults.arm.cat
+CatalogFile.NTARM64 = usbdefaults.arm64.cat
+
+;*****************************************
+; usbdefaults Install Section
+;*****************************************
+
+[DefaultInstall.NTARM]
+Addreg    = usbdefaultsReg,usbdefaults_configurations_reg
+
+[DefaultInstall.NTARM64]
+Addreg    = usbdefaultsReg,usbdefaults_configurations_reg
+
+[usbdefaults_configurations_reg]
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Configurations",,,""
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Configurations\Default", "MSOSCompatIdDescriptor", 0x00000001, \
+	58,00,00,00,00,01,04,00,03,00,00,00,00,00,00, \ ; X··············
+	00,00,01,4d,54,50,00,00,00,00,00,00,00,00,00, \ ; ···MTP·········
+	00,00,00,00,00,00,00,00,00,00,01,01,57,49,4e, \ ; ············WIN
+	55,53,42,00,00,00,00,00,00,00,00,00,00,00,00, \ ; USB············
+	00,00,00,00,02,01,57,49,4e,55,53,42,00,00,00, \ ; ······WINUSB···
+	00,00,00,00,00,00,00,00,00,00,00,00,00          ; ·············
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Configurations\Default", "InterfaceList", 0x00010008, \
+	"MTP", "IpOverUsb" ;, "VidStream"
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Configurations\VidStream", "MSOSCompatIdDescriptor", 0x00000001, \
+	28,00,00,00,00,01,04,00,01,00,00,00,00,00,00, \ ; (··············
+	00,00,01,57,49,4e,55,53,42,00,00,00,00,00,00, \ ; ···WINUSB······
+	00,00,00,00,00,00,00,00,00,00                   ; ··········
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Configurations\VidStream", "InterfaceList", 0x00010008, \
+	"VidStream"
+
+[usbdefaultsReg]
+HKLM, "SYSTEM\ControlSet001\Control\USB", "DualRoleFeatures", 0x10001,  0xe
+HKLM, "SYSTEM\ControlSet001\Control\USB", "OSDefaultRoleSwitchMode", 0x10001,  0x3
+HKLM, "SYSTEM\ControlSet001\Control\USB", "RoleSwitchMode", 0x10001,  0x3
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "iManufacturer", 0x00010001, 0x00000001
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "ManufacturerString", 0x00000000, "Microsoft"
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "bDeviceSubClass", 0x00010001, 0x00000000
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "iProduct", 0x00010001, 0x00000002
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "iSerialNumber", 0x00010001, 0x00000003
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "bDeviceClass", 0x00010001, 0x00000000
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "bcdDevice", 0x00010001, 0x00000001
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "idProduct", 0x00010001, 0x0000f0ca
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "idVendor", 0x00010001, 0x0000045e
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "ProductString", 0x00000000, "Windows 10 Mobile Device"
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Default", "bDeviceProtocol", 0x00010001, 0x00000000
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Interfaces\IpOverUsb", "MSOSExtendedPropertyDescriptor", 0x00000001, \
+	74,01,00,00,00,01,05,00,05,00,84,00,00,00,01, \ ; t·············
+	00,00,00,28,00,44,00,65,00,76,00,69,00,63,00, \ ; ···(·D·e·v·i·c·
+	65,00,49,00,6e,00,74,00,65,00,72,00,66,00,61, \ ; e·I·n·t·e·r·f·a
+	00,63,00,65,00,47,00,55,00,49,00,44,00,00,00, \ ; ·c·e·G·U·I·D···
+	4e,00,00,00,7b,00,32,00,36,00,66,00,65,00,64, \ ; N···{·2·6·f·e·d
+	00,63,00,34,00,65,00,2d,00,36,00,61,00,63,00, \ ; ·c·4·e·-·6·a·c·
+	33,00,2d,00,34,00,32,00,34,00,31,00,2d,00,39, \ ; 3·-·4·2·4·1·-·9
+	00,65,00,34,00,64,00,2d,00,65,00,33,00,64,00, \ ; ·e·4·d·-·e·3·d·
+	34,00,62,00,32,00,63,00,35,00,63,00,35,00,33, \ ; 4·b·2·c·5·c·5·3
+	00,34,00,7d,00,00,00,36,00,00,00,04,00,00,00, \ ; ·4·}···6·······
+	24,00,44,00,65,00,76,00,69,00,63,00,65,00,49, \ ; $·D·e·v·i·c·e·I
+	00,64,00,6c,00,65,00,45,00,6e,00,61,00,62,00, \ ; ·d·l·e·E·n·a·b·
+	6c,00,65,00,64,00,00,00,04,00,00,00,01,00,00, \ ; l·e·d··········
+	00,34,00,00,00,04,00,00,00,22,00,44,00,65,00, \ ; ·4·······"·D·e·
+	66,00,61,00,75,00,6c,00,74,00,49,00,64,00,6c, \ ; f·a·u·l·t·I·d·l
+	00,65,00,53,00,74,00,61,00,74,00,65,00,00,00, \ ; ·e·S·t·a·t·e···
+	04,00,00,00,01,00,00,00,38,00,00,00,04,00,00, \ ; ········8······
+	00,26,00,44,00,65,00,66,00,61,00,75,00,6c,00, \ ; ·&·D·e·f·a·u·l·
+	74,00,49,00,64,00,6c,00,65,00,54,00,69,00,6d, \ ; t·I·d·l·e·T·i·m
+	00,65,00,6f,00,75,00,74,00,00,00,04,00,00,00, \ ; ·e·o·u·t·······
+	10,27,00,00,44,00,00,00,04,00,00,00,32,00,55, \ ; ·'··D·······2·U
+	00,73,00,65,00,72,00,53,00,65,00,74,00,44,00, \ ; ·s·e·r·S·e·t·D·
+	65,00,76,00,69,00,63,00,65,00,49,00,64,00,6c, \ ; e·v·i·c·e·I·d·l
+	00,65,00,45,00,6e,00,61,00,62,00,6c,00,65,00, \ ; ·e·E·n·a·b·l·e·
+	64,00,00,00,04,00,00,00,01,00,00,00             ; d···········
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Interfaces\IpOverUsb", "InterfaceGuid", 0x00000000, "{30613563-7df3-4afb-80e0-e8c427c7e9bf}"
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Interfaces\IpOverUsb", "InterfaceDescriptor", 0x00000001, \
+	09,04,00,00,02,ff,ff,ff,00,07,05,81,02,00,02, \ ; ·····ÿÿÿ······
+	00,07,05,02,02,00,02,00                         ; ········
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Interfaces\MTP", "InterfaceDescriptor", 0x00000001, \
+	09,04,00,00,03,06,01,01,00,07,05,81,02,00,02, \ ; ··············
+	00,07,05,02,02,00,02,00,07,05,83,03,40,00,04    ; ···········@··
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Interfaces\MTP", "InterfaceGuid", 0x00000000, "{61fd7822-e8d4-44c4-9065-aaad0a3beff0}"
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Interfaces\VidStream", "MSOSExtendedPropertyDescriptor", 0x00000001, \
+	74,01,00,00,00,01,05,00,05,00,84,00,00,00,01, \ ; t·············
+	00,00,00,28,00,44,00,65,00,76,00,69,00,63,00, \ ; ···(·D·e·v·i·c·
+	65,00,49,00,6e,00,74,00,65,00,72,00,66,00,61, \ ; e·I·n·t·e·r·f·a
+	00,63,00,65,00,47,00,55,00,49,00,44,00,00,00, \ ; ·c·e·G·U·I·D···
+	4e,00,00,00,7b,00,33,00,31,00,36,00,34,00,38, \ ; N···{·3·1·6·4·8
+	00,45,00,35,00,39,00,2d,00,36,00,46,00,43,00, \ ; ·E·5·9·-·6·F·C·
+	42,00,2d,00,34,00,44,00,38,00,31,00,2d,00,39, \ ; B·-·4·D·8·1·-·9
+	00,43,00,39,00,37,00,2d,00,44,00,30,00,30,00, \ ; ·C·9·7·-·D·0·0·
+	39,00,39,00,39,00,42,00,30,00,34,00,35,00,39, \ ; 9·9·9·B·0·4·5·9
+	00,41,00,7d,00,00,00,36,00,00,00,04,00,00,00, \ ; ·A·}···6·······
+	24,00,44,00,65,00,76,00,69,00,63,00,65,00,49, \ ; $·D·e·v·i·c·e·I
+	00,64,00,6c,00,65,00,45,00,6e,00,61,00,62,00, \ ; ·d·l·e·E·n·a·b·
+	6c,00,65,00,64,00,00,00,04,00,00,00,01,00,00, \ ; l·e·d··········
+	00,34,00,00,00,04,00,00,00,22,00,44,00,65,00, \ ; ·4·······"·D·e·
+	66,00,61,00,75,00,6c,00,74,00,49,00,64,00,6c, \ ; f·a·u·l·t·I·d·l
+	00,65,00,53,00,74,00,61,00,74,00,65,00,00,00, \ ; ·e·S·t·a·t·e···
+	04,00,00,00,01,00,00,00,38,00,00,00,04,00,00, \ ; ········8······
+	00,26,00,44,00,65,00,66,00,61,00,75,00,6c,00, \ ; ·&·D·e·f·a·u·l·
+	74,00,49,00,64,00,6c,00,65,00,54,00,69,00,6d, \ ; t·I·d·l·e·T·i·m
+	00,65,00,6f,00,75,00,74,00,00,00,04,00,00,00, \ ; ·e·o·u·t·······
+	10,27,00,00,44,00,00,00,04,00,00,00,32,00,55, \ ; ·'··D·······2·U
+	00,73,00,65,00,72,00,53,00,65,00,74,00,44,00, \ ; ·s·e·r·S·e·t·D·
+	65,00,76,00,69,00,63,00,65,00,49,00,64,00,6c, \ ; e·v·i·c·e·I·d·l
+	00,65,00,45,00,6e,00,61,00,62,00,6c,00,65,00, \ ; ·e·E·n·a·b·l·e·
+	64,00,00,00,04,00,00,00,01,00,00,00             ; d···········
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Interfaces\VidStream", "InterfaceGuid", 0x00000000, "{31648E59-6FCB-4D81-9C97-D00999B0459A}"
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\Interfaces\VidStream", "InterfaceDescriptor", 0x00000001, \
+	09,04,00,00,02,ff,ff,ff,00,07,05,81,02,00,02, \ ; ·····ÿÿÿ······
+	00,07,05,02,02,00,02,00                         ; ········
+
+HKLM, "SYSTEM\CurrentControlSet\Control\USBFN\settings", "PromptForDataConnection", 0x00010001, 0x00000000
+
+[usbdefaults_configurations_reg.Security]
+"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;AU)(A;;GA;;;BG)(A;;GA;;;S-1-15-2-1)(A;;GA;;;WD)"
+
+[Strings]
+IHV                    = "LumiaWoA authors"
+

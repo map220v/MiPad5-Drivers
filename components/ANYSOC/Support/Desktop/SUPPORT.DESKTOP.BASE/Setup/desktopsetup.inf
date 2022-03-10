@@ -1,0 +1,75 @@
+;
+; desktopsetup.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 08/24/2019,1.0.0.1
+PnpLockdown = 1
+
+CatalogFile.NTARM   = desktopsetup.arm.cat
+CatalogFile.NTARM64 = desktopsetup.arm64.cat
+
+[DestinationDirs]
+; 10 = Windows
+Panther.Files = 10,Panther
+PstDrv.Files  = 10,OEM
+PreOobe.Files = 10,Setup\Scripts
+
+[SourceDisksNames]
+0 = %DiskId1%
+
+[SourceDisksFiles]
+FirstLogon.cmd         = 0,,
+Oobe.cmd               = 0,,
+SpecializeCommands.cmd = 0,,
+Wallpaper.png          = 0,,
+
+[SourceDisksFiles.ARM]
+devcon.exe                 = 0,arm,
+SilentProvisioner.exe      = 0,arm,
+SilentProvisionerL.exe     = 0,arm,
+ApplicationProvisioner.exe = 0,arm,
+Unattend.xml               = 0,arm,
+
+[SourceDisksFiles.ARM64]
+devcon.exe                 = 0,arm64,
+SilentProvisioner.exe      = 0,arm64,
+SilentProvisionerL.exe     = 0,arm64,
+ApplicationProvisioner.exe = 0,arm64,
+Unattend.xml               = 0,arm64,
+
+;*****************************************
+; desktopsetup  Install Section
+;*****************************************
+
+[DefaultInstall.NTARM]
+CopyFiles = Panther.Files,PstDrv.Files,PreOobe.Files
+
+[DefaultInstall.NTARM64]
+CopyFiles = Panther.Files,PstDrv.Files,PreOobe.Files
+
+; Windows/Panther
+[Panther.Files]
+Unattend.xml
+
+[PreOobe.Files]
+Oobe.cmd
+
+; Windows/OEM
+[PstDrv.Files]
+SpecializeCommands.cmd
+SilentProvisioner.exe
+SilentProvisionerL.exe
+ApplicationProvisioner.exe
+devcon.exe
+FirstLogon.cmd
+Wallpaper.png
+
+[Strings]
+IHV     = "LumiaWoA authors"
+DiskId1 = "Desktop Setup Installation Disk #1"
+

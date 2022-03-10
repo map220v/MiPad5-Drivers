@@ -1,0 +1,93 @@
+;
+; MobileFrequencyModulationService.inf
+;
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 03/14/2021,1.0.0.5
+PnpLockdown = 1
+
+CatalogFile.NTARM   = MobileFrequencyModulationService.arm.cat
+CatalogFile.NTARM64 = MobileFrequencyModulationService.arm64.cat
+
+[DestinationDirs]
+MobileFrequencyModulationService.Files = 13 ; \system32 directory on Windows 2000 and later versions
+
+[SourceDisksNames]
+0 = "Disk"
+
+[SourceDisksFiles.ARM]
+MobileFrequencyModulationService.exe = 0,arm,
+
+[SourceDisksFiles.ARM64]
+MobileFrequencyModulationService.exe = 0,arm64,
+
+[DefaultInstall.NTARM]
+CopyFiles = MobileFrequencyModulationService.Files
+
+[DefaultInstall.NTARM64]
+CopyFiles = MobileFrequencyModulationService.Files
+
+[DefaultInstall.NTARM.Services]
+AddService = MobileFrequencyModulationService, 0x00000000, MobileFrequencyModulationService_Service,
+
+[DefaultInstall.NTARM64.Services]
+AddService = MobileFrequencyModulationService, 0x00000000, MobileFrequencyModulationService_64_Service,
+
+[MobileFrequencyModulationService_Service]
+DisplayName   = "Mobile Frequency Modulation Service"
+Description   = "Provides a bridge between Mobile Frequency Modulation drivers and the Desktop Windows Platform"
+ServiceType   = 0x10
+StartType     = 2
+ErrorControl  = 1
+ServiceBinary = "%13%\arm\MobileFrequencyModulationService.exe"
+AddReg        = MobileFrequencyModulationService_32_Reg, MobileFrequencyModulationService_Reg
+
+[MobileFrequencyModulationService_64_Service]
+DisplayName   = "Mobile Frequency Modulation Service"
+Description   = "Provides a bridge between Mobile Frequency Modulation drivers and the Desktop Windows Platform"
+ServiceType   = 0x10
+StartType     = 2
+ErrorControl  = 1
+ServiceBinary = "%13%\arm64\MobileFrequencyModulationService.exe"
+AddReg        = MobileFrequencyModulationService_64_Reg, MobileFrequencyModulationService_Reg
+
+[MobileFrequencyModulationService_32_Reg]
+HKR,, "ImagePath", 0x20000, "%13%\arm\MobileFrequencyModulationService.exe"
+
+[MobileFrequencyModulationService_64_Reg]
+HKR,, "ImagePath", 0x20000, "%13%\arm64\MobileFrequencyModulationService.exe"
+
+[MobileFrequencyModulationService_Reg]
+HKR,, "Start", 0x10001, 0x2
+HKR,, "Type", 0x10001, 0x10
+HKR,, "ErrorControl", 0x10001, 0x1
+HKR,, "DisplayName", 0x0, "Mobile Frequency Modulation Service"
+HKR,, "Description", 0x0, "Provides a bridge between Mobile Frequency Modulation drivers and the Desktop Windows Platform"
+HKR,, "ObjectName", 0x0, "localSystem"
+HKR,, "RequiredPrivileges", 0x10000, \
+	  "SeShutdownPrivilege","SeTcbPrivilege","SeTakeOwnershipPrivilege","SeImpersonatePrivilege","SeLoadDriverPrivilege","SeBackupPrivilege","SeRestore"\
+	  "Privilege","SeDebugPrivilege","SeAssignPrimaryTokenPrivilege","SeLockMemoryPrivilege","SeSecurityPrivilege","SeCreatePagefilePrivilege","SeCreat"\
+	  "ePermanentPrivilege","SeIncreaseQuotaPrivilege","SeManageVolumePrivilege","SeSystemEnvironmentPrivilege","SeCreateSymbolicLinkPrivilege","SeChang"\
+	  "eNotifyPrivilege","SeIncreaseWorkingSetPrivilege","SeCreateGlobalPrivilege"
+HKR,, "ServiceSidType", 0x10001, 0x1
+HKR, "Security", "Security", 0x1, \
+	  01,00,04,80,9c,00,00,00,a8,00,00,00,00,00,00,00,14,00,00,00,02,00,88,00,06,00,00,00,00,00,14,00,fd,01,02,00,01,01,00,00,00,00,00,05,12,00,00,00,00,00,\
+	  18,00,ff,01,0f,00,01,02,00,00,00,00,00,05,20,00,00,00,20,02,00,00,00,00,14,00,8d,01,02,00,01,01,00,00,00,00,00,05,04,00,00,00,00,00,14,00,8d,01,02,00,\
+	  01,01,00,00,00,00,00,05,06,00,00,00,00,00,14,00,95,00,00,00,01,01,00,00,00,00,00,05,13,00,00,00,00,00,18,00,04,00,00,00,01,02,00,00,00,00,00,0f,02,00,\
+	  00,00,01,00,00,00,01,01,00,00,00,00,00,05,12,00,00,00,01,01,00,00,00,00,00,05,12,00,00,00
+
+[MobileFrequencyModulationService.Files]
+MobileFrequencyModulationService.exe
+
+[Strings]
+IHV           = "LumiaWoA authors"
+
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_DWORD     = 0x00010001
+REG_BINARY    = 0x00000001
+

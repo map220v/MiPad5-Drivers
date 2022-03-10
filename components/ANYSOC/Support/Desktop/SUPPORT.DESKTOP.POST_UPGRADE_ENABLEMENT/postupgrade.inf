@@ -1,0 +1,33 @@
+;
+; postupgrade.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 09/09/2016,1.0.0.0000
+
+CatalogFile.NTARM   = postupgrade.arm.cat
+CatalogFile.NTARM64 = postupgrade.arm64.cat
+
+;*****************************************
+; postupgrade  Install Section
+;*****************************************
+
+[DefaultInstall.NTARM]
+Addreg    = postupgradeReg
+
+[DefaultInstall.NTARM64]
+Addreg    = postupgradeReg
+
+[postupgradeReg]
+HKLM,%RunOnce%,"SpecializeCmds",,"cmd.exe /c \Windows\OEM\SilentProvisioner.exe"
+HKLM,%RunOnce%,"OobeCmds"      ,,"cmd.exe /c \Windows\Setup\Scripts\Oobe.cmd"
+HKLM,%RunOnce%,"FirstLogonCmds",,"cmd.exe /c \Windows\OEM\SilentProvisionerL.exe"
+
+[Strings]
+RunOnce = "SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"
+IHV     = "LumiaWoA authors"
+

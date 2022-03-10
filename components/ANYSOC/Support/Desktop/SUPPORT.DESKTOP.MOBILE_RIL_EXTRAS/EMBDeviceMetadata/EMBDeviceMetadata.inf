@@ -1,0 +1,38 @@
+;
+; EMBDeviceMetadata.inf
+;
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 07/02/2019,1.0.0.0
+PnpLockdown = 1
+
+CatalogFile.NTARM   = EMBDeviceMetadata.arm.cat
+CatalogFile.NTARM64 = EMBDeviceMetadata.arm64.cat
+
+[DestinationDirs]
+Drivers_Dir_24 = 24,ProgramData\Microsoft\Windows\DeviceMetadataStore\EN-US
+
+[SourceDisksNames]
+1 = %DiskId1%
+
+[SourceDisksFiles]
+2c73f5c3-e950-42e2-9a5d-86da50c117b2.devicemetadata-ms = 1,,
+2c73f5c3-e950-42e2-9a5d-86da50c117b3.devicemetadata-ms = 1,,
+
+[DefaultInstall.NTARM]
+CopyFiles = Drivers_Dir_24
+
+[DefaultInstall.NTARM64]
+CopyFiles = Drivers_Dir_24
+
+[Drivers_Dir_24]
+2c73f5c3-e950-42e2-9a5d-86da50c117b2.devicemetadata-ms,,,0x00000800 ;COPYFLG_NODECOMP
+2c73f5c3-e950-42e2-9a5d-86da50c117b3.devicemetadata-ms,,,0x00000800 ;COPYFLG_NODECOMP
+
+[Strings]
+IHV     = "LumiaWoA authors"
+DiskId1 = "Cell Core Installation Disk #1"
+

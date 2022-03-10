@@ -1,0 +1,79 @@
+;
+; spapps.inf
+;
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 08/25/2021,1.0.0.5
+PnpLockdown = 1
+
+CatalogFile.NTARM   = spapps.arm.cat
+CatalogFile.NTARM64 = spapps.arm64.cat
+
+[DestinationDirs]
+; 10 = Windows
+PstDrv.Files = 10,OEM\Applications
+AppDepARM    = 10,OEM\Applications\Dependencies\arm
+AppDepARM64  = 10,OEM\Applications\Dependencies\arm64
+
+[SourceDisksNames]
+0 = %DiskId1%
+
+[SourceDisksFiles]
+LumiaWOA.Airwaves_btf4vqatnxdpt.appxbundle           = 0,,
+LumiaWOA.Chat_btf4vqatnxdpt.appxbundle                    = 0,,
+LumiaWOA.Dialer_mgf8b6qyy0nb4.appxbundle                  = 0,,
+LumiaWOA.MobileShell_ax9k4b3m2m5jw.msixbundle             = 0,,
+LumiaWOA.Tips_btf4vqatnxdpt.appxbundle                    = 0,,
+
+Microsoft.NET.Native.Framework.2.2_8wekyb3d8bbwe.appx     = 0,arm64,
+Microsoft.NET.Native.Runtime.2.2_8wekyb3d8bbwe.appx       = 0,arm64,
+Microsoft.VCLibs.140.00.UWPDesktop_8wekyb3d8bbwe.appx     = 0,arm64,
+Microsoft.VCLibs.140.00_8wekyb3d8bbwe.appx                = 0,arm64,
+Microsoft.UI.Xaml.2.6_8wekyb3d8bbwe.appx                  = 0,arm64,
+
+Microsoft.CommsPhone_8wekyb3d8bbwe.appxbundle             = 0,arm,
+Microsoft.NET.Native.Framework.2.2.arm_8wekyb3d8bbwe.appx = 0,arm,
+Microsoft.NET.Native.Runtime.2.2.arm_8wekyb3d8bbwe.appx   = 0,arm,
+Microsoft.VCLibs.140.00.UWPDesktop.arm_8wekyb3d8bbwe.appx = 0,arm,
+Microsoft.VCLibs.140.00.arm_8wekyb3d8bbwe.appx            = 0,arm,
+Microsoft.UI.Xaml.2.6.arm_8wekyb3d8bbwe.appx              = 0,arm,
+
+;*****************************************
+; spapps  Install Section
+;*****************************************
+
+[DefaultInstall.NTARM]
+CopyFiles = PstDrv.Files,AppDepARM,AppDepARM64
+
+[DefaultInstall.NTARM64]
+CopyFiles = PstDrv.Files,AppDepARM,AppDepARM64
+
+[PstDrv.Files]
+LumiaWOA.Airwaves_btf4vqatnxdpt.appxbundle
+LumiaWOA.Chat_btf4vqatnxdpt.appxbundle
+LumiaWOA.Dialer_mgf8b6qyy0nb4.appxbundle
+LumiaWOA.MobileShell_ax9k4b3m2m5jw.msixbundle
+LumiaWOA.Tips_btf4vqatnxdpt.appxbundle
+Microsoft.CommsPhone_8wekyb3d8bbwe.appxbundle
+
+[AppDepARM]
+Microsoft.NET.Native.Framework.2.2_8wekyb3d8bbwe.appx, Microsoft.NET.Native.Framework.2.2.arm_8wekyb3d8bbwe.appx, , 0x00004000,
+Microsoft.NET.Native.Runtime.2.2_8wekyb3d8bbwe.appx, Microsoft.NET.Native.Runtime.2.2.arm_8wekyb3d8bbwe.appx, , 0x00004000,
+Microsoft.VCLibs.140.00.UWPDesktop.arm_8wekyb3d8bbwe.appx, Microsoft.VCLibs.140.00.UWPDesktop_8wekyb3d8bbwe.appx, , 0x00004000,
+Microsoft.VCLibs.140.00_8wekyb3d8bbwe.appx, Microsoft.VCLibs.140.00.arm_8wekyb3d8bbwe.appx, , 0x00004000,
+Microsoft.UI.Xaml.2.6_8wekyb3d8bbwe.appx, Microsoft.UI.Xaml.2.6.arm_8wekyb3d8bbwe.appx, , 0x00004000,
+
+[AppDepARM64]
+Microsoft.NET.Native.Framework.2.2_8wekyb3d8bbwe.appx
+Microsoft.NET.Native.Runtime.2.2_8wekyb3d8bbwe.appx
+Microsoft.VCLibs.140.00.UWPDesktop_8wekyb3d8bbwe.appx
+Microsoft.VCLibs.140.00_8wekyb3d8bbwe.appx
+Microsoft.UI.Xaml.2.6_8wekyb3d8bbwe.appx
+
+[Strings]
+IHV                    = "LumiaWoA authors"
+DiskId1                = "Second Party Applications Installation Disk #1"
+
