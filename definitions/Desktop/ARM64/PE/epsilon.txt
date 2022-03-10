@@ -1,0 +1,1 @@
+\components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL
