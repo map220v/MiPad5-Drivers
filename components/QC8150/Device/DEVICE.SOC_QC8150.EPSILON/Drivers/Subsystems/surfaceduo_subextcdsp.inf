@@ -15,7 +15,7 @@ Signature="$WINDOWS NT$"
 Class=Extension
 ClassGuid={e2f84ce7-8efa-411c-aa69-97454ca4cb57}
 ExtensionId={bc933941-a12c-4a6d-9ce6-c0565be2e759}
-Provider=%SURFACE%
+Provider=%Surface%
 DriverVer = 07/01/2020,1.0.1180.0000
 CatalogFile=SurfaceDuo_subextcdsp.cat
 PnpLockDown=1
@@ -81,7 +81,7 @@ ExcludeFromSelect = *
 ;*****************************************
 
 [Manufacturer]
-%SURFACE%=Extension,NTARM64
+%Surface%=Extension,NTARM64
 
 [Extension.NTARM64]
 %CDSP.DeviceDesc%=SUBSYS_Device_CDSP_ext, ACPI\VEN_QCOM&DEV_0423&SUBSYS_CLS08180
@@ -283,7 +283,7 @@ HKR,,FriendlyName,, %CDSP.FriendlyName%
 
 [Strings]
 ;Localizable Strings
-SURFACE = "Surface"
+Surface = "Surface"
 DiskId1 = "Surface Duo Combined Subsystem Driver Installation Disk"
 CDSP.DeviceDesc = "Surface Duo CDSP Subsystem Device"  
 PIL.DeviceDesc = "Surface Duo System Manager Device"

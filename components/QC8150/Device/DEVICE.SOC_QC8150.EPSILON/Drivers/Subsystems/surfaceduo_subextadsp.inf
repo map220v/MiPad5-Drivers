@@ -15,7 +15,7 @@ Signature="$WINDOWS NT$"
 Class=Extension
 ClassGuid={e2f84ce7-8efa-411c-aa69-97454ca4cb57}
 ExtensionId={ee01ef1a-c067-43ad-9a1b-5fdec6887c1b}
-Provider=%SURFACE%
+Provider=%Surface%
 DriverVer = 07/01/2020,1.0.1180.0000
 CatalogFile=SurfaceDuo_subextadsp.cat
 PnpLockDown=1
@@ -106,7 +106,7 @@ ExcludeFromSelect = *
 ;*****************************************
 
 [Manufacturer]
-%SURFACE%=Extension,NTARM64
+%Surface%=Extension,NTARM64
 
 [Extension.NTARM64]
 %ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_CLS08180
@@ -378,7 +378,7 @@ hkr,mappings\fastrpc\67c5536c5fe610e78a176c83434109b70475ee1a963e4ed0e3ff2f09600
 
 [Strings]
 ;Localizable Strings
-SURFACE = "Surface"
+Surface = "Surface"
 DiskId1 = "Surface Duo Combined Subsystem Driver Installation Disk"
 ADSP.DeviceDesc = "Surface Duo Audio DSP Subsystem Device"         
 PIL.DeviceDesc = "Surface Duo Peripheral Image Loader Device"
