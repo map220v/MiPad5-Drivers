@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OEMInput xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/embedded/2019/06/ImageUpdate">
+  <Description>FactoryOSArgon Development_Internal_Epsilon en-us image. EPSILON_SPACES OEMInput for AndromedaH855 on arm64</Description>
+  <DeviceLayoutType>EPSILON_SPACES</DeviceLayoutType>
+  <SV>Microsoft</SV>
+  <!-- HACK: Use AndromedaH845 as the device name to enable a few ImageApp customizations -->
+  <Device>AndromedaH845</Device>
+  <ReleaseType>Test</ReleaseType>
+  <BuildType>fre</BuildType>
+  <Languages>
+    <Language Default="true">en-US</Language>
+  </Languages>
+  <AdditionalFMs>
+    <!-- Microsoft -->
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\WindowsCoreProductionFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\WindowsCoreNonProductionFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\MobileDeviceSpaceFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\CommonContainerFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\ArgonContainerFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FOSNonProductionFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FactoryOSArgonProductSpecificFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FactoryOSFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FactoryOSProductSpecificFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FactoryOSRamBootFM.xml</AdditionalFM>
+    <!-- OEM -->
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\OEM\EpsilonDeviceFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\OEM\EpsilonDeviceDriversFM.xml</AdditionalFM>
+    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\OEM\MicrosoftSurfaceDeviceAppsFM.xml</AdditionalFM>
+  </AdditionalFMs>
+  <MachineInfoFile>D:\Surface-Drivers-main\adaptationkits\FOS\machineinfo.epsilon.xml</MachineInfoFile>
+  <Features>
+    <Microsoft>
+      <Feature>ALLOW_CONNECTEDSTANDBY</Feature>
+      <Feature>CAD_CHARGING</Feature>
+      <Feature>CORE_WIN32_SUPPORT_ARGON</Feature>
+      <Feature>DEBUGGER_IGNORE_UM_EXCEPTIONS</Feature>
+      <Feature>DEVICEPORTAL_OPTIONAL_MONITORCONFIG</Feature>
+      <Feature>ENABLE_WOW</Feature>
+      <Feature>FACTORY_ORCHESTRATOR_SERVICE</Feature>
+      <Feature>FONTSIZE_30</Feature>
+      <Feature>MANUFACTURING_MODE_EMPTY_PROFILE</Feature>
+      <Feature>MANUFACTURING_POWER_SCHEME</Feature>
+      <Feature>MANUFACTURING_POWER_SCHEME_SLEEP_ON_POWER</Feature>
+      <Feature>MICROSOFT_EDGE</Feature>
+      <Feature>OEM_IMAGE</Feature>
+      <Feature>OFFLINE_CRASH_DUMP_SUPPORTED</Feature>
+      <Feature>RESOLUTION_1440X2560</Feature>
+      <Feature>SERVICING_STACK</Feature>
+      <Feature>SETTINGS_APP</Feature>
+      <Feature>SHELL_BOOT</Feature>
+      <Feature>STATESEPARATION_ON</Feature>
+      <Feature>STATESEPARATION_TALKMAN_EXEMPT</Feature>
+      <Feature>TELEMETRY_OPT_OUT</Feature>
+      <Feature>WCOS_ACCESSIBLITY_NARRATOR</Feature>
+      <Feature>WCOS_APP_CENTENNIALRUNTIME</Feature>
+      <Feature>WCOS_APP_WIN32SUPPORT_ARGON</Feature>
+      <Feature>WCOS_AUDIO_MMESUPPORT</Feature>
+      <Feature>WCOS_CLOUD_FILES</Feature>
+      <Feature>WCOS_CONTAINERS</Feature>
+      <Feature>WCOS_DEVICEPORTAL</Feature>
+      <Feature>WCOS_DEVICEPORTAL_WOW</Feature>
+      <Feature>WCOS_DIAGHOST_HOST</Feature>
+      <Feature>WCOS_DISPLAY_ENHANCEMENT_SERVICE</Feature>
+      <Feature>WCOS_DRIVERS_USB_ETHERNET</Feature>
+      <Feature>WCOS_EVENTLOG_SERVICE</Feature>
+      <Feature>WCOS_FEEDBACKHUB_DXDIAG</Feature>
+      <Feature>WCOS_HLK_COMPONENTS</Feature>
+      <Feature>WCOS_MTP</Feature>
+      <Feature>WCOS_NET_CELLULAR_DATA</Feature>
+      <Feature>WCOS_NET_PROXIMITY_SERVICE</Feature>
+      <Feature>WCOS_NET_RADIO_MANAGEMENT</Feature>
+      <Feature>WCOS_OPENSSH_AUTOSTART</Feature>
+      <Feature>WCOS_PNP_RUNTIMEDEVICEINSTALL</Feature>
+      <Feature>WCOS_POWERPOLICY_VM</Feature>
+      <Feature>WCOS_POWERSHELL</Feature>
+      <Feature>WCOS_SPEECH_VOICEAGENT_SUPPORT</Feature>
+      <Feature>WCOS_STORAGE_CDDVD</Feature>
+      <Feature>WCOS_TEST_COMPONENTS</Feature>
+      <Feature>WCOS_TESTSIGNING_ON</Feature>
+      <Feature>WCOS_TIMESYNC_MOBILE</Feature>
+      <Feature>WCOS_WDTF_COMPONENTS</Feature>
+      <Feature>WCOS_XBOX_AUTHENTICATION</Feature>
+      <Feature>WCOS_XRO_LOGGING</Feature>
+      <Feature>WINDOWS10X_SECURE_BOOT_POLICY</Feature>
+    </Microsoft>
+  </Features>
+  <AppXOptionalPackages>
+    <AppXID>Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe</AppXID>
+    <AppXID>Microsoft.RemoteDesktop_8wekyb3d8bbwe</AppXID>
+    <AppXID>Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe</AppXID>
+    <AppXID>Microsoft.WindowsCalculator_8wekyb3d8bbwe</AppXID>
+    <AppXID>Microsoft.WindowsStore_8wekyb3d8bbwe</AppXID>
+    <AppXID>Microsoft.FactoryOrchestratorApp_8wekyb3d8bbwe</AppXID>
+  </AppXOptionalPackages>
+  <Product>FactoryOSArgon</Product>
+</OEMInput>
