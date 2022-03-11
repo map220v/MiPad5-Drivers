@@ -1,0 +1,31 @@
+;
+; oled.inf
+;
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = System
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %IHV%
+DriverVer   = 03/18/2021,1.0.0.0
+PnpLockdown = 1
+
+CatalogFile.NTarm   = oled.arm.cat
+CatalogFile.NTarm64 = oled.arm64.cat
+
+;*****************************************
+; oeminfo  Install Section
+;*****************************************
+
+[DefaultInstall.NTarm]
+Addreg    = OledReg
+
+[DefaultInstall.NTarm64]
+Addreg    = OledReg
+
+[OledReg]
+HKLM, "Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "UseOLEDTaskbarTransparency", 0x00010001,  0x1
+
+[Strings]
+IHV     = "LumiaWoA authors"
+DiskId1 = "OLED Installation Disk #1"
