@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FeatureManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Revision="1" SchemaVersion="1.3" ReleaseType="Production" OwnerType="OEM" ID="MODERNPCANDDEV" BuildInfo="fe_release_10x.20279.1002.201214-1532" BuildID="42bb36b7-9aee-f77e-289a-158efbe711a3" OwnerName="OEM" OSVersion="10.0.20279.1002" xmlns="http://schemas.microsoft.com/embedded/2004/10/ImageUpdate">
+  <BasePackages>
+    <!-- Enable Rotation support -->
+    <PackageFile Path="$(mspackageroot)\Retail\$(cputype)\$(buildtype)" ID="Microsoft-Composable-ModernUX-SystemSupportedOrientations-All-Package" />
+    <!-- FIP -->
+    <PackageFile Path="$(mspackageroot)\Microsoft\Andromeda855\$(cputype)\$(buildtype)" Name="Microsoft.ModernPC.Andromeda855DeviceFM~31bf3856ad364e35~ARM64~~.cab" FeatureIdentifierPackage="true" ID="Microsoft.ModernPC.Andromeda855DeviceFM" />
+  </BasePackages>
+  <OEMDevicePlatformPackages>
+    <PackageFile Path="$(mspackageroot)\Microsoft\Andromeda855\$(cputype)\$(buildtype)" FeatureIdentifierPackage="true" ID="Microsoft-OneCore-Andromeda855-DevicePlatform-Package" Device="Andromeda855" />
+    <PackageFile Path="$(mspackageroot)\Microsoft\Andromeda855\$(cputype)\$(buildtype)" Name="Microsoft.ModernPC.OEMDEVICEPLATFORM_ANDROMEDA855.MODERNPCANDDEV.FIP~31bf3856ad364e35~ARM64~~.cab" ID="Microsoft.ModernPC.OEMDEVICEPLATFORM_ANDROMEDA855.MODERNPCANDDEV.FIP" Device="Andromeda855" />
+  </OEMDevicePlatformPackages>
+  <DeviceLayoutPackages>
+    <PackageFile Path="$(mspackageroot)\Microsoft\Andromeda855\$(cputype)\$(buildtype)" FeatureIdentifierPackage="true" ID="Microsoft-OneCore-Andromeda855-DeviceLayout-Package" SOC="ANDROMEDA855" />
+    <PackageFile Path="$(mspackageroot)\Microsoft\Andromeda855\$(cputype)\$(buildtype)" Name="Microsoft.ModernPC.DEVICELAYOUT_ANDROMEDA855.MODERNPCANDDEV.FIP~31bf3856ad364e35~ARM64~~.cab" ID="Microsoft.ModernPC.DEVICELAYOUT_ANDROMEDA855.MODERNPCANDDEV.FIP" SOC="ANDROMEDA855" />
+  </DeviceLayoutPackages>
+</FeatureManifest>

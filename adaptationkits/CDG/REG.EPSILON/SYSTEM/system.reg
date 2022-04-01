@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\RTS\ControlSet001\Control\GraphicsDrivers\BasicDisplay]
+"DisableBasicDisplayFallback"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\RTS\ControlSet001\Control\USB]
+"OsDefaultRoleSwitchMode"=dword:00000001
