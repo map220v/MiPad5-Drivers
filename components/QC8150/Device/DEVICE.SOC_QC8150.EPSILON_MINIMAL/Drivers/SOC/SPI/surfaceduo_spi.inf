@@ -48,10 +48,10 @@ HKR,Qup\0,"NumSe",%REG_DWORD%, 8
 HKR,Qup\1,"NumSe",%REG_DWORD%, 6
 HKR,Qup\2,"NumSe",%REG_DWORD%, 6
 
-HKR,Instance\4,"GPII",%REG_DWORD%, 3
+HKR,Instance\4,"GPII",%REG_DWORD%, 1
 HKR,Instance\4,"OpMode",%REG_DWORD%, %OP_MODE_GPI%
 HKR,Instance\4,"QUPBlock",%REG_DWORD%, %QUP_0%
-HKR,Instance\8,"GPII",%REG_DWORD%, 7
+HKR,Instance\8,"GPII",%REG_DWORD%, 3
 HKR,Instance\8,"OpMode",%REG_DWORD%, %OP_MODE_GPI%
 HKR,Instance\8,"QUPBlock",%REG_DWORD%, %QUP_0%
 
