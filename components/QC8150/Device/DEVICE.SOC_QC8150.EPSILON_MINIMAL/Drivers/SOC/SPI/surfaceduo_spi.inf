@@ -74,9 +74,9 @@ KmdfLibraryVersion = 1.23
 
 [Strings]
 Manufacturer_Name   = "Surface Duo"
-Disk_Description    = "Surface Duo SPI Device Installation Disk"
-Device_Description  = "Surface Duo SPI Device"
-Service_Name        = "Surface Duo SPI Driver"
+Disk_Description    = "Surface Duo SPI Bus Device Installation Disk"
+Device_Description  = "Surface Duo SPI Bus Device"
+Service_Name        = "Surface Duo SPI Bus Driver"
 REG_SZ              = 0x00000000
 REG_BINARY          = 0x00000001
 REG_EXPAND_SZ       = 0x00020000
