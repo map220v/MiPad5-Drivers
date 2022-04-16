@@ -1,0 +1,805 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:        QcThermalMdm.inf
+;  
+; Description: INF file for installing the Qualcomm Mdm Sensor 
+;              Mitigation Driver
+;    
+; Copyright (c) 2019 by Qualcomm Technologies, Inc. All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=SYSTEM
+ClassGUID={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=qcthermalmdm.cat
+DriverVer = 01/03/2020,17.24.7.973
+PnpLockdown=1
+
+
+[DestinationDirs]
+DefaultDestDir = 12
+ThermalMDM_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+qcthermalmdm.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+
+[Standard.NTARM64]
+;Sensor Devices
+%ThermalMDM_TS1.DeviceDesc%=ThermalMDM_TS1, ACPI\QCOM04C0
+%ThermalMDM_TS2.DeviceDesc%=ThermalMDM_TS2, ACPI\QCOM04C1
+%ThermalMDM_TS3.DeviceDesc%=ThermalMDM_TS3, ACPI\QCOM04C2
+%ThermalMDM_TS4.DeviceDesc%=ThermalMDM_TS4, ACPI\QCOM04C3
+%ThermalMDM_TS5.DeviceDesc%=ThermalMDM_TS5, ACPI\QCOM04C4
+%ThermalMDM_TS6.DeviceDesc%=ThermalMDM_TS6, ACPI\QCOM04C5
+%ThermalMDM_TS7.DeviceDesc%=ThermalMDM_TS7, ACPI\QCOM04C6
+%ThermalMDM_TS8.DeviceDesc%=ThermalMDM_TS8, ACPI\QCOM04C7
+%ThermalMDM_TS9.DeviceDesc%=ThermalMDM_TS9, ACPI\QCOM04C8
+%ThermalMDM_TS10.DeviceDesc%=ThermalMDM_TS10, ACPI\QCOM04C9
+%ThermalMDM_TS11.DeviceDesc%=ThermalMDM_TS11, ACPI\QCOM04CA
+%ThermalMDM_TS12.DeviceDesc%=ThermalMDM_TS12, ACPI\QCOM04CB
+
+;Mitigation Devices
+%ThermalMDM_MPA.DeviceDesc%=ThermalMDM_MPA, ACPI\QCOM04B4
+%ThermalMDM_MPA1.DeviceDesc%=ThermalMDM_MPA1, ACPI\QCOM04B5
+%ThermalMDM_MBJ0.DeviceDesc%=ThermalMDM_MBJ0, ACPI\QCOM04B6
+%ThermalMDM_MBJ1.DeviceDesc%=ThermalMDM_MBJ1, ACPI\QCOM04B7
+%ThermalMDM_MBJ2.DeviceDesc%=ThermalMDM_MBJ2, ACPI\QCOM04B8
+%ThermalMDM_MBJ3.DeviceDesc%=ThermalMDM_MBJ3, ACPI\QCOM04B9
+%ThermalMDM_MBS0.DeviceDesc%=ThermalMDM_MBS0, ACPI\QCOM04BA
+%ThermalMDM_MBS1.DeviceDesc%=ThermalMDM_MBS1, ACPI\QCOM04BB
+%ThermalMDM_MBS2.DeviceDesc%=ThermalMDM_MBS2, ACPI\QCOM04BC
+%ThermalMDM_MBS3.DeviceDesc%=ThermalMDM_MBS3, ACPI\QCOM04BD
+%ThermalMDM_MSKN.DeviceDesc%=ThermalMDM_MSKN, ACPI\QCOM04BE
+%ThermalMDM_MJCT.DeviceDesc%=ThermalMDM_MJCT, ACPI\QCOM04BF
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS1.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS1
+
+[ThermalMDM_Reg_TS1]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"pa"
+
+;-------------- Installation
+[ThermalMDM_TS1.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS1.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS1.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MPA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MPA.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MPA
+
+[ThermalMDM_Reg_MPA]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"pa"
+
+;-------------- Installation
+[ThermalMDM_MPA.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MPA.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MPA.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MPA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_TS2.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS2
+
+[ThermalMDM_Reg_TS2]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"pa_1"
+
+;-------------- Installation
+[ThermalMDM_TS2.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS2.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS2.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MPA1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MPA1.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MPA1
+
+[ThermalMDM_Reg_MPA1]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"pa_fr1"
+
+;-------------- Installation
+[ThermalMDM_MPA1.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MPA1.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MPA1.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MPA1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS3.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS3
+
+[ThermalMDM_Reg_TS3]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"qfe_mmw0"
+
+;-------------- Installation
+[ThermalMDM_TS3.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS3.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS3.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBJ0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MBJ0.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MBJ0
+
+[ThermalMDM_Reg_MBJ0]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"mmw0"
+
+;-------------- Installation
+[ThermalMDM_MBJ0.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MBJ0.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MBJ0.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBJ0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS4.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS4
+
+[ThermalMDM_Reg_TS4]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"qfe_mmw1"
+
+;-------------- Installation
+[ThermalMDM_TS4.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS4.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS4.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBJ1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MBJ1.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MBJ1
+
+[ThermalMDM_Reg_MBJ1]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"mmw1"
+
+;-------------- Installation
+[ThermalMDM_MBJ1.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MBJ1.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MBJ1.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBJ1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS5.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS5
+
+[ThermalMDM_Reg_TS5]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"qfe_mmw2"
+
+;-------------- Installation
+[ThermalMDM_TS5.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS5.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS5.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBJ2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MBJ2.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MBJ2
+
+[ThermalMDM_Reg_MBJ2]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"mmw2"
+
+;-------------- Installation
+[ThermalMDM_MBJ2.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MBJ2.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MBJ2.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBJ2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS6.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS6
+
+[ThermalMDM_Reg_TS6]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"qfe_mmw3"
+
+;-------------- Installation
+[ThermalMDM_TS6.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS6.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS6.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBJ3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MBJ3.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MBJ3
+
+[ThermalMDM_Reg_MBJ3]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"mmw3"
+
+;-------------- Installation
+[ThermalMDM_MBJ3.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MBJ3.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MBJ3.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBJ3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS7.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS7
+
+[ThermalMDM_Reg_TS7]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"qfe_mmw0_mod"
+
+;-------------- Installation
+[ThermalMDM_TS7.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS7.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS7.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBS0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MBS0.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MBS0
+
+[ThermalMDM_Reg_MBS0]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"modem_skin0"
+
+;-------------- Installation
+[ThermalMDM_MBS0.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MBS0.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MBS0.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBS0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_TS8.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS8
+
+[ThermalMDM_Reg_TS8]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"qfe_mmw1_mod"
+
+;-------------- Installation
+[ThermalMDM_TS8.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS8.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS8.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBS1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MBS1.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MBS1
+
+[ThermalMDM_Reg_MBS1]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"modem_skin1"
+
+;-------------- Installation
+[ThermalMDM_MBS1.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MBS1.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MBS1.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBS1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS9.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS9
+
+[ThermalMDM_Reg_TS9]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"qfe_mmw2_mod"
+
+;-------------- Installation
+[ThermalMDM_TS9.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS9.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS9.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBS2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MBS2.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MBS2
+
+[ThermalMDM_Reg_MBS2]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"modem_skin2"
+
+;-------------- Installation
+[ThermalMDM_MBS2.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MBS2.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MBS2.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBS2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS10.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS10
+
+[ThermalMDM_Reg_TS10]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"qfe_mmw3_mod"
+
+;-------------- Installation
+[ThermalMDM_TS10.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS10.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS10.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBS3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MBS3.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MBS3
+
+[ThermalMDM_Reg_MBS3]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"modem_skin3"
+
+;-------------- Installation
+[ThermalMDM_MBS3.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MBS3.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MBS3.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MBS3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS11.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS11
+
+[ThermalMDM_Reg_TS11]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"xo_therm"
+
+;-------------- Installation
+[ThermalMDM_TS11.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS11.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS11.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MSKN;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MSKN.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MSKN
+
+[ThermalMDM_Reg_MSKN]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"modem_skin"
+
+;-------------- Installation
+[ThermalMDM_MSKN.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MSKN.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MSKN.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MSKN;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;-------------- Registry Definition
+[ThermalMDM_TS12.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_TS12
+
+[ThermalMDM_Reg_TS12]
+HKR,,"DeviceType",%REG_DWORD%,"1"
+HKR,,"QMIDeviceName",%REG_SZ%,"modem_tsens"
+
+;-------------- Installation
+[ThermalMDM_TS12.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_TS12.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_TS12.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MJCT;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-------------- Registry Definition
+[ThermalMDM_MJCT.NT]
+CopyFiles=Drivers_Dir
+AddReg= ThermalMDM_Reg_MJCT
+
+[ThermalMDM_Reg_MJCT]
+HKR,,"DeviceType",%REG_DWORD%,"2"
+;MapTable--Mappings for Mitigation device from performance percentage to thermal mitigation level
+HKR,,"MapTable",%REG_BINARY%,0x21,0x03,0x42,0x02,0x63,0x01,0x64,0x00
+;           Percent(<=), TM level,
+;           -----        ----------
+;            Package () { 33,          3 },
+;            Package () { 66,          2 },
+;            Package () { 99,          1 },
+;            Package () { 100,         0 }
+HKR,,"QMIDeviceName",%REG_SZ%,"modem"
+
+;-------------- Installation
+[ThermalMDM_MJCT.NT.Services]
+AddService = qcthermalmdm,%SPSVCINST_ASSOCSERVICE%, ThermalMDM_Service_Inst
+
+[ThermalMDM_MJCT.NT.CoInstallers]
+AddReg=ThermalMDM_Device_CoInstaller_AddReg
+CopyFiles=ThermalMDM_Device_CoInstaller_CopyFiles
+
+;-------------- Wdf
+[ThermalMDM_MJCT.NT.Wdf]
+KmdfService =  qcthermalmdm, ThermalMDM_wdfsect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MJCT;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Drivers_Dir]
+qcthermalmdm.sys
+
+; -------------- Modem Thermal driver install sections
+[ThermalMDM_Service_Inst]
+DisplayName             = %%Modem_Thermal.SVCDESC%%
+ServiceType             = 1               ; SERVICE_KERNEL_DRIVER
+StartType               = 0               ; SERVICE_BOOT_START
+ErrorControl            = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\qcthermalmdm.sys
+LoadOrderGroup			= Base
+AddReg                  = MDMThermal.Service.Reg
+
+[MDMThermal.Service.Reg]
+HKR,,                   BootFlags, 0x00010001, 1
+
+
+[ThermalMDM_Device_CoInstaller_AddReg]
+;
+
+
+[ThermalMDM_Device_CoInstaller_CopyFiles]
+;
+
+
+[ThermalMDM_wdfsect]
+KmdfLibraryVersion = 1.23
+
+[Strings]
+; non localizable
+REG_SZ                = 0x00000000
+REG_DWORD             = 0x00010001
+REG_BINARY            = 0x00000001
+REG_MULTI_SZ          = 0x00010000
+SPSVCINST_ASSOCSERVICE= 0x00000002
+
+; localizable
+ManufacturerName="Qualcomm Inc"
+DiskName = "Qualcomm Modem Thermal Installation Disk"
+
+;Sensor Device Decription
+ThermalMDM_TS1.DeviceDesc = "Qualcomm Thermal MDM Sensor 1"
+ThermalMDM_TS2.DeviceDesc = "Qualcomm Thermal MDM Sensor 2"
+ThermalMDM_TS3.DeviceDesc = "Qualcomm Thermal MDM Sensor 3"
+ThermalMDM_TS4.DeviceDesc = "Qualcomm Thermal MDM Sensor 4"
+ThermalMDM_TS5.DeviceDesc = "Qualcomm Thermal MDM Sensor 5"
+ThermalMDM_TS6.DeviceDesc = "Qualcomm Thermal MDM Sensor 6"
+ThermalMDM_TS7.DeviceDesc = "Qualcomm Thermal MDM Sensor 7"
+ThermalMDM_TS8.DeviceDesc = "Qualcomm Thermal MDM Sensor 8"
+ThermalMDM_TS9.DeviceDesc = "Qualcomm Thermal MDM Sensor 9"
+ThermalMDM_TS10.DeviceDesc = "Qualcomm Thermal MDM Sensor 10"
+ThermalMDM_TS11.DeviceDesc = "Qualcomm Thermal MDM Sensor 11"
+ThermalMDM_TS12.DeviceDesc = "Qualcomm Thermal MDM Sensor 12"
+
+;Mitigation Device Description
+ThermalMDM_MPA.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 1"
+ThermalMDM_MPA1.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 2"
+ThermalMDM_MBJ0.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 3"
+ThermalMDM_MBJ1.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 4"
+ThermalMDM_MBJ2.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 5"
+ThermalMDM_MBJ3.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 6"
+ThermalMDM_MBS0.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 7"
+ThermalMDM_MBS1.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 8"
+ThermalMDM_MBS2.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 9"
+ThermalMDM_MBS3.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 10"
+ThermalMDM_MSKN.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 11"
+ThermalMDM_MJCT.DeviceDesc = "Qualcomm Thermal MDM Mitigation Device 12"
+
+;MDM Thermal Svcdesc
+MDMThermal.SVCDESC = "Qualcomm Thermal MDM Sensing and Mitigation Driver"
+
