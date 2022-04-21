@@ -96,7 +96,7 @@ AudioSphereModule.so.1 = 1,\ADSP
 AudioContextDetection.so.1 = 1,\ADSP
 ApeDecoderModule.so.1 = 1,\ADSP
 AlacDecoderModule.so.1 = 1,\ADSP
-qcadsp8180.mbn = 1
+qcadsp8150.mbn = 1
 
 [ControlFlags]
 ExcludeFromSelect = *
@@ -109,20 +109,20 @@ ExcludeFromSelect = *
 %Surface%=Extension,NTARM64
 
 [Extension.NTARM64]
-%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_CLS08180
-%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_CDP08180
+%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_CLS08150
+%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_CDP08150
 %ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_MTP08150
-%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_MTP08180
+%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_MTP08150
 %PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTP08150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTP08180
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTPB8180
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTPC8180
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTPD8180
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CLS08180
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CLSB8180
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CLSC8180
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CDP08180
-%PIL.DeviceDesc%=PIL_Device_Ext_APQ, ACPI\VEN_QCOM&DEV_041B&SUBSYS_SCNM8180
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTP08150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTPB8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTPC8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTPD8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CLS08150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CLSB8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CLSC8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CDP08150
+%PIL.DeviceDesc%=PIL_Device_Ext_APQ, ACPI\VEN_QCOM&DEV_041B&SUBSYS_SCNM8150
 
 [SUBSYS_Device_ADSP_ext.NT]
 CopyFiles=WmaStdDecoderModule.so.1,WmaProDecoderModule.so.1,VorbisDecoderModule.so.1,VoiceWakeup_V2_Module.so.1,SVACmnModule.so.1,sm_fluence_sb_module.so.1,smecns_v2_module_fv9.so.1,SAPlusCmnModule.so.1,mm_fluence_sb_module.so.1,map_SHARED_LIBS_855.adsp.prodQ.txt,map_AVS_SHARED_LIBS_855.adsp.prodQ.txt,libsysmon_skel.so,libsysmonquery_skel.so,libsysmondomain_skel.so,libstabilitydomain_skel.so,LdacModule.so.1,HeaacDecoderModule.so.1,fluence_voiceplus_module.so.1,fluence_sm_module_fv9.so.1,fluence_pro_vr_module_fv9.so.1,fluence_pro_vc_module_fv9.so.1,fluence_ef_module_fv9.so.1,fluence_bs_module_fv9.so.1,FlacDecoderModule.so.1,ffv_module_fv9.so.1,ffns_module_fv9.so.1,fastrpc_shell_0,EtsiEaacPlusEncAndCmnModule.so.1,EtsiAmrWbPlusDecModule.so.1,CFCMModule.so.1,AudioSphereModule.so.1,AudioContextDetection.so.1,ApeDecoderModule.so.1,AlacDecoderModule.so.1,SOFiles_ADSP,MBNFiles_ADSP
@@ -132,11 +132,11 @@ AddReg=SUBSYSReg
 AddReg=SUBSYSReg_common,HashMapping_ADSP
 
 [MBNFiles_ADSP]
-qcadsp8180.mbn 
+qcadsp8150.mbn 
 
 [SUBSYSReg]
 ;Image path for ADSP image
-HKR,,"AdspImagePath",%REG_SZ%,"%13%\qcadsp8180.mbn"
+HKR,,"AdspImagePath",%REG_SZ%,"%13%\qcadsp8150.mbn"
 
 [SUBSYSReg_common]
 HKR,,"WaitForVolStartupAppComplete",%REG_DWORD%,1
