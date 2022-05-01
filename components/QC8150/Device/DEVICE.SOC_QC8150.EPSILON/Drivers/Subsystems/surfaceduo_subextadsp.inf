@@ -164,11 +164,11 @@ HKR ,SubsystemLoad\ADSP,MemoryAlignment,%REG_DWORD%,0x00100000
 
 [PIL_Reg_MSM]
 ; ADSP registry values
-HKR ,SubsystemLoad\ADSP,MemoryReservation,%REG_DWORD%,0x1c00000
+HKR ,SubsystemLoad\ADSP,MemoryReservation,%REG_DWORD%,0x01a00000
 
 [PIL_Reg_APQ]
 ; ADSP registry values
-HKR ,SubsystemLoad\ADSP,MemoryReservation,%REG_DWORD%,0x1c00000
+HKR ,SubsystemLoad\ADSP,MemoryReservation,%REG_DWORD%,0x01a00000
 
 ;**********************************************************************************************
 ;    DONOT DELETE THE EMPTY PLACEHOLDERS BELOW. THEY WILL BE AUTOPOPULATED DURING BUILD TIME

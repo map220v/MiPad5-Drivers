@@ -144,11 +144,11 @@ HKR ,SubsystemLoad\CDSP,MemoryAlignment,%REG_DWORD%,0x00100000
 
 [PIL_Reg_MSM]
 ; CDSP registry values
-HKR ,SubsystemLoad\CDSP,MemoryReservation,%REG_DWORD%,0x800000
+HKR ,SubsystemLoad\CDSP,MemoryReservation,%REG_DWORD%,0x01400000
 
 [PIL_Reg_APQ]
 ; CDSP registry values
-HKR ,SubsystemLoad\CDSP,MemoryReservation,%REG_DWORD%,0x800000
+HKR ,SubsystemLoad\CDSP,MemoryReservation,%REG_DWORD%,0x01400000
 
 
 ;**********************************************************************************************
