@@ -9,7 +9,6 @@
 
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.EXTRAS
 
-\components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.MOBILE_BRIDGE
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.MOBILE_COMPONENTS
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.MOBILE_RIL
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.MOBILE_RIL_EXTRAS
