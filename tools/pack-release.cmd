@@ -6,6 +6,7 @@ mkdir ..\..\SurfaceDuo-Drivers-Release
 "%ProgramFiles%\7-zip\7z.exe" a -tzip -r ..\..\SurfaceDuo-Drivers-Release\DEVICE.SOC_QC8150.EPSILON_A.zip ..\components\QC8150\Device\DEVICE.SOC_QC8150.EPSILON_A
 "%ProgramFiles%\7-zip\7z.exe" a -tzip -r ..\..\SurfaceDuo-Drivers-Release\DEVICE.SOC_QC8150.EPSILON_B.zip ..\components\QC8150\Device\DEVICE.SOC_QC8150.EPSILON_B
 "%ProgramFiles%\7-zip\7z.exe" a -tzip -r ..\..\SurfaceDuo-Drivers-Release\DEVICE.SOC_QC8150.EPSILON_MINIMAL.zip ..\components\QC8150\Device\DEVICE.SOC_QC8150.EPSILON_MINIMAL
+"%ProgramFiles%\7-zip\7z.exe" a -tzip -r ..\..\SurfaceDuo-Drivers-Release\GRAPHICS.SOC_QC8150.EPSILON_DESKTOP.zip ..\components\QC8150\Graphics\GRAPHICS.SOC_QC8150.EPSILON_DESKTOP
 "%ProgramFiles%\7-zip\7z.exe" a -tzip -r ..\..\SurfaceDuo-Drivers-Release\PLATFORM.SOC_QC8150.BASE.zip ..\components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE
 "%ProgramFiles%\7-zip\7z.exe" a -tzip -r ..\..\SurfaceDuo-Drivers-Release\PLATFORM.SOC_QC8150.BASE_MINIMAL.zip ..\components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL
 "%ProgramFiles%\7-zip\7z.exe" a -tzip -r ..\..\SurfaceDuo-Drivers-Release\SUPPORT.DESKTOP.BASE.zip ..\components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.BASE
