@@ -1,0 +1,45 @@
+;;------------------------------------------------------------------------------
+;; File:          SurfacePenChargerHotkey.inf
+;;
+;; Description:   Installation file for SurfacePenChargerHotkey.inf update.
+;;
+;
+; Copyright (C) Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$Windows NT$"
+Class = Extension
+ClassGuid = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+Provider=%ManufacturerName%
+ExtensionId = {29818EB9-8AE0-4BC1-8A13-23A0F5BE3B5F}
+CatalogFile=SurfacePenChargerHotkey.cat
+DriverVer = 03/11/2021,2.9.139.0
+PnpLockdown=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%SurfacePenChargerHotkey.DeviceDesc%=SurfacePenChargerHotkey,HID\VID_045E&PID_0991&Col07&UP:0001_U:0006
+%SurfacePenChargerHotkey.DeviceDesc%=SurfacePenChargerHotkey,HID\VID_045E&PID_09B0&Col01&UP:0001_U:0006
+%SurfaceSlimPenChargerHotkey.DeviceDesc%=SurfacePenChargerHotkey,HID\VID_045E&PID_09AD&Col01
+
+[SurfacePenChargerHotkey.NT]
+;No Update
+
+[SurfacePenChargerHotkey.NT.HW]
+AddReg=SurfacePenChargerHotkey.AddReg
+
+[SurfacePenChargerHotkey.AddReg]
+; Precreate setting to identify this device as a keyboard with no physical keys 
+HKR,,HasPhysicalKeys,0x00010001,0 
+HKR,,FriendlyName,,%FriendlyName%
+
+; =================== Generic ==================================
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SurfacePenChargerHotkey.DeviceDesc = "Surface Wireless Pen Charger Hotkey Driver"
+SurfaceSlimPenChargerHotkey.DeviceDesc = "Surface Slim Pen Wireless Charger Hotkey Driver"
+ManufacturerName       = "Surface"
+FriendlyName= "Surface Wireless Pen Charger Hotkey"

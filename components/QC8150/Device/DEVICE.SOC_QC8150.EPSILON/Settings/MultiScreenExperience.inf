@@ -7,7 +7,7 @@ Signature   = "$Windows NT$"
 Class       = System
 ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider    = %IHV%
-DriverVer   = 03/18/2021,1.0.0.0
+DriverVer   = 05/12/2022,1.0.0.1
 PnpLockdown = 1
 
 CatalogFile.NTarm   = MultiScreenExperience.arm.cat
@@ -25,7 +25,11 @@ Addreg    = MultiScreenExperienceReg
 
 [MultiScreenExperienceReg]
 HKLM, SYSTEM\CurrentControlSet\Control\GraphicsDrivers, SupportMultipleIntegratedDisplays, %REG_DWORD%, 1
-HKLM, SOFTWARE\Microsoft\Windows NT\CurrentVersion\MultiScreen, ClonedByDefault, %REG_DWORD%, 0
+
+HKLM, SOFTWARE\Microsoft\Wisp\Pen\Digimon, "20-\\?\HID#MSHW0134&Col07#3&11ac5386&0&0006#{4d1e55b2-f16f-11cf-88cb-001111000030}", %REG_SZ%, "\\?\DISPLAY#LGDA990#3&2eda9d3&0&UID1#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}"
+HKLM, SOFTWARE\Microsoft\Wisp\Pen\Digimon, "20-\\?\HID#MSHW0134&Col08#3&11ac5386&0&0007#{4d1e55b2-f16f-11cf-88cb-001111000030}", %REG_SZ%, "\\?\DISPLAY#LGDA990#3&2eda9d3&0&UID0#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}"
+HKLM, SOFTWARE\Microsoft\Wisp\Pen\Digimon, "20-\\?\HID#MSHW0134&Col02#3&11ac5386&0&0001#{4d1e55b2-f16f-11cf-88cb-001111000030}", %REG_SZ%, "\\?\DISPLAY#LGDA990#3&2eda9d3&0&UID1#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}"
+HKLM, SOFTWARE\Microsoft\Wisp\Pen\Digimon, "20-\\?\HID#MSHW0134&Col03#3&11ac5386&0&0002#{4d1e55b2-f16f-11cf-88cb-001111000030}", %REG_SZ%, "\\?\DISPLAY#LGDA990#3&2eda9d3&0&UID0#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}"
 
 [Strings]
 IHV     = "LumiaWoA authors"

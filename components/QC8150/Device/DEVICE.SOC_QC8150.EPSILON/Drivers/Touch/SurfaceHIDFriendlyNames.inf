@@ -1,0 +1,108 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:               SurfaceHIDFriendlyNameExtension.inf
+;
+; Description:        Provides friendly names for HID devices.
+;
+; Copyright (C) 2018 Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$Windows NT$"
+Class=Extension
+ClassGuid={e2f84ce7-8efa-411c-aa69-97454ca4cb57} 
+Provider=%ManufacturerName%
+CatalogFile=SurfaceHIDFriendlyNames.cat
+ExtensionId={9000149c-5878-4b1d-9cff-fbe218d311b2} 
+DriverVer = 08/10/2019,1.8.137.0
+
+[Manufacturer]
+%ManufacturerName%=Extension,NTARM64
+
+[Extension.NTARM64]
+; Generic support (friendly name only) no service added, no functionality added, just a name
+; Blades TLCs
+;DeviceDesc = HIDColorDesc, HID\VID_045E&UP:FF05_U:0001
+DeviceDesc = HIDAccessoryDesc, HID\VID_045E&UP:FF05_U:0002
+DeviceDesc = HIDUSPDesc, HID\VID_045E&UP:FF05_U:0004
+DeviceDesc = HIDUtilDesc, HID\VID_045E&UP:FF05_U:0050
+
+; Surface Navigation (Pens, Dials) TLCs
+DeviceDesc = SurfaceNavDesc, HID\VID_045E&UP:FF07_U:0001
+
+; Surface Dock TLCs
+DeviceDesc = DockUtilDesc, HID\VID_045E&UP:FF08_U:0050
+
+; Surface Integration FW Update TLCs
+DeviceDesc = SIDFwUpdateDesc, HID\VID_045E&UP:FF0B_U:000B
+
+; Digitizer TLCs
+DeviceDesc = DigitizerUtilDesc, HID\VID_045E&UP:FF0F_U:0050
+DeviceDesc = InkDesc, HID\VID_045E&UP:FF0F_U:0100
+DeviceDesc = ColorProfileDesc, HID\VID_045E&UP:FF0F_U:0200
+
+[HIDColorDesc]
+[HIDColorDesc.HW]
+AddReg = HIDColorDesc_AddReg
+[HIDColorDesc_AddReg]
+HKR,,FriendlyName,,"Surface HID Color"
+
+[HIDAccessoryDesc]
+[HIDAccessoryDesc.HW]
+AddReg = HIDAccessoryDesc_AddReg
+[HIDAccessoryDesc_AddReg]
+HKR,,FriendlyName,,"Surface HID Accessory"
+
+[HIDUSPDesc]
+[HIDUSPDesc.HW]
+AddReg = HIDUSPDesc_AddReg
+[HIDUSPDesc_AddReg]
+HKR,,FriendlyName,,"Surface HID USP Encapsulation"
+
+[HIDUtilDesc]
+[HIDUtilDesc.HW]
+AddReg = HIDUtilDesc_AddReg
+[HIDUtilDesc_AddReg]
+HKR,,FriendlyName,,"Surface Component Firmware Update"
+
+[SurfaceNavDesc]
+[SurfaceNavDesc.HW]
+AddReg = SurfaceNavDesc_AddReg
+[SurfaceNavDesc_AddReg]
+HKR,,FriendlyName,,"Surface Navigation Accessory"
+
+[DockUtilDesc]
+[DockUtilDesc.HW]
+AddReg = DockUtilDesc_AddReg
+[DockUtilDesc_AddReg]
+HKR,,FriendlyName,,"Surface Dock Component Firmware Update"
+
+[SIDFwUpdateDesc]
+[SIDFwUpdateDesc.HW]
+AddReg = SIDFwUpdateDesc_AddReg
+[SIDFwUpdateDesc_AddReg]
+HKR,,FriendlyName,,"Surface Integration Firmware Update"
+
+[DigitizerUtilDesc]
+[DigitizerUtilDesc.HW]
+AddReg = DigitizerUtilDesc_AddReg
+[DigitizerUtilDesc_AddReg]
+HKR,,FriendlyName,,"Surface Digitizer Component Firmware Update"
+
+[InkDesc]
+[InkDesc.HW]
+AddReg = InkDesc_AddReg
+[InkDesc_AddReg]
+HKR,,FriendlyName,,"Surface Ink"
+
+[ColorProfileDesc]
+[ColorProfileDesc.HW]
+AddReg = ColorProfileDesc_AddReg
+[ColorProfileDesc_AddReg]
+HKR,,FriendlyName,,"Surface Color Profile"
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName="Surface"
+
+

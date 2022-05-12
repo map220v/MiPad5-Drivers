@@ -1,0 +1,82 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:               SurfaceSlimPenChargerFwUpdate.inf
+;
+; Description:        Driver installation file for Microsoft Surface Slim Pen Charger firmware update.
+;
+; Copyright (C) Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$Windows NT$"
+Class = Extension
+ClassGuid = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+Provider=%ManufacturerName%
+ExtensionId = {63DB8F20-806B-4DC8-ADFA-DF40BBB77816}
+CatalogFile=SurfaceSlimPenChargerFwUpdate.cat
+DriverVer = 06/29/2021,1.14.137.0
+PnpLockdown=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%SurfaceSlimPenChargerFwUpdate.ExtensionDesc%=SurfaceSlimPenChargerFwUpdate, HID\VID_045E&PID_09AD&Col05
+
+; =================== UMDF Device ==================================
+
+[SurfaceSlimPenChargerFwUpdate.NT]
+CopyFiles=SurfaceSlimPenChargerFwUpdate.CopyFiles
+
+[SurfaceSlimPenChargerFwUpdate.NT.HW]
+AddReg = SurfaceSlimPenChargerFwUpdate_HWAddReg
+
+[SourceDisksNames]
+1 = %DiskName%
+
+[DestinationDirs]
+SurfaceSlimPenChargerFwUpdate.CopyFiles=13
+
+; =================== FW Information ===========================
+[SurfaceSlimPenChargerFwUpdate_HWAddReg]
+HKR,,UsageTableIndex,0x00010001, 1    ;(Usages Set 1)
+HKR,,HidTargetInStack,0x00010001,1
+HKR,,FriendlyName,,%FwUpdateFriendlyName%
+HKR,,Protocol,0x00010001, 1           ;(PROTOCOL-USB)
+
+; SurfaceSlimPenCharger_FirmwareAddReg.begin   !DO NOT DELETE!
+HKR,CFU\MKL43Z_HI,Offer, 0x00000000, %13%\SurfaceSlimPenChargerFwUpdate_MKL43Z_HI.offer.bin 
+HKR,CFU\MKL43Z_HI,Payload, 0x00000000, %13%\SurfaceSlimPenChargerFwUpdate_MKL43Z_HI.payload.bin 
+HKR,CFU\MKL43Z_LO,Offer, 0x00000000, %13%\SurfaceSlimPenChargerFwUpdate_MKL43Z_LO.offer.bin 
+HKR,CFU\MKL43Z_LO,Payload, 0x00000000, %13%\SurfaceSlimPenChargerFwUpdate_MKL43Z_LO.payload.bin 
+HKR,CFU\PN7362,Offer, 0x00000000, %13%\SurfaceSlimPenCharger_PN7362.offer.bin 
+HKR,CFU\PN7362,Payload, 0x00000000, %13%\SurfaceSlimPenCharger_PN7362.payload.bin 
+; SurfaceSlimPenCharger_FirmwareAddReg.end   !DO NOT DELETE!
+
+[SourceDisksFiles]
+; SourceDisksFiles.begin   !DO NOT DELETE!
+SurfaceSlimPenChargerFwUpdate_MKL43Z_HI.offer.bin=1 
+SurfaceSlimPenChargerFwUpdate_MKL43Z_HI.payload.bin=1 
+SurfaceSlimPenChargerFwUpdate_MKL43Z_LO.offer.bin=1 
+SurfaceSlimPenChargerFwUpdate_MKL43Z_LO.payload.bin=1 
+SurfaceSlimPenCharger_PN7362.offer.bin=1 
+SurfaceSlimPenCharger_PN7362.payload.bin=1 
+; SourceDisksFiles.end   !DO NOT DELETE!
+
+[SurfaceSlimPenChargerFwUpdate.CopyFiles]
+; SurfaceSlimPenCharger_CopyFiles.begin   !DO NOT DELETE!
+SurfaceSlimPenChargerFwUpdate_MKL43Z_HI.offer.bin 
+SurfaceSlimPenChargerFwUpdate_MKL43Z_HI.payload.bin 
+SurfaceSlimPenChargerFwUpdate_MKL43Z_LO.offer.bin 
+SurfaceSlimPenChargerFwUpdate_MKL43Z_LO.payload.bin 
+SurfaceSlimPenCharger_PN7362.offer.bin 
+SurfaceSlimPenCharger_PN7362.payload.bin 
+; SurfaceSlimPenCharger_CopyFiles.end   !DO NOT DELETE!
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName="Surface"
+SurfaceSlimPenChargerFwUpdate.ExtensionDesc="Microsoft Surface Slim Pen Charger Firmware Update"
+DiskName = "Microsoft Surface Slim Pen Charger Firmware Update Installation Disk"
+FwUpdateFriendlyName= "Microsoft Surface Slim Pen Charger Firmware Update"
+

@@ -1,0 +1,95 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Copyright (c) Microsoft.  All Rights Reserved.
+;
+; File:          SurfacePenBleLcAddrAdaptationDriver.inx
+;
+; Description:   Driver Installation File.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=HIDClass
+ClassGUID={745a17a0-74d3-11d0-b6fe-00a0c90f57da}
+Provider=%ManufacturerName%
+CatalogFile=SurfacePenBleLcAddrAdaptationDriver.cat
+DriverVer = 01/14/2021,3.12.139.0
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+SurfacePenBleLcAddrAdaptationDriver.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%SurfacePenBleLcAddrAdaptationDriver.DeviceDesc%=SurfacePenBleLcAddrAdaptationDriver_Device, HID\VID_045E&UP:FFF4_U:0001
+%SurfacePenBleLcAddrAdaptationDriver.DeviceDesc%=SurfacePenBleLcAddrAdaptationDriver_Device, HID\VID_045E&PID_F004&Col02
+
+[SurfacePenBleLcAddrAdaptationDriver_Device.NT]
+CopyFiles=Drivers_Dir
+
+[SurfacePenBleLcAddrAdaptationDriver_Device.NT.HW]
+AddReg = SurfacePenBleLcAddrAdaptationDriver_Device.AddReg
+
+[SurfacePenBleLcAddrAdaptationDriver_Device.AddReg]
+; Allow access to system, administrators group, user-mode drivers, and Surface Integration Service (surfaceservice).
+HKR, , Security, , "D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;UD)(A;;GA;;;S-1-5-80-2586557155-168560303-1373426920-983201488-1499765686)(A;;GA;;;S-1-5-80-3702651131-1026816495-3546934225-1964010644-2814160473)"
+
+[SurfacePenBleLcAddrAdaptationDriver_Device.NT.Services]
+AddService = SurfacePenBleLcAddrAdaptationDriver,%SPSVCINST_ASSOCSERVICE%,SurfacePenBleLcAddrAdaptationDriver_Service_Inst
+
+[SurfacePenBleLcAddrAdaptationDriver_Device.NT.Interfaces]
+AddInterface = {4D1E55B2-F16F-11CF-88CB-001111000030},,SurfacePenBleLcAddrAdaptationDriver_Device.AddInterface
+
+[SurfacePenBleLcAddrAdaptationDriver_Device.AddInterface]
+AddProperty = SurfacePenBleLcAddrAdaptationDriver_Device.AddProperty
+
+[SurfacePenBleLcAddrAdaptationDriver_Device.AddProperty]
+; DEVPKEY_BluetoothOobCouplingChannel_OptInForUse
+{FE683ED0-DE80-4766-B422-4195993F4330}, 2, 0x11, , 1
+
+
+; ------------------- supporting sections -------------------
+[Drivers_Dir]
+SurfacePenBleLcAddrAdaptationDriver.sys
+
+[SurfacePenBleLcAddrAdaptationDriver_Service_Inst]
+DisplayName    = %SurfacePenBleLcAddrAdaptationDriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\SurfacePenBleLcAddrAdaptationDriver.sys
+AddReg = SurfacePenBleLcAddrAdaptationDriver_Service_Inst.AddReg
+
+[SurfacePenBleLcAddrAdaptationDriver_Service_Inst.AddReg]
+HKR,"Parameters\LCDATA",, 0x00000010
+
+[SurfacePenBleLcAddrAdaptationDriver_Service_Inst.AddReg.Security]
+; secure system keys to local system only
+"D:P(A;;GA;;;SY)"
+
+[SurfacePenBleLcAddrAdaptationDriver_Device.NT.Wdf]
+KmdfService =  SurfacePenBleLcAddrAdaptationDriver, SurfacePenBleLcAddrAdaptationDriver_Device_wdfsect
+
+[SurfacePenBleLcAddrAdaptationDriver_Device_wdfsect]
+KmdfLibraryVersion = 1.11
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Surface"
+DiskName = "SurfacePenBleLcAddrAdaptationDriver Installation Disk"
+SurfacePenBleLcAddrAdaptationDriver.DeviceDesc = "Surface Pen BLE LC Adaptation Driver"
+SurfacePenBleLcAddrAdaptationDriver.SVCDESC = "SurfacePenBleLcAddrAdaptationDriver Service"

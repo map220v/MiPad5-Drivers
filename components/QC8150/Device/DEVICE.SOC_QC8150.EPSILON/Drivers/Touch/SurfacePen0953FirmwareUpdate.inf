@@ -1,0 +1,94 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:               Surface0953FwUpdate.inf
+;
+; Description:        Driver installation file for Surface Pen 0953 Firmware Update Extension Package.
+;
+; Versions.begin   !DO NOT DELETE!
+; Annapurna-HI (11): Version 452.2882.113 (0x712D0871)
+; Annapurna-LO (11): Version 452.2882.112 (0x712D0870)
+; MCU-B0 (10): Version 453.3311.880 (0x7173BF70)
+; MCU-B1 (10): Version 453.3311.881 (0x7173BF71)
+; Versions.end   !DO NOT DELETE!
+;
+; Copyright (C) Microsoft Corporation.  All Rights Reserved.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Version]
+Signature="$Windows NT$"
+Class = Extension
+ClassGuid = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+Provider=%ManufacturerName%
+ExtensionId = {248DD0FC-1E43-49FA-8F3E-0544D32A81BE}
+CatalogFile=Surface0953FwUpdate.cat
+DriverVer = 07/20/2020,2.12.139.0
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%Surface0953FwUpdate.ExtensionDesc%=Surface0953FwUpdate, HID\{00001812-0000-1000-8000-00805f9b34fb}_Dev_VID&02045e_PID&0953&Col03
+
+; =================== UMDF Device ==================================
+
+[Surface0953FwUpdate.NT]
+CopyFiles=Surface0953FwUpdate.CopyFiles
+
+[Surface0953FwUpdate.NT.HW]
+AddReg = Surface0953FwUpdate_HWAddReg
+
+[SourceDisksNames]
+1 = %DiskName%
+
+[DestinationDirs]
+Surface0953FwUpdate.CopyFiles=13
+
+; =================== FW Information ===========================
+[Surface0953FwUpdate_HWAddReg]
+HKR,,FriendlyName,,%FwUpdateFriendlyName%
+HKR,,HidTargetInStack,0x00010001, 1
+HKR,,Protocol,0x00010001, 2           ;(PROTOCOL-BTLE)
+HKR,,UsageTableIndex, 0x00010001, 0x01
+
+; SurfacePen0953_FirmwareAddReg.begin   !DO NOT DELETE!
+HKR,CFU\Annapurna-HI,Offer, 0x00000000, %13%\SurfacePen0953_Annapurna-HI.offer.bin 
+HKR,CFU\Annapurna-HI,Payload, 0x00000000, %13%\SurfacePen0953_Annapurna-HI.payload.bin 
+HKR,CFU\Annapurna-LO,Offer, 0x00000000, %13%\SurfacePen0953_Annapurna-LO.offer.bin 
+HKR,CFU\Annapurna-LO,Payload, 0x00000000, %13%\SurfacePen0953_Annapurna-LO.payload.bin 
+HKR,CFU\MCU-B0,Offer, 0x00000000, %13%\SurfacePen0953_MCU-B0.offer.bin 
+HKR,CFU\MCU-B0,Payload, 0x00000000, %13%\SurfacePen0953_MCU-B0.payload.bin 
+HKR,CFU\MCU-B1,Offer, 0x00000000, %13%\SurfacePen0953_MCU-B1.offer.bin 
+HKR,CFU\MCU-B1,Payload, 0x00000000, %13%\SurfacePen0953_MCU-B1.payload.bin 
+; SurfacePen0953_FirmwareAddReg.end   !DO NOT DELETE!
+
+[SourceDisksFiles]
+; SourceDisksFiles.begin   !DO NOT DELETE!
+SurfacePen0953_Annapurna-HI.offer.bin=1 
+SurfacePen0953_Annapurna-HI.payload.bin=1 
+SurfacePen0953_Annapurna-LO.offer.bin=1 
+SurfacePen0953_Annapurna-LO.payload.bin=1 
+SurfacePen0953_MCU-B0.offer.bin=1 
+SurfacePen0953_MCU-B0.payload.bin=1 
+SurfacePen0953_MCU-B1.offer.bin=1 
+SurfacePen0953_MCU-B1.payload.bin=1 
+; SourceDisksFiles.end   !DO NOT DELETE!
+
+[Surface0953FwUpdate.CopyFiles]
+; SurfacePen0953_CopyFiles.begin   !DO NOT DELETE!
+SurfacePen0953_Annapurna-HI.offer.bin 
+SurfacePen0953_Annapurna-HI.payload.bin 
+SurfacePen0953_Annapurna-LO.offer.bin 
+SurfacePen0953_Annapurna-LO.payload.bin 
+SurfacePen0953_MCU-B0.offer.bin 
+SurfacePen0953_MCU-B0.payload.bin 
+SurfacePen0953_MCU-B1.offer.bin 
+SurfacePen0953_MCU-B1.payload.bin 
+; SurfacePen0953_CopyFiles.end   !DO NOT DELETE!
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName="Surface"
+Surface0953FwUpdate.ExtensionDesc="Surface 0953 Fw Update"
+DiskName = "Surface Connect Adapter Firmware Update Installation Disk"
+FwUpdateFriendlyName= "Surface 0953 Fw Update"
+
