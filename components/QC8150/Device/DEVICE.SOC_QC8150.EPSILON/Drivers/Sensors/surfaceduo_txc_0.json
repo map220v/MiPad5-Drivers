@@ -1,0 +1,126 @@
+{
+  "config": {
+    "hw_platform": [ "Surface" ],
+    "platform_subtype_id": [ "11", "12", "13", "14", "15", "16", "17", "18" ]
+  },
+
+  "txc_0": {
+    "owner": "sns_txc",
+
+    ".als": {
+      "owner": "sns_txc",
+      ".config": {
+        "owner": "sns_txc",
+        "is_dri": { "type": "int", "ver": "1", "data": "1" },
+        "hw_id": { "type": "int", "ver": "0", "data": "0" },
+        "res_idx": { "type": "int", "ver": "0", "data": "2" },
+        "sync_stream": { "type": "int", "ver": "0", "data": "0" }
+      }
+    },
+
+    ".prx": {
+      "owner": "sns_txc",
+      ".config": {
+        "owner": "sns_txc",
+        "is_dri": { "type": "int", "ver": "1", "data": "1" },
+        "hw_id": { "type": "int", "ver": "0", "data": "0" },
+        "res_idx": { "type": "int", "ver": "0", "data": "3" },
+        "sync_stream": { "type": "int", "ver": "0", "data": "0" }
+      }
+    }
+  },
+
+  "txc_0_platform": {
+    "owner": "sns_txc",
+
+    ".config": {
+      "owner": "sns_txc",
+      "bus_type": { "type": "int", "ver": "0", "data": "0" },
+      "bus_instance": { "type": "int", "ver": "0", "data": "3" },
+      "slave_config": { "type": "int", "ver": "0", "data": "30" },
+      "min_bus_speed_khz": { "type": "int", "ver": "0", "data": "400" },
+      "max_bus_speed_khz": { "type": "int", "ver": "0", "data": "400" },
+      "reg_addr_type": { "type": "int", "ver": "0", "data": "0" },
+      "dri_irq_num": { "type": "int", "ver": "0", "data": "117" },
+      "irq_pull_type": { "type": "int", "ver": "0", "data": "3" },
+      "irq_is_chip_pin": { "type": "int", "ver": "0", "data": "1" },
+      "irq_drive_strength": { "type": "int", "ver": "0", "data": "4" },
+      "irq_trigger_type": { "type": "int", "ver": "0", "data": "1" },
+      "num_rail": { "type": "int", "ver": "0", "data": "2" },
+      "rail_on_state": { "type": "int", "ver": "0", "data": "2" },
+      "vdd_rail": { "type": "str", "ver": "0", "data": "/pmic/client/sensor_vdd" },
+      "vddio_rail": { "type": "str", "ver": "0", "data": "/pmic/client/sensor_vddio" },
+      "rigid_body_type": { "type": "int", "ver": "0", "data": "0" }
+    },
+
+    ".als": {
+      "owner": "sns_txc",
+
+      ".fac_cal": {
+        "owner": "sns_txc",
+
+        ".adc_factor": {
+          "owner": "sns_txc",
+          "0": { "type": "flt", "ver": "2", "data": "8356.0" },
+          "1": { "type": "flt", "ver": "2", "data": "1009.0" },
+          "2": { "type": "flt", "ver": "2", "data": "250.0" },
+          "3": { "type": "flt", "ver": "2", "data": "49.0" }
+        },
+
+        ".adc_ir_factor": {
+          "owner": "sns_txc",
+          "0": { "type": "flt", "ver": "0", "data": "10405.0" },
+          "1": { "type": "flt", "ver": "0", "data": "1220.0" },
+          "2": { "type": "flt", "ver": "0", "data": "316.0" },
+          "3": { "type": "flt", "ver": "0", "data": "62.0" }
+        },
+
+        ".cal_lux": {
+          "owner": "sns_txc",
+          "0": { "type": "flt", "ver": "2", "data": "500.0" }
+        }
+      }
+    },
+
+    ".prx": {
+      "owner": "sns_txc",
+
+      ".fac_cal": {
+        "owner": "sns_txc",
+
+        ".cross_talk": {
+          "owner": "sns_txc",
+          "0": { "type": "flt", "ver": "0", "data": "10.0"
+          }
+        },
+
+        ".high_thres": {
+          "owner": "sns_txc",
+          "0": { "type": "flt", "ver": "0", "data": "255.0" }
+        },
+
+        ".low_thres": {
+          "owner": "sns_txc",
+          "0": { "type": "flt", "ver": "0", "data": "0.0" }
+        }
+      }
+    },
+
+    ".placement": {
+      "owner": "sns_txc",
+
+      "0": { "type": "flt", "ver": "0", "data": "128.0" },
+      "1": { "type": "flt", "ver": "0", "data": "180.0" },
+      "2": { "type": "flt", "ver": "0", "data": "179.0" },
+      "3": { "type": "flt", "ver": "0", "data": "400.0" },
+      "4": { "type": "flt", "ver": "0", "data": "10405.0" },
+      "5": { "type": "flt", "ver": "0", "data": "1220.0" },
+      "6": { "type": "flt", "ver": "0", "data": "316.0" },
+      "7": { "type": "flt", "ver": "0", "data": "62.0" },
+      "8": { "type": "flt", "ver": "0", "data": "10405.0" },
+      "9": { "type": "flt", "ver": "0", "data": "1220.0" },
+      "10": { "type": "flt", "ver": "0", "data": "316.0" },
+      "11": { "type": "flt", "ver": "0", "data": "62.0" }
+    }
+  }
+}

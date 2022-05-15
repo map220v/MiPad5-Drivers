@@ -1,0 +1,285 @@
+{
+  "config": {
+  "hw_platform": ["MTP", "Dragon", "Surf", "QRD", "HDK"],
+  "soc_id": ["339", "361"]
+  },
+  "ifx_dps368_0":{
+    "owner": "ifx_dps368",
+    ".temp":{
+      "owner": "ifx_dps368",
+      ".config":{
+        "owner": "ifx_dps368",
+        "is_dri":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "hw_id":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "res_idx":{ "type": "int", "ver": "0",
+          "data": "2"
+        },
+        "sync_stream":{ "type": "int", "ver": "0",
+          "data": "0"
+        }
+      }
+    },
+    ".pressure":{
+      "owner": "ifx_dps368",
+      ".config":{
+        "owner": "ifx_dps368",
+        "is_dri":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "hw_id":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "res_idx":{ "type": "int", "ver": "0",
+          "data": "2"
+        },
+        "sync_stream":{ "type": "int", "ver": "0",
+          "data": "0"
+        }
+      }
+    }
+  },
+
+  "ifx_dps368_0_platform": {
+    "owner": "ifx_dps368",
+    ".config": {
+      "owner": "ifx_dps368",
+      "bus_type":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "bus_instance":{ "type": "int", "ver": "0",
+        "data": "3"
+      },
+      "slave_config":{ "type": "int", "ver": "0",
+        "data": "118"
+      },
+      "min_bus_speed_khz":{ "type": "int", "ver": "0",
+        "data": "400"
+      },
+      "max_bus_speed_khz":{ "type": "int", "ver": "0",
+        "data": "400"
+      },
+      "reg_addr_type":{ "type": "int", "ver": "0",
+        "data": "0"
+      },
+      "num_rail":{ "type": "int", "ver": "0",
+        "data": "2"
+      },
+      "rail_on_state":{ "type": "int", "ver": "0",
+        "data": "2"
+      },
+      "vdd_rail":{ "type": "str", "ver": "0",
+        "data": "/pmic/client/sensor_vdd"
+      },
+      "vddio_rail":{ "type": "str", "ver": "0",
+        "data": "/pmic/client/sensor_vddio"
+      },
+      "rigid_body_type":{ "type": "int", "ver": "0",
+      "data": "0"
+      }
+    },
+    ".pressure": {
+      "owner": "ifx_dps368",
+      ".fac_cal": {
+          "owner": "ifx_dps368",
+          ".scale": {
+              "owner": "ifx_dps368",
+              "val": {
+                  "type": "flt",
+                  "ver": "0",
+                  "data": "1.0"
+              }
+          },
+          ".bias": {
+              "owner": "ifx_dps368",
+              "val": {
+                  "type": "flt",
+                  "ver": "0",
+                  "data": "0.0"
+              }
+          }
+      }
+    },
+    ".temp": {
+      "owner": "ifx_dps368",
+      ".fac_cal": {
+          "owner": "ifx_dps368",
+          ".scale": {
+              "owner": "ifx_dps368",
+              "val": {
+                  "type": "flt",
+                  "ver": "0",
+                  "data": "1.0"
+              }
+          },
+          ".bias": {
+              "owner": "ifx_dps368",
+              "val": {
+                  "type": "flt",
+                  "ver": "0",
+                  "data": "0.0"
+              }
+          }
+      }
+    },
+    ".custom": {
+      "owner": "ifx_dps368",
+      "ext_pressure_ref": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "ext_temperature_ref": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "c0_lb": {
+          "type": "flt",
+          "ver": "0",
+          "data": "10.0"
+      },
+      "c1_ub": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "c00_lb": {
+          "type": "flt",
+          "ver": "0",
+          "data": "73000.0"
+      },
+      "c00_ub": {
+          "type": "flt",
+          "ver": "0",
+          "data": "89000.0"
+      },
+       "c10_lb": {
+          "type": "flt",
+          "ver": "0",
+          "data": "-70000.0"
+      },
+      "c10_ub": {
+          "type": "flt",
+          "ver": "0",
+          "data": "-39000.0"
+      },
+      "c01_lb": {
+          "type": "flt",
+          "ver": "0",
+          "data": "-5000.0"
+      },
+      "c01_ub": {
+          "type": "flt",
+          "ver": "0",
+          "data": "-500.0"
+      },
+      "c11_lb": {
+          "type": "flt",
+          "ver": "0",
+          "data": "600.0"
+      },
+      "c11_ub": {
+          "type": "flt",
+          "ver": "0",
+          "data": "1800.0"
+      },
+        "c20_lb": {
+          "type": "flt",
+          "ver": "0",
+          "data": "-15000.0"
+      },
+      "c20_ub": {
+          "type": "flt",
+          "ver": "0",
+          "data": "-5000.0"
+      },
+      "c21_lb": {
+          "type": "flt",
+          "ver": "0",
+          "data": "-200.0"
+      },
+       "c21_ub": {
+          "type": "flt",
+          "ver": "0",
+          "data": "300.0"
+      },
+      "c30_lb": {
+          "type": "flt",
+          "ver": "0",
+          "data": "-3000.0"
+      },
+      "c30_ub": {
+          "type": "flt",
+          "ver": "0",
+          "data": "-200.0"
+      }
+    },
+    ".placement": {
+      "owner": "ifx_dps368",
+      "0": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "1": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "2": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "3": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "4": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "5": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "6": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "7": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "8": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "9": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "10": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      },
+      "11": {
+          "type": "flt",
+          "ver": "0",
+          "data": "0.0"
+      }
+    }
+  }
+}

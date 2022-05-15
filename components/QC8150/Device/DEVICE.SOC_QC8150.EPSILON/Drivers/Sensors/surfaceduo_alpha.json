@@ -1,0 +1,70 @@
+{
+    "config":
+    {
+      "hw_platform": ["Surface"],
+      "soc_id": ["339"]
+    },
+	"sns_alpha": {
+	  "owner": "sns_alpha",
+	  ".config":{
+		"owner": "sns_alpha",
+		"isDebug": {
+		   "type": "int", "ver": "1", "data": "0"
+		},
+		"singularity_accel_threshold": {
+		   "type": "flt", "ver": "3", "data": "0.95"
+		},
+		"singularity_sample_threshold": {
+		   "type": "flt", "ver": "1", "data": "1"
+		},
+		"gyro_coefficient": {
+		   "type": "flt", "ver": "1", "data": "52"
+		},
+		"accel_default_sample_rate": {
+		   "type": "flt", "ver": "1", "data": "10"
+		},
+		"gyro_default_sample_rate": {
+		   "type": "flt", "ver": "1", "data": "20"
+		},
+		"beta_prop_gain": {
+		   "type": "flt", "ver": "1", "data": "0.05"
+		},
+		"sig_motion_threshold": {
+		   "type": "flt", "ver": "1", "data": "0.1"
+		},
+		"angle_accurate_low": {
+		  "type": "int", "ver": "2", "data": "45"
+		},
+		"angle_accurate_high": {
+		  "type": "int", "ver": "2", "data": "325"
+		},
+		"angle_max_allowed_delta": {
+		   "type": "int", "ver": "1", "data": "300"
+		},
+		"max_angle_drift": {
+		   "type": "int", "ver": "1", "data": "5"
+		},
+		"not_use_hall_effects": {
+		   "type": "int", "ver": "1", "data": "0"
+		},
+		"use_mag": {
+		   "type": "int", "ver": "2", "data": "0"
+		},
+		"dlpf_latency_start_sampling": {
+			"type": "int", "ver": "0", "data": "0"
+		},
+		"dlpf_latency_stop_sampling": {
+			"type": "int", "ver": "0", "data": "5"
+		},
+		"enable_dlpf": {
+			"type": "int", "ver": "0", "data": "0"
+		},
+		"reporting_threshold_awake": {
+			"type": "int", "ver": "3", "data": "2"
+		},
+		"reporting_threshold_asleep": {
+			"type": "int", "ver": "2", "data": "10"
+		}
+	  }
+	}
+  }
