@@ -9,6 +9,8 @@
 - EFI ESP partition already provisioned
 - Windows Host Computer
 - WinDBG (WinDBG X/WinDBG Preview from the store will do just fine)
+- USB cable
+- USB support in the UEFI firmware (Windows will use said UEFI's USB protocol for debugging)
 
 ## Steps:
 
