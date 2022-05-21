@@ -15,7 +15,7 @@
 ## Steps:
 
 - Mount your phone ESP partition (we will assume here it's ```X:```)
-- cd \EFI\Microsoft\Boot\
+- ```cd /d X:\EFI\Microsoft\Boot\```
 - ```bcdedit /store BCD /dbgsettings NET BUSPARAMS:1 KEY:1.2.3.4 HOSTIP:169.254.255.255 PORT:50000 NODHCP```
 - ```bcdedit /store BCD /set {default} debug on```
 
