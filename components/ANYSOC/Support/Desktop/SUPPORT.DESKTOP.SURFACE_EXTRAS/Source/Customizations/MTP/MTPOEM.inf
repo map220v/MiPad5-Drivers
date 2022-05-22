@@ -1,0 +1,46 @@
+;
+; MTPOEM.inf
+;
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = "LumiaWoA authors"
+DriverVer   = 08/18/2021,1.0.0.1
+
+CatalogFile.NTarm   = MTPOEM.arm.cat
+CatalogFile.NTarm64 = MTPOEM.arm64.cat
+
+[SourceDisksNames]
+0 = "Disk"
+
+[DestinationDirs]
+MTP_System32_CopyFiles     = 11 ; System32
+
+[SourceDisksFiles]
+DevIcon_Black.ico = 0,,
+DevIcon_Bright_Blue.ico = 0,,
+DevIcon_White.ico = 0,,
+OEMAvatar_Black.cab = 0,,
+OEMAvatar_Bright_Blue.cab = 0,,
+OEMAvatar_White.cab = 0,,
+
+[DefaultInstall.NTARM64]
+CopyFiles = MTP_System32_CopyFiles
+AddReg    = MTP_Registry
+
+[MTP_System32_CopyFiles]
+DevIcon_Black.ico
+DevIcon_Bright_Blue.ico
+DevIcon_White.ico
+OEMAvatar_Black.cab,,,0x00000800       ; COPYFLG_NODECOMP
+OEMAvatar_Bright_Blue.cab,,,0x00000800 ; COPYFLG_NODECOMP
+OEMAvatar_White.cab,,,0x00000800       ; COPYFLG_NODECOMP
+
+[MTP_System32_CopyFiles.Security]
+D:P(A;;GA;;;BA)(A;;GA;;;SY)(A;;GA;;;WD)
+
+[MTP_Registry]
+HKLM, "SOFTWARE\Microsoft\MTP", "OEMAVATAR", 0x00000000, "C:\Windows\System32\OEMAvatar_Black.cab"
+HKLM, "SOFTWARE\Microsoft\MTP", "OEMICON", 0x00000000, "C:\Windows\System32\DevIcon_Black.ico"
+
