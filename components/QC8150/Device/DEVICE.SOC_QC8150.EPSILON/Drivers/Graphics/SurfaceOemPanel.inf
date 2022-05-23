@@ -34,7 +34,7 @@ CopyFiles=ProfilesCopy_LGDA990
 AddReg=SurfaceOemPanel_RegLGDA990
 
 [SurfaceOemPanel_RegLGDA990]
-HKR,,PreferredScaleFactor,0x00010001,250
+;HKR,,PreferredScaleFactor,0x00010001,250
 ; Last entry is automatically set as default
 HKR,,ICMProfile,0x00010000,"SurfacesRGB.icm"
 HKR,,ICMProfile,0x00010008,"SurfaceEnchanced.icm"
