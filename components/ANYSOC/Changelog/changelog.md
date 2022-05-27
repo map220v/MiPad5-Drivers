@@ -57,6 +57,10 @@ Changelog
 
 ![image](https://user-images.githubusercontent.com/3755345/170788826-8cab3577-9acc-4581-b38d-c9a1aad6f5f7.png)
 
+- The device now has an icon displayed when connected to a computer.
+
+![image](https://user-images.githubusercontent.com/3755345/170789499-eb1329b7-26a9-4772-a4b5-1a0568f69477.png)
+
 - Merged both Duo A and Duo B packages into a single one, there's no need to know if your device is USA or EU anymore.
 
 ____________________________________________________________________________________________________________________________
