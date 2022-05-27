@@ -1,9 +1,9 @@
 ﻿## Surface Duo Drivers BSP - Version 2205.87
 **Released:** 5/27/2022 11:00 PM UTC+2
 
-![Surface Duo Dual Screen Windows](https://user-images.githubusercontent.com/3755345/170788230-a42e624a-d2ed-4070-b289-a9b34774bcd0.png)
-
 **Quality:** Preview
+
+![Surface Duo Dual Screen Windows](https://user-images.githubusercontent.com/3755345/170788230-a42e624a-d2ed-4070-b289-a9b34774bcd0.png)
 
 ### Compatibility
 
