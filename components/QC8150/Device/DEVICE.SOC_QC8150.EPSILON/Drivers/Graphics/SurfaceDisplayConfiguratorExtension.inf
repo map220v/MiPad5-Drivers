@@ -1,0 +1,27 @@
+[Version]
+Signature   = "$Windows NT$"
+Class       = Extension
+ClassGUID   = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+Provider    = %IHV%
+ExtensionId = {21E3E289-3E58-469D-B9DF-75549CD11F5b}
+DriverVer   = 05/28/2022,1.0.0.0
+CatalogFile = SurfaceDisplayConfiguratorExtension.cat
+PnpLockdown = 1
+
+[Manufacturer]
+%IHV% = DeviceExtensions,NTarm64
+
+[DeviceExtensions.NTarm64]
+%SurfaceDisplayConfigurator.DeviceDesc% = DeviceExtension_Install, ACPI\VEN_QCOM&DEV_043A
+
+[DeviceExtension_Install.NT]
+
+[DeviceExtension_Install.NT.Components]
+AddComponent = SurfaceDisplayConfigurator,, SurfaceDisplayConfigurator_Install
+
+[SurfaceDisplayConfigurator_Install]
+ComponentIDs = VEN_QCOM&DEV_043A&SWC_QCDC8150
+
+[Strings]
+IHV                                   = "LumiaWoA authors"
+SurfaceDisplayConfigurator.DeviceDesc = "Surface Display Configurator Extension"
