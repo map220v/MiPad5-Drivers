@@ -17,7 +17,7 @@ Signature="$WINDOWS NT$"
 Class=Battery
 ClassGuid={72631e54-78a4-11d0-bcf7-00aa00b7b32a}
 Provider=%ProviderName%
-DriverVer = 06/02/2022,20.43.36.86
+DriverVer = 06/03/2022,17.33.46.181
 CatalogFile=SurfaceBattery.cat
 PnpLockdown=1
 
