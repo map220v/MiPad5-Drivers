@@ -1,5 +1,5 @@
-﻿## Surface Duo Drivers BSP - Version 2205.87
-**Released:** 5/27/2022 11:00 PM UTC+2
+﻿## Surface Duo Drivers BSP - Version 2206.10
+**Released:** 6/03/2022 10:00 PM UTC+2
 
 **Quality:** Preview
 
@@ -39,29 +39,30 @@ Important information
 - It is expected currently for the boot process to look very rough on the right panel, when the image will change on the left the panel will act normally. This is the beginning, so bear with us for now :) Your displays aren't broken, and won't get damaged.
 - It is also expected for some rendering glitches to happen right now, do not freak out, it's not going to damage anything, your gpu isn't dying, it's ok. Here's an example of a glitch you may be expecting:
 
+<details>
+
 ![image](https://user-images.githubusercontent.com/3755345/166138815-bdc8d4f4-151b-4d37-aa7a-d68f75c259ce.png)
+
+</details>
 
 Changelog
 
-- Addressed an issue where panels would not properly go to sleep/wake up from sleep (UEFI)
-- Addressed an issue with secondary panel power on sequence (UEFI)
-- Updated USB stack
-- USB C is now 98% functional. Display out will not work yet through the USB C port. Plugging devices should now work regardless of if it's connected to a computer or a dongle or dock
-- Some USB devices might still trigger some quirks with the current implementation, expect more polish in the coming week.
-- USB Audio is still not functional
-- You should now be able to browse your files on Duo when connected to a computer:
+- Addressed an issue with USB controller configuration when switching to USB function mode (UEFI)
+- Addressed an issue with Camera sensor regulators not being enabled (UEFI)
+- Addressed an issue with Modern Standby impacting system stability during sleep (UEFI)
 
-![image](https://pbs.twimg.com/media/FTxgb81WYAExQFT?format=jpg&name=large)
+![I got the power! (Both batteries working under Windows)](https://user-images.githubusercontent.com/3755345/171932587-804377fa-7b99-45d8-a760-8b3c10bd4bc0.png)
 
-- You should now be able to change your device resolution for the left panel (right coming soon!) (UEFI)
-
-![image](https://user-images.githubusercontent.com/3755345/170788826-8cab3577-9acc-4581-b38d-c9a1aad6f5f7.png)
-
-- The device now has an icon displayed when connected to a computer.
-
-![image](https://user-images.githubusercontent.com/3755345/170789499-eb1329b7-26a9-4772-a4b5-1a0568f69477.png)
-
-- Merged both Duo A and Duo B packages into a single one, there's no need to know if your device is USA or EU anymore.
+- NEW: You can now monitor your battery(ies) level from Windows! Reporting for both batteries is enabled as part of this release.
+  Compared to android, the following differences are present:
+-- You can check your battery packs individually
+-- You are able to check the cycle count of each battery pack
+-- You are able to check the serial number of each battery pack, as well as the manufacturer
+-- [Coming Soon] You will soon be able to check the manufacturing date of each battery pack
+-- You are able to check how worn out your batteries are
+- NEW: Windows will now shutdown once batteries reach 5% charge
+- NOTE: This release does not allow you to charge under Windows yet.
+- NEW: New users will start with the displays properly configured in extended mode, in the right position, and in the right order
 
 ____________________________________________________________________________________________________________________________
 
@@ -81,6 +82,7 @@ What works and what matters from an user point of view:
 - Pen on the left screen
 - Vibration motor
 - Setting beans as wallpaper
+- Both Batteries (no charging)
 
 Nothing else works! You have been warned
 
