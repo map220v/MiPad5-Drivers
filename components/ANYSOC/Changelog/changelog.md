@@ -1,5 +1,5 @@
-﻿## Surface Duo Drivers BSP - Version 2206.10
-**Released:** 6/03/2022 10:00 PM UTC+2
+﻿## Surface Duo Drivers BSP - Version 2206.16
+**Released:** 6/05/2022 07:00 PM UTC+2
 
 **Quality:** Preview
 
@@ -47,22 +47,10 @@ Important information
 
 Changelog
 
-- Addressed an issue with USB controller configuration when switching to USB function mode (UEFI)
-- Addressed an issue with Camera sensor regulators not being enabled (UEFI)
-- Addressed an issue with Modern Standby impacting system stability during sleep (UEFI)
-
-![I got the power! (Both batteries working under Windows)](https://user-images.githubusercontent.com/3755345/171932587-804377fa-7b99-45d8-a760-8b3c10bd4bc0.png)
-
-- NEW: You can now monitor your battery(ies) level from Windows! Reporting for both batteries is enabled as part of this release.
-  Compared to android, the following differences are present:
--- You can check your battery packs individually
--- You are able to check the cycle count of each battery pack
--- You are able to check the serial number of each battery pack, as well as the manufacturer
--- [Coming Soon] You will soon be able to check the manufacturing date of each battery pack
--- You are able to check how worn out your batteries are
-- NEW: Windows will now shutdown once batteries reach 5% charge
-- NOTE: This release does not allow you to charge under Windows yet.
-- NEW: New users will start with the displays properly configured in extended mode, in the right position, and in the right order
+- NEW: Brightness control is now available for both panels. Changing the brightness in Windows will change the brightness of both displays
+- WIP: Introducing Fingerprint sensor drivers, these are not yet functional and remain work in progress.
+- FIX: Fixed startup sequence for both display panels (UEFI/ACPI)
+- FIX: Fixed missing configuration for external displays over USB-C (UEFI/ACPI)
 
 ____________________________________________________________________________________________________________________________
 
@@ -81,7 +69,6 @@ What works and what matters from an user point of view:
 - Touch
 - Pen on the left screen
 - Vibration motor
-- Setting beans as wallpaper
 - Both Batteries (no charging)
 
 Nothing else works! You have been warned
