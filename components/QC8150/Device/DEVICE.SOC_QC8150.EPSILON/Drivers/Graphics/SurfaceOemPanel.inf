@@ -3,53 +3,54 @@
 ;
 
 [Version]
-Signature="$Windows NT$"
-Provider=%ManufacturerName%
-ClassGuid={4d36e96e-e325-11ce-bfc1-08002be10318}
-Class=Monitor
-DriverVer = 07/24/2020,4.28.139.0
-CatalogFile=SurfaceOemPanel.cat
-PnpLockdown=1
+Signature   = "$Windows NT$"
+Provider    = %ManufacturerName%
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Class       = System
+DriverVer = 06/05/2022,15.2.13.876
+CatalogFile = SurfaceOemPanel.cat
+PnpLockdown = 1
 
 [Manufacturer]
-%ManufacturerName%=SurfaceOemPanel,NTARM64
+%ManufacturerName% = Surface, NTARM64
 
-[SurfaceOemPanel.NTARM64]
-%DeviceName%=SurfaceOemPanel_Install_LGDA990, Monitor\LGDA990
+[Surface.NTARM64]
+%DeviceName% = SurfaceOemPanel, ACPI\MSHW1004
 
 [SourceDisksNames]
 1 = %DiskName%,,,""
 
 [SourceDisksFiles]
-SurfacesRGB.icm=1
-SurfaceEnchanced.icm=1
+SurfaceOemPanel.sys  = 1
 
 [DestinationDirs]
-;23 == Windows\system32\spool\drivers\color
-ProfilesCopy_LGDA990=23
+OEMCopyFiles = 13
 
-; =================== Monitor\LGDA990 ==============================
-[SurfaceOemPanel_Install_LGDA990.NT]
-CopyFiles=ProfilesCopy_LGDA990
-AddReg=SurfaceOemPanel_RegLGDA990
+[SurfaceOemPanel.NT]
+CopyFiles = OEMCopyFiles
 
-[SurfaceOemPanel_RegLGDA990]
-;HKR,,PreferredScaleFactor,0x00010001,250
-; Last entry is automatically set as default
-HKR,,ICMProfile,0x00010000,"SurfacesRGB.icm"
-HKR,,ICMProfile,0x00010008,"SurfaceEnchanced.icm"
+[OEMCopyFiles]
+SurfaceOemPanel.sys
 
-[SurfaceOemPanel_Install_LGDA990.NT.CoInstallers]
-CopyFiles=ProfilesCopy_LGDA990
+[SurfaceOemPanel.NT.Services]
+AddService = SurfaceOemPanel, %SPSVCINST_ASSOCSERVICE%, SurfaceOemPanel_Service_Inst
 
-; Profiles Associated with the monitor
-[ProfilesCopy_LGDA990]
-SurfacesRGB.icm
-SurfaceEnchanced.icm
-
-; =================== Generic ==================================
+[SurfaceOemPanel_Service_Inst]
+DisplayName    = %SvcDesc%
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %13%\SurfaceOemPanel.sys
+LoadOrderGroup = Extended Base
 
 [Strings]
-ManufacturerName="Surface" ;
-DiskName="SurfacePanel Installation Disk"
-DeviceName="Surface Panel"
+ManufacturerName = "Surface"
+DiskName         = "Surface OEM Panel Installation Disk"
+DeviceName       = "Surface OEM Panel Device"
+SvcDesc          = "Surface OEM Panel Device"
+
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_DEMAND_START   = 3
+SERVICE_ERROR_IGNORE   = 0
+SERVICE_ERROR_NORMAL   = 1
