@@ -48,12 +48,19 @@ Important information
 Changelog
 
 - Add support for ON Semiconductors FSA4480 USB-C Audio Analog Switch/DP AUX.
--- This chip will be used for analog usb audio dongles and Display Port in the future
+
+  - This chip will be used for analog usb audio dongles and Display Port in the future
+
 - Subsystems Firmware Update: SM8150.LA.2.0.1-00092-STD.PROD-1.470552.1.483653.1
--- This update brings firmware parity with Surface Duo firmware update version, notable changes include:
---- Fixes pixelated external display when screen sharing via Miracast.
---- Improves device stability.
---- Include adjustments for higher power levels for both BLE and BT.
+
+  - This update brings firmware parity with Surface Duo firmware update version, notable changes include:
+
+    - Fixes pixelated external display when screen sharing via Miracast.
+
+    - Improves device stability.
+
+    - Include adjustments for higher power levels for both BLE and BT.
+
 
 ____________________________________________________________________________________________________________________________
 
