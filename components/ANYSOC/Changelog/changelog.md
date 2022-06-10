@@ -1,5 +1,5 @@
-﻿## Surface Duo Drivers BSP - Version 2206.16
-**Released:** 6/05/2022 07:00 PM UTC+2
+﻿## Surface Duo Drivers BSP - Version 2206.33
+**Released:** 6/10/2022 09:00 PM UTC+2
 
 **Quality:** Preview
 
@@ -35,7 +35,7 @@ ________________________________________________________________________________
 
 Important information
 
-- IMPORTANT: THIS VERSION REQUIRES AN UEFI UPDATE! DO NOT USE WITH OLDER UEFIs!
+- IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.28.
 - It is expected currently for the boot process to look very rough on the right panel, when the image will change on the left the panel will act normally. This is the beginning, so bear with us for now :) Your displays aren't broken, and won't get damaged.
 - It is also expected for some rendering glitches to happen right now, do not freak out, it's not going to damage anything, your gpu isn't dying, it's ok. Here's an example of a glitch you may be expecting:
 
@@ -47,10 +47,13 @@ Important information
 
 Changelog
 
-- NEW: Brightness control is now available for both panels. Changing the brightness in Windows will change the brightness of both displays
-- WIP: Introducing Fingerprint sensor drivers, these are not yet functional and remain work in progress.
-- FIX: Fixed startup sequence for both display panels (UEFI/ACPI)
-- FIX: Fixed missing configuration for external displays over USB-C (UEFI/ACPI)
+- Add support for ON Semiconductors FSA4480 USB-C Audio Analog Switch/DP AUX.
+-- This chip will be used for analog usb audio dongles and Display Port in the future
+- Subsystems Firmware Update: SM8150.LA.2.0.1-00092-STD.PROD-1.470552.1.483653.1
+-- This update brings firmware parity with Surface Duo firmware update version, notable changes include:
+--- Fixes pixelated external display when screen sharing via Miracast.
+--- Improves device stability.
+--- Include adjustments for higher power levels for both BLE and BT.
 
 ____________________________________________________________________________________________________________________________
 
