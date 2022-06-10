@@ -33,7 +33,7 @@
 
 ____________________________________________________________________________________________________________________________
 
-Important information
+#### Important information
 
 - IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.28.
 - It is expected currently for the boot process to look very rough on the right panel, when the image will change on the left the panel will act normally. This is the beginning, so bear with us for now :) Your displays aren't broken, and won't get damaged.
@@ -45,7 +45,7 @@ Important information
 
 </details>
 
-Changelog
+#### Changelog
 
 - Add support for ON Semiconductors FSA4480 USB-C Audio Analog Switch/DP AUX.
 
@@ -61,12 +61,17 @@ Changelog
 
     - Include adjustments for higher power levels for both BLE and BT.
 
+#### Notable UEFI changes:
 
-Notable UEFI changes:
+![Screenshot (22)](https://user-images.githubusercontent.com/3755345/173129499-4b433376-8c4d-4917-82bf-3262a4fefd21.png)
 
 - UFS now runs at UFS 3.0 Speeds! Expect faster IO performance across the board in Windows
 
 - Add UFP Flash App. You can now access Microsoft Flashing/Recovery/Mass Storage application by pressing the volume down button at boot of the UEFI.
+
+- Improved system stability when the device is in sleep.
+
+- Improved device power consumption when the device is in sleep.
 
 
 ____________________________________________________________________________________________________________________________
