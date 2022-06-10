@@ -62,6 +62,13 @@ Changelog
     - Include adjustments for higher power levels for both BLE and BT.
 
 
+Notable UEFI changes:
+
+- UFS now runs at UFS 3.0 Speeds! Expect faster IO performance across the board in Windows
+
+- Add UFP Flash App. You can now access Microsoft Flashing/Recovery/Mass Storage application by pressing the volume down button at boot of the UEFI.
+
+
 ____________________________________________________________________________________________________________________________
 
 
