@@ -7,7 +7,7 @@ Class       = USBDevice
 ClassGuid   = {88BAE032-5A81-49f0-BC3D-A4FF138216D6}
 Provider    = %ProviderName%
 CatalogFile = fsa4480.cat
-DriverVer = 06/06/2022,23.38.0.337
+DriverVer = 06/07/2022,16.56.59.328
 PnpLockdown = 1
 
 [DestinationDirs]
