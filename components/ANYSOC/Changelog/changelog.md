@@ -1,5 +1,5 @@
-﻿## Surface Duo Drivers BSP - Version 2206.33
-**Released:** 6/10/2022 09:00 PM UTC+2
+﻿## Surface Duo Drivers BSP - Version 2206.56
+**Released:** 6/17/2022 09:00 PM UTC+2
 
 **Quality:** Preview
 
@@ -35,7 +35,7 @@ ________________________________________________________________________________
 
 #### Important information
 
-- IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.28.
+- IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.28 (B).
 - It is expected currently for the boot process to look very rough on the right panel, when the image will change on the left the panel will act normally. This is the beginning, so bear with us for now :) Your displays aren't broken, and won't get damaged.
 - It is also expected for some rendering glitches to happen right now, do not freak out, it's not going to damage anything, your gpu isn't dying, it's ok. Here's an example of a glitch you may be expecting:
 
@@ -45,34 +45,271 @@ ________________________________________________________________________________
 
 </details>
 
-#### Changelog
 
-- Add support for ON Semiconductors FSA4480 USB-C Audio Analog Switch/DP AUX.
+### Changelog
 
-  - This chip will be used for analog usb audio dongles and Display Port in the future
 
-- Subsystems Firmware Update: SM8150.LA.2.0.1-00092-STD.PROD-1.470552.1.483653.1
+- Added support for the left STMicro lsm6dso Accelerometer
+- Added support for the right STMicro lsm6dso Accelerometer
+- Added support for the left Qualcomm Gravity Accelerometer
+- Added support for the right Qualcomm Gravity Accelerometer
+- Added support for the left Qualcomm Linear Accelerometer
+- Added support for the right Qualcomm Linear Accelerometer
+- Added support for the left STMicro lsm6dso Compass
+- Added support for the right STMicro lsm6dso Compass
+- Added support for the left STMicro lsm6dso Gyrometer
+- Added support for the right STMicro lsm6dso Gyrometer
+- Added support for the left STMicro lsm6dso Inclinometer
+- Added support for the right STMicro lsm6dso Inclinometer
+- Added support for the left AKM ak0991x Magnetometer
+- Added support for the right AKM ak0991x Magnetometer
+- Added support for the left STMicro lsm6dso Orientation Sensor
+- Added support for the right STMicro lsm6dso Orientation Sensor
+- Added support for the left Qualcomm Game Relative Rotation Vector Orientation Sensor
+- Added support for the right Qualcomm Game Relative Rotation Vector Orientation Sensor
+- Added support for the left TXC PA22A Proximity Sensor
+- Added support for the right TXC PA22A Proximity Sensor
+- Added support for the left Microsoft Simple Orientation Sensor
+- Added support for the right Microsoft Simple Orientation Sensor
+- Added support for the Microsoft Flip Sensor
+- Added support for the Microsoft Posture Sensor
+- Added support for the top Microsoft Hinge Angle Sensor
+- Added support for the bottom Microsoft Hinge Angle Sensor
+- [WIP] Support for left pedometer
+- [WIP] Support for right pedometer
+- [WIP] Support for the Microsoft Fold Sensor
+- [WIP] Support for left ambient light sensor
+- [WIP] Support for right ambient light sensor
+- [WIP] Support for Microsoft Virtual Device Orientation Sensor
+- [WIP] Support for the Modem peripheral subsystem software (MPSS)
 
-  - This update brings firmware parity with Surface Duo firmware update version, notable changes include:
 
-    - Fixes pixelated external display when screen sharing via Miracast.
+- Fixed Device Topology (ACPI/INF)
 
-    - Improves device stability.
 
-    - Include adjustments for higher power levels for both BLE and BT.
+### Accessing Foldable Sensors from your applications
 
-#### Notable UEFI changes:
 
-![Screenshot (22)](https://user-images.githubusercontent.com/3755345/173129499-4b433376-8c4d-4917-82bf-3262a4fefd21.png)
+In order to currently access the sensor data given by the foldable sensors, you need to use the following apis:
 
-- UFS now runs at UFS 3.0 Speeds! Expect faster IO performance across the board in Windows
 
-- Add UFP Flash App. You can now access Microsoft Flashing/Recovery/Mass Storage application by pressing the volume down button at boot of the UEFI.
+- Windows.Devices.Sensors.HingeAngleSensor*
+- Windows.Internal.Devices.Sensors.FlipSensor* (2)
+- Windows.Internal.System.TwoPanelHingeFolioPostureDevice* (2)
 
-- Improved system stability when the device is in sleep.
 
-- Improved device power consumption when the device is in sleep.
+(2): These apis require the use of an externally sourced winmd available from https://github.com/ADeltaX/InternalWinMD/blob/master/%23winmd/Windows.Internal.Devices.Sensors.winmd
 
+
+In the future, further apis will be functional (specifically under the Windows.System.Preview namespace). Consider this an early "thing".
+
+
+The accuracy of the data given for the Display Orientation of both panels when using the Windows.Internal.System.TwoPanelHingeFolioPostureDevice api is currently not guarenteed to be accurate. Please use SimpleOrientationSensor apis for reliable results at the moment.
+
+
+The following API may be used to determine if your app is used on a dual screen device: https://docs.microsoft.com/en-us/uwp/api/windows.ui.windowmanagement.windowingenvironment.getdisplayregions?view=winrt-22621
+
+The following API may be used to determine on which display region your app is currently being shown: https://docs.microsoft.com/en-us/uwp/api/windows.ui.windowmanagement.appwindow.getdisplayregions?view=winrt-22621
+
+The following API may be used to move your application to the other display: https://docs.microsoft.com/en-us/uwp/api/windows.ui.windowmanagement.appwindow.requestmoverelativetodisplayregion?view=winrt-22621
+
+THe following API may be used to move your application to a specific display: https://docs.microsoft.com/en-us/uwp/api/windows.ui.windowmanagement.appwindow.requestmovetodisplayregion?view=winrt-22621
+
+The following API may be used for spanning purposes: https://docs.microsoft.com/en-us/uwp/api/windows.ui.windowmanagement.appwindow.requestsize?view=winrt-22621
+
+The Windowing Environment for Windows Desktop editions (outside of tablet mode) is Overlapped. Tiled is used for Tablet Mode and Windows Core OS's ModernPC.
+
+
+### Code Samples
+
+```cpp
+#include <iostream>
+#include <windows.h>
+#include <winrt/Windows.Foundation.h>
+#include <winrt/Windows.Internal.Devices.Sensors.h>
+#include <winrt/Windows.Internal.System.h>
+#include <winrt/Windows.System.Preview.h>
+#include <winrt/Windows.UI.WindowManagement.h>
+#include <winrt/Windows.Foundation.Collections.h>
+
+using namespace std;
+using namespace winrt;
+using namespace Windows::Foundation;
+using namespace Windows::Internal::Devices::Sensors;
+using namespace Windows::Internal::System;
+using namespace Windows::System::Preview;
+using namespace Windows::UI::WindowManagement;
+using namespace Windows::Foundation::Collections;
+
+
+VOID PrintFolioDetails(TwoPanelFolioHingeDevicePostureReading const& args)
+{
+	try {
+		std::cout << "Panel1 " << args.Panel1Id().c_str() << "\n" << std::endl;
+		std::cout << "Panel2 " << args.Panel2Id().c_str() << "\n" << std::endl;
+
+		std::cout << "Panel1 Orientation " << (int)args.Panel1Orientation() << "\n" << std::endl;
+		std::cout << "Panel2 Orientation " << (int)args.Panel2Orientation() << "\n" << std::endl;
+
+		switch (args.Hinge1State())
+		{
+		case Windows::Internal::System::HingeState::Unknown:
+			std::cout << "Hinge1State Unknown\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Closed:
+			std::cout << "Hinge1State Closed\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Concave:
+			std::cout << "Hinge1State Concave\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Flat:
+			std::cout << "Hinge1State Flat\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Convex:
+			std::cout << "Hinge1State Convex\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Full:
+			std::cout << "Hinge1State Full\n" << std::endl;
+			break;
+		}
+
+		switch (args.Hinge2State())
+		{
+		case Windows::Internal::System::HingeState::Unknown:
+			std::cout << "Hinge2State Unknown\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Closed:
+			std::cout << "Hinge2State Closed\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Concave:
+			std::cout << "Hinge2State Concave\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Flat:
+			std::cout << "Hinge2State Flat\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Convex:
+			std::cout << "Hinge2State Convex\n" << std::endl;
+			break;
+		case Windows::Internal::System::HingeState::Full:
+			std::cout << "Hinge2State Full\n" << std::endl;
+			break;
+		}
+	}
+	catch (...) {}
+}
+
+VOID OnFolioPostureChanged(TwoPanelFolioHingeDevicePosture const&, TwoPanelFolioHingeDevicePostureReadingChangedEventArgs const& args)
+{
+	try {
+		printf("Folio posture sensor state changed.\n");
+		PrintFolioDetails(args.Reading());
+	}
+	catch (...) {}
+}
+
+VOID OnSensorReadingChanged(FlipSensor const&, FlipSensorReadingChangedEventArgs const& args)
+{
+	try {
+		printf("Flip sensor state changed.\n");
+		switch (args.Reading().GestureState())
+		{
+		case GestureState::Started:
+			std::cout << "Flip started\n" << std::endl;
+			break;
+		case GestureState::Completed:
+			std::cout << "Flip stopped\n" << std::endl;
+			break;
+		case GestureState::Cancelled:
+			std::cout << "Flip cancelled\n" << std::endl;
+			break;
+		case GestureState::Unknown:
+			std::cout << "Flip unknown\n" << std::endl;
+			break;
+		}
+	}
+	catch (...) {}
+}
+
+int main()
+{
+    init_apartment();
+	printf("Trying to get flip sensor.\n");
+	try {
+		FlipSensor flip = FlipSensor::GetDefaultAsync().get();
+		if (flip == nullptr)
+		{
+			printf("Flip sensor not found.\n");
+		}
+		else
+		{
+			printf("Starting listening session for flip sensor.\n");
+			flip.ReadingChanged(OnSensorReadingChanged);
+		}
+		printf("Press any key to stop\n");
+		std::cin.get();
+	}
+	catch (...) {}
+
+	printf("Trying to get folio posture sensor.\n");
+	try {
+		TwoPanelFolioHingeDevicePosture folioPosture = TwoPanelFolioHingeDevicePosture::GetDefaultAsync().get();
+		if (folioPosture == nullptr)
+		{
+			printf("Folio Posture sensor not found.\n");
+		}
+		else
+		{
+			auto curpst = folioPosture.GetCurrentPostureAsync().get();
+			if (curpst != nullptr)
+			{
+				PrintFolioDetails(curpst);
+			}
+			printf("Starting listening session for Folio Posture sensor.\n");
+			folioPosture.PostureChanged(OnFolioPostureChanged);
+		}
+		printf("Press any key to stop\n");
+		std::cin.get();
+	}
+	catch (...) {}
+}
+```
+
+### Sensor Calibration Provisioning (Mandatory)
+
+
+In order to get most sensors currently working, some manual steps are required.
+You will need to backup from mass storage or twrp the following directory: /mnt/vendor/persist/sensors/ and copy over the contents to [Windows Drive Letter]\Windows\System32\Drivers\DriverData\QUALCOMM\fastRPC\persist\sensors (the following directory should already exist)
+
+
+It may also be possible to provision it using data from the SFPD partition exposed in windows. This manual step will not be required in future releases.
+
+
+### Potential migration issues
+
+
+Due to changes in this release, you may be required to go into device manager, and inplace update the following device using the "manual select a driver" option in the device manager wizard, and select the recommended one from the list:
+
+
+- HID Compliant touch-screen
+- Surface HEAT Touch Processor
+- Surface Duo All-ways Aware(TM) Sensor Collection Device
+
+
+A reboot will be required afterwards.
+
+
+### Known issues
+
+
+- Automatic Orientation only works for the left panel, using the right panel orientation sensor
+- USB Dongles that are not externally powered may not currently work
+- USB C Billboard devices will not currently work
+- External Display Stream support will not currently work
+- Additional information provided by the posture sensor is currently not available for public consumption, this includes peek events.
+- Digitizers will not react to the device being folded over
+- Displays will not react to the device being folded over most of the time
+- Physical device data is incorrect
+- Graphical Rendering Issues
 
 ____________________________________________________________________________________________________________________________
 
@@ -92,6 +329,7 @@ What works and what matters from an user point of view:
 - Pen on the left screen
 - Vibration motor
 - Both Batteries (no charging)
+- 26 Sensors (see above)
 
 Nothing else works! You have been warned
 

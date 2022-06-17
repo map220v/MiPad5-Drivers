@@ -1,8 +1,7 @@
 {
   "config": {
     "hw_platform": [ "Surface" ],
-    "platform_subtype_id": [ "11", "12", "13", "14", "15", "16", "17", "18" ],
-    "ro.build.version.release": ["11"]
+    "platform_subtype_id": [ "11", "12", "13", "14", "15", "16", "17", "18" ]
   },
 
   "txc_1": {
@@ -30,8 +29,8 @@
       },
 	  ".prx_attr": {
         "owner": "sns_txc",
-        "prx_max_range": { "type": "flt", "ver": "0", "data": "1.0" },
-        "prx_resolution": { "type": "flt", "ver": "0", "data": "0.01" }
+        "prx_max_range": { "type": "flt", "ver": "0", "data": "5.0" },
+        "prx_resolution": { "type": "flt", "ver": "0", "data": "5.0" }
       }
     }
   },
