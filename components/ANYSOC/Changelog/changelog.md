@@ -1,5 +1,5 @@
-﻿## Surface Duo Drivers BSP - Version 2206.56
-**Released:** 6/17/2022 09:00 PM UTC+2
+﻿## Surface Duo Drivers BSP - Version 2206.63
+**Released:** 6/19/2022 11:00 PM UTC+2
 
 **Quality:** Preview
 
@@ -35,7 +35,7 @@ ________________________________________________________________________________
 
 #### Important information
 
-- IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.28 (B).
+- ⚠️⚠️ **IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.28 (C).** ⚠️⚠️
 - It is expected currently for the boot process to look very rough on the right panel, when the image will change on the left the panel will act normally. This is the beginning, so bear with us for now :) Your displays aren't broken, and won't get damaged.
 - It is also expected for some rendering glitches to happen right now, do not freak out, it's not going to damage anything, your gpu isn't dying, it's ok. Here's an example of a glitch you may be expecting:
 
@@ -48,43 +48,58 @@ ________________________________________________________________________________
 
 ### Changelog
 
-
-- Added support for the left STMicro lsm6dso Accelerometer
-- Added support for the right STMicro lsm6dso Accelerometer
-- Added support for the left Qualcomm Gravity Accelerometer
-- Added support for the right Qualcomm Gravity Accelerometer
-- Added support for the left Qualcomm Linear Accelerometer
-- Added support for the right Qualcomm Linear Accelerometer
-- Added support for the left STMicro lsm6dso Compass
-- Added support for the right STMicro lsm6dso Compass
-- Added support for the left STMicro lsm6dso Gyrometer
-- Added support for the right STMicro lsm6dso Gyrometer
-- Added support for the left STMicro lsm6dso Inclinometer
-- Added support for the right STMicro lsm6dso Inclinometer
-- Added support for the left AKM ak0991x Magnetometer
-- Added support for the right AKM ak0991x Magnetometer
-- Added support for the left STMicro lsm6dso Orientation Sensor
-- Added support for the right STMicro lsm6dso Orientation Sensor
-- Added support for the left Qualcomm Game Relative Rotation Vector Orientation Sensor
-- Added support for the right Qualcomm Game Relative Rotation Vector Orientation Sensor
-- Added support for the left TXC PA22A Proximity Sensor
-- Added support for the right TXC PA22A Proximity Sensor
-- Added support for the left Microsoft Simple Orientation Sensor
-- Added support for the right Microsoft Simple Orientation Sensor
-- Added support for the Microsoft Flip Sensor
-- Added support for the Microsoft Posture Sensor
-- Added support for the top Microsoft Hinge Angle Sensor
-- Added support for the bottom Microsoft Hinge Angle Sensor
+- Added support for the Microsoft Fold Sensor
+- Added support for left ambient light sensor
+- Added support for right ambient light sensor
+- Added support for external Microsoft Hinge Angle Sensor
+- Improved reporting for the Posture sensor, orientation readings should now match the posture reported by hardware
 - [WIP] Support for left pedometer
 - [WIP] Support for right pedometer
-- [WIP] Support for the Microsoft Fold Sensor
-- [WIP] Support for left ambient light sensor
-- [WIP] Support for right ambient light sensor
 - [WIP] Support for Microsoft Virtual Device Orientation Sensor
+- [WIP] Support for Surface Light Fusion Sensor
 - [WIP] Support for the Modem peripheral subsystem software (MPSS)
 
 
-- Fixed Device Topology (ACPI/INF)
+### Sensor Calibration Provisioning (Mandatory)
+
+
+In order to get most sensors currently working, some manual steps are required.
+You will need to backup from mass storage or twrp the following directory: /mnt/vendor/persist/sensors/ and copy over the contents to [Windows Drive Letter]\Windows\System32\Drivers\DriverData\QUALCOMM\fastRPC\persist\sensors (the following directory should already exist)
+
+
+It may also be possible to provision it using data from the SFPD partition exposed in windows. This manual step will not be required in future releases.
+
+
+### Potential migration issues
+
+
+Due to changes in this release, touch and sensors may not be working as expected after updating. In this case, you will be required to go into device manager, inplace update the following devices using the "manually select a driver" option in the device manager wizard, and select the recommended one from the list:
+
+__Human Interface Devices__
+
+- HID Compliant touch-screen
+- Surface Pen Touch Processor
+
+__Sensor Devices__
+
+- Surface Duo All-ways Aware(TM) Sensor Collection Device
+
+
+A reboot will be required afterwards.
+
+
+### Known issues
+
+
+- Automatic Orientation only works for the left panel, using the right panel orientation sensor
+- USB Dongles that are not externally powered may not currently work
+- USB C Billboard devices will not currently work
+- External Display Stream support will not currently work
+- Additional information provided by the posture sensor is currently not available for public consumption, this includes peek events.
+- Digitizers will not react to the device being folded over
+- Displays will not react to the device being folded over most of the time
+- Physical device data is incorrect
+- Graphical Rendering Issues
 
 
 ### Accessing Foldable Sensors from your applications
@@ -102,9 +117,6 @@ In order to currently access the sensor data given by the foldable sensors, you 
 
 
 In the future, further apis will be functional (specifically under the Windows.System.Preview namespace). Consider this an early "thing".
-
-
-The accuracy of the data given for the Display Orientation of both panels when using the Windows.Internal.System.TwoPanelHingeFolioPostureDevice api is currently not guarenteed to be accurate. Please use SimpleOrientationSensor apis for reliable results at the moment.
 
 
 The following API may be used to determine if your app is used on a dual screen device: https://docs.microsoft.com/en-us/uwp/api/windows.ui.windowmanagement.windowingenvironment.getdisplayregions?view=winrt-22621
@@ -141,6 +153,49 @@ using namespace Windows::System::Preview;
 using namespace Windows::UI::WindowManagement;
 using namespace Windows::Foundation::Collections;
 
+VOID OnFoldSensorReadingChanged(FoldSensor const&, FoldSensorReadingChangedEventArgs const& args)
+{
+	try {
+		printf("Fold sensor state changed.\n");
+		switch (args.Reading().GestureState())
+		{
+		case GestureState::Started:
+			std::cout << "Fold started\n" << std::endl;
+			break;
+		case GestureState::Completed:
+			std::cout << "Fold stopped\n" << std::endl;
+			break;
+		case GestureState::Cancelled:
+			std::cout << "Fold cancelled\n" << std::endl;
+			break;
+		case GestureState::Unknown:
+			std::cout << "Fold unknown\n" << std::endl;
+			break;
+		}
+
+		for (auto panel : args.Reading().ContributingPanel())
+		{
+			printf("Panel: %s\n", to_string(panel).c_str());
+		}
+		
+		std::cout << "Initial angle " << args.Reading().InitialAngle() << std::endl;
+		std::cout << "Final angle " << args.Reading().FinalAngle() << std::endl;
+		
+		switch (args.Reading().FoldType())
+		{
+		case FoldType::Closing:
+			std::cout << "Fold Closing\n" << std::endl;
+			break;
+		case FoldType::Opening:
+			std::cout << "Fold Opening\n" << std::endl;
+			break;
+		case FoldType::NotDetected:
+			std::cout << "Fold NotDetected\n" << std::endl;
+			break;
+		}
+	}
+	catch (...) {}
+}
 
 VOID PrintFolioDetails(TwoPanelFolioHingeDevicePostureReading const& args)
 {
@@ -271,45 +326,25 @@ int main()
 		std::cin.get();
 	}
 	catch (...) {}
+
+	printf("Trying to get fold sensor.\n");
+	try {
+		FoldSensor fold = FoldSensor::GetDefaultAsync().get();
+		if (fold == nullptr)
+		{
+			printf("Fold sensor not found.\n");
+		}
+		else
+		{
+			printf("Starting listening session for fold sensor.\n");
+			fold.ReadingChanged(OnFoldSensorReadingChanged);
+		}
+		printf("Press any key to stop\n");
+		std::cin.get();
+	}
+	catch (...) {}
 }
 ```
-
-### Sensor Calibration Provisioning (Mandatory)
-
-
-In order to get most sensors currently working, some manual steps are required.
-You will need to backup from mass storage or twrp the following directory: /mnt/vendor/persist/sensors/ and copy over the contents to [Windows Drive Letter]\Windows\System32\Drivers\DriverData\QUALCOMM\fastRPC\persist\sensors (the following directory should already exist)
-
-
-It may also be possible to provision it using data from the SFPD partition exposed in windows. This manual step will not be required in future releases.
-
-
-### Potential migration issues
-
-
-Due to changes in this release, you may be required to go into device manager, and inplace update the following device using the "manual select a driver" option in the device manager wizard, and select the recommended one from the list:
-
-
-- HID Compliant touch-screen
-- Surface HEAT Touch Processor
-- Surface Duo All-ways Aware(TM) Sensor Collection Device
-
-
-A reboot will be required afterwards.
-
-
-### Known issues
-
-
-- Automatic Orientation only works for the left panel, using the right panel orientation sensor
-- USB Dongles that are not externally powered may not currently work
-- USB C Billboard devices will not currently work
-- External Display Stream support will not currently work
-- Additional information provided by the posture sensor is currently not available for public consumption, this includes peek events.
-- Digitizers will not react to the device being folded over
-- Displays will not react to the device being folded over most of the time
-- Physical device data is incorrect
-- Graphical Rendering Issues
 
 ____________________________________________________________________________________________________________________________
 
@@ -329,7 +364,7 @@ What works and what matters from an user point of view:
 - Pen on the left screen
 - Vibration motor
 - Both Batteries (no charging)
-- 26 Sensors (see above)
+- 29 Sensors (see above)
 
 Nothing else works! You have been warned
 
