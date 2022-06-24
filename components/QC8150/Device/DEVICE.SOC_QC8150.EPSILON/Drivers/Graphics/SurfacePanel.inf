@@ -7,7 +7,7 @@ Signature="$Windows NT$"
 Provider=%ManufacturerName%
 ClassGuid={4d36e96e-e325-11ce-bfc1-08002be10318}
 Class=Monitor
-DriverVer = 07/24/2020,4.28.139.0
+DriverVer = 07/15/2021,6.81.139.0
 CatalogFile=SurfacePanel.cat
 PnpLockdown=1
 
@@ -22,10 +22,11 @@ PnpLockdown=1
 
 [SourceDisksFiles]
 SurfacesRGB.icm=1
-SurfaceEnchanced.icm=1
+SurfaceEnhanced.icm=1
 
 [DestinationDirs]
 ;23 == Windows\system32\spool\drivers\color
+; For any new panels supporting color profiles, entry should be added here
 ProfilesCopy_LGDA990=23
 
 ; =================== Monitor\LGDA990 ==============================
@@ -37,7 +38,7 @@ AddReg=SurfacePanel_RegLGDA990
 ;HKR,,PreferredScaleFactor,0x00010001,250
 ; Last entry is automatically set as default
 HKR,,ICMProfile,0x00010000,"SurfacesRGB.icm"
-HKR,,ICMProfile,0x00010008,"SurfaceEnchanced.icm"
+HKR,,ICMProfile,0x00010008,"SurfaceEnhanced.icm"
 
 [SurfacePanel_Install_LGDA990.NT.CoInstallers]
 CopyFiles=ProfilesCopy_LGDA990
@@ -45,11 +46,11 @@ CopyFiles=ProfilesCopy_LGDA990
 ; Profiles Associated with the monitor
 [ProfilesCopy_LGDA990]
 SurfacesRGB.icm
-SurfaceEnchanced.icm
+SurfaceEnhanced.icm
 
 ; =================== Generic ==================================
 
 [Strings]
-ManufacturerName="Surface" ;
-DiskName="SurfacePanel Installation Disk"
+ManufacturerName="Surface"
+DiskName="Surface Panel Driver Installation Disk"
 DeviceName="Surface Panel"

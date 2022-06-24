@@ -10,10 +10,12 @@ ClassGuid={745a17a0-74d3-11d0-b6fe-00a0c90f57da}
 Class=HIDClass
 Provider=%ManufacturerName%
 CatalogFile=SurfaceVirtualFunctionEnum.cat
-DriverVer = 08/10/2019,1.18.139.0
+DriverVer = 02/16/2021,2.15.139.0
+PnpLockDown=1
 
 [DestinationDirs]
-DefaultDestDir = 12
+DefaultDestDir = 13
+
 ;
 ; Driver information
 ;
@@ -60,7 +62,7 @@ DisplayName    = %SurfaceVirtualFunctionEnum.SvcDesc%
 ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
 StartType      = 3                  ; SERVICE_DEMAND_START
 ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
-ServiceBinary  = %12%\SurfaceVirtualFunctionEnum.sys
+ServiceBinary  = %13%\SurfaceVirtualFunctionEnum.sys
 
 [SurfaceVirtualFunctionEnum.HW.AddReg]
 HKR,,"UpperFilters",0x00010008,"SurfaceVirtualFunctionEnum"
