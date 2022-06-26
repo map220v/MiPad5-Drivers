@@ -68,7 +68,7 @@ ________________________________________________________________________________
 - Removed unused files/drivers
 - Added support for the Modem Radio Interface Layer
 - Added support for Relay Chat Services (RCS)
-- Added support for IP Multimediat System (IMS)
+- Added support for IP Multimedia System (IMS)
 - Added support for VoLTE
 - Added support for Modem Calls Infrastructure
 - Added support for Modem Text Infrastructure
@@ -82,28 +82,10 @@ __This update brings feature parity with the June Surface Pro X Update as well a
 
 
 In order to get most sensors currently working, some manual steps are required.
-You will need to backup from mass storage or twrp the following directory: /mnt/vendor/persist/sensors/ and copy over the contents to [Windows Drive Letter]\Windows\System32\Drivers\DriverData\QUALCOMM\fastRPC\persist\sensors (the following directory should already exist)
+Please follow the steps described at https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/InstallWindows.md#temporary-copy-over-calibration-filesconfiguration-files-for-the-sensors
 
 
 It may also be possible to provision it using data from the SFPD partition exposed in windows. This manual step will not be required in future releases.
-
-
-### Potential migration issues
-
-
-Due to changes in this release, touch and sensors may not be working as expected after updating. In this case, you will be required to go into device manager, inplace update the following devices using the "manually select a driver" option in the device manager wizard, and select the recommended one from the list:
-
-__Human Interface Devices__
-
-- HID Compliant touch-screen
-- Surface Pen Touch Processor
-
-__Sensor Devices__
-
-- Surface Duo All-ways Aware(TM) Sensor Collection Device
-
-
-A reboot will be required afterwards.
 
 
 ### Known issues
