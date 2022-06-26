@@ -5,7 +5,7 @@ ClassGUID   = {e2f84ce7-8efa-411c-aa69-97454ca4cb57}
 Provider    = %QC%
 ExtensionId = {21E3E289-3E58-469D-B9DF-75549CD11F59}
 DriverVer   = 03/18/2021,1.0.0.0
-CatalogFile = qcpepextension.cat
+CatalogFile = qcpepextension8180.cat
 PnpLockdown = 1
 
 [Manufacturer]
