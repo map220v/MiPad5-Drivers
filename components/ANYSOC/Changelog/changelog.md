@@ -1,5 +1,5 @@
-﻿## Surface Duo Drivers BSP - Version 2206.63
-**Released:** 6/19/2022 11:00 PM UTC+2
+﻿## Surface Duo Drivers BSP - Version 2206.86
+**Released:** 6/26/2022 12:00 PM UTC+2
 
 **Quality:** Preview
 
@@ -35,7 +35,7 @@ ________________________________________________________________________________
 
 #### Important information
 
-- ⚠️⚠️ **IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.28 (C).** ⚠️⚠️
+- ⚠️⚠️ **IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.29.** ⚠️⚠️
 - It is expected currently for the boot process to look very rough on the right panel, when the image will change on the left the panel will act normally. This is the beginning, so bear with us for now :) Your displays aren't broken, and won't get damaged.
 - It is also expected for some rendering glitches to happen right now, do not freak out, it's not going to damage anything, your gpu isn't dying, it's ok. Here's an example of a glitch you may be expecting:
 
@@ -48,16 +48,34 @@ ________________________________________________________________________________
 
 ### Changelog
 
-- Added support for the Microsoft Fold Sensor
-- Added support for left ambient light sensor
-- Added support for right ambient light sensor
-- Added support for external Microsoft Hinge Angle Sensor
-- Improved reporting for the Posture sensor, orientation readings should now match the posture reported by hardware
-- [WIP] Support for left pedometer
-- [WIP] Support for right pedometer
-- [WIP] Support for Microsoft Virtual Device Orientation Sensor
-- [WIP] Support for Surface Light Fusion Sensor
-- [WIP] Support for the Modem peripheral subsystem software (MPSS)
+
+- Updates to Surface Touch Driver stack
+— Brings improvements to Surface Pen support
+— Brings updated firmware for 3 pen models
+— Adds support for slim pen 2 haptics feature (untested)
+— Improvements to Automatic Bluetooth pen pairing
+— Improvements to pen integration
+- Updates to Surface Integration services
+- Updates to Surface Panel Calibration files (sRGB/Standard)
+- Updates to Qualcomm(R) Adreno(TM) 640 GPU driver
+- Updates to Qualcomm(R) Peripheral Image Loader
+- Updates to Qualcomm(R) Secure Channel Monitor Driver
+- Improved Windows tablet experience support. The device will now be treated as a tablet and thus, bigger taskbar, ui elements, and more will be enabled
+- Improvements to Device Power Consumption under Windows
+- Updates for a future Windows version
+- Fixed an issue preventing Modem EFS from being exposed to the Remote Modem Processor
+- Fixed an issue that would cause modifications to be done on the Android Modem EFS partitions instead of the Windows EFS partitions
+- Removed unused files/drivers
+- Added support for the Modem Radio Interface Layer
+- Added support for Relay Chat Services (RCS)
+- Added support for IP Multimediat System (IMS)
+- Added support for VoLTE
+- Added support for Modem Calls Infrastructure
+- Added support for Modem Text Infrastructure
+
+**NOTE: Modem remains disabled in this release despite changes being made in regards to the Modem!**
+
+__This update brings feature parity with the June Surface Pro X Update as well as the March Qualcomm 8cx BSP update (1.7.600.0)__
 
 
 ### Sensor Calibration Provisioning (Mandatory)
