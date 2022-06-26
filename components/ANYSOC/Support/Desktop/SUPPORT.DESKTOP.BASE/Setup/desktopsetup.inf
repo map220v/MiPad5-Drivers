@@ -15,9 +15,10 @@ CatalogFile.NTARM64 = desktopsetup.arm64.cat
 
 [DestinationDirs]
 ; 10 = Windows
-Panther.Files = 10,Panther
-PstDrv.Files  = 10,OEM
-PreOobe.Files = 10,Setup\Scripts
+Panther.Files   = 10,Panther
+PstDrv.Files    = 10,OEM
+PreOobe.Files   = 10,Setup\Scripts
+Wallpaper.Files = 10,Windows\web\wallpaper\Surface
 
 [SourceDisksNames]
 0 = %DiskId1%
@@ -26,7 +27,7 @@ PreOobe.Files = 10,Setup\Scripts
 FirstLogon.cmd         = 0,,
 Oobe.cmd               = 0,,
 SpecializeCommands.cmd = 0,,
-Wallpaper.png          = 0,,
+Surface.jpg            = 0,,
 
 [SourceDisksFiles.ARM]
 devcon.exe                 = 0,arm,
@@ -47,10 +48,10 @@ Unattend.xml               = 0,arm64,
 ;*****************************************
 
 [DefaultInstall.NTARM]
-CopyFiles = Panther.Files,PstDrv.Files,PreOobe.Files
+CopyFiles = Panther.Files,PstDrv.Files,PreOobe.Files,Wallpaper.Files
 
 [DefaultInstall.NTARM64]
-CopyFiles = Panther.Files,PstDrv.Files,PreOobe.Files
+CopyFiles = Panther.Files,PstDrv.Files,PreOobe.Files,Wallpaper.Files
 
 ; Windows/Panther
 [Panther.Files]
@@ -67,7 +68,9 @@ SilentProvisionerL.exe
 ApplicationProvisioner.exe
 devcon.exe
 FirstLogon.cmd
-Wallpaper.png
+
+[Wallpaper.Files]
+Surface.jpg
 
 [Strings]
 IHV     = "LumiaWoA authors"

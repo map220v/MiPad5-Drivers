@@ -1,34 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend">
-  <settings pass="oobeSystem">
-    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <FirstLogonCommands>
-            <SynchronousCommand wcm:action="add">
-                  <CommandLine>cmd.exe /c \Windows\OEM\SilentProvisionerL.exe</CommandLine>
-                  <Description>Commands </Description>
-                  <Order>1</Order>
-            </SynchronousCommand>
-      </FirstLogonCommands>
-      <OOBE>
-        <HideWirelessSetupInOOBE>false</HideWirelessSetupInOOBE>
-      </OOBE>
-    </component>
-    <component name="Microsoft-Windows-Deployment" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <DeviceForm>1</DeviceForm>
-    </component>
-  </settings>
   <settings pass="generalize">
-    <component name="Microsoft-Windows-Security-SPP" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <SkipRearm>1</SkipRearm>
-    </component>
-    <component name="Microsoft-Windows-PnpSysprep" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <PersistAllDeviceInstalls>true</PersistAllDeviceInstalls>
+    <component name="Microsoft-Windows-Pnp-Sysprep" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+      <PersistAllDeviceInstalls>false</PersistAllDeviceInstalls>
       <DoNotCleanUpNonPresentDevices>true</DoNotCleanUpNonPresentDevices>
     </component>
   </settings>
   <settings pass="specialize">
-    <component name="Microsoft-Windows-SystemSettingsThreshold" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <DisplayNetworkSelection>true</DisplayNetworkSelection>
+    <component name="Security-Malware-Windows-Defender" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+      <TrustedImageIdentifier>b6dd9a33-a29c-4167-b4cd-0fb45f2752d0</TrustedImageIdentifier>
+    </component>
+    <component name="Microsoft-Windows-GPIOButtons" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+      <ConvertibleSlateMode>1</ConvertibleSlateMode>
+    </component>
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+      <DesktopOptimization>
+        <ShowWindowsStoreAppsOnTaskbar>true</ShowWindowsStoreAppsOnTaskbar>
+      </DesktopOptimization>
+      <ProductKey>37GNV-YCQVD-38XP9-T848R-FC2HD</ProductKey>
+      <ShowPowerButtonOnStartScreen>true</ShowPowerButtonOnStartScreen>
+      <ConvertibleSlateModePromptPreference>0</ConvertibleSlateModePromptPreference>
     </component>
     <component name="Microsoft-Windows-Deployment" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <RunSynchronous>
@@ -40,10 +31,30 @@
       </RunSynchronous>
     </component>
   </settings>
-  <settings pass="auditSystem">
-    <component name="Microsoft-Windows-Deployment" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <DeviceForm>1</DeviceForm>
+  <settings pass="oobeSystem">
+    <component name="Microsoft-Windows-Deployment" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+      <DeviceForm>2</DeviceForm>
+    </component>
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+      <OEMInformation>
+        <SupportURL>http://www.microsoft.com/surface/support</SupportURL>
+      </OEMInformation>
+      <Themes>
+        <ThemeName>Surface</ThemeName>
+        <DesktopBackground>%SystemDrive%\Windows\web\wallpaper\Surface\Surface.jpg</DesktopBackground>
+        <SystemUsesLightTheme>false</SystemUsesLightTheme>
+        <UWPAppsUseLightTheme>true</UWPAppsUseLightTheme>
+      </Themes>
+      <FirstLogonCommands>
+        <SynchronousCommand>
+          <Description>Commands </Description>
+          <Order>1</Order>
+          <CommandLine>cmd.exe /c \Windows\OEM\SilentProvisionerL.exe</CommandLine>
+        </SynchronousCommand>
+      </FirstLogonCommands>
+    </component>
+    <component name="Microsoft-Windows-TabletPC-Platform-Input-Core" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+      <TouchKeyboardAutoInvokeEnabled>True</TouchKeyboardAutoInvokeEnabled>
     </component>
   </settings>
-  <cpi:offlineImage cpi:source="wim:d:/image/sources/install.wim#Windows 11 Pro" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
