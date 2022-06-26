@@ -1,0 +1,103 @@
+;
+; SurfaceHidMiniDriver.inf
+;
+; Copyright (C) 2015 Microsoft Corporation.  All Rights Reserved.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=HIDClass
+ClassGuid={745a17a0-74d3-11d0-b6fe-00a0c90f57da}
+Provider=%VENDOR%
+CatalogFile=SurfaceHidMiniDriver.cat
+DriverVer = 11/16/2021,3.54.139.0
+PnpLockdown=1
+
+[SourceDisksFiles]
+SurfaceHidMiniDriver.sys=99
+hidkmdf.sys     = 99
+
+[SourceDisksNames]
+99 = %DiskName%,,,""
+
+[DestinationDirs]
+CopyFilterDriver    = 13
+
+[Manufacturer]
+%VENDOR%=Vendor,NTARM64
+
+[Vendor.NTARM64]
+%SurfaceHidMini%=SurfaceHidMini.Inst, ACPI\MSHW0096                                                         ; Sam - Keyboard Category - Legacy
+%SurfaceHidMini%=SurfaceHidMini.Inst, {B2C18583-06DF-488E-82E4-C0EF4888A401}\SHMD_DEVICE                    ; Kip - Hid Category - Legacy
+%SurfaceHidMini%=SurfaceHidMini.Inst, {21635d77-3d7c-47b9-be18-26576667bfdc}\Target_KIP&Category_HID        ; Kip - Hid Category
+%SurfaceHidMini%=SurfaceHidMini.Inst, {21635d77-3d7c-47b9-be18-26576667bfdc}\Target_SAM&Category_HID        ; Sam - Hid Category
+%SurfaceHidMini%=SurfaceHidMini.Inst, {2DEDC554-A829-42AB-90E9-E4E4B4772981}\Target_KIP&Category_HID        ; Kip - Hid Category - Multiple instances.
+%SurfaceHidMini%=SurfaceHidMini.Inst, {2DEDC554-A829-42AB-90E9-E4E4B4772981}\Target_SAM&Category_HID        ; Sam - Hid Category - Multiple instances.
+
+[SurfaceHidMini.Inst.NT]
+CopyFiles = CopyFilterDriver
+
+[SurfaceHidMini.Inst.NT.HW]
+AddReg = SurfaceHidMini_ParametersHW_AddReg
+
+[SurfaceHidMini.Inst.NT.Events]
+AddEventProvider = {2FEA7205-B0B1-41CA-8609-5A1D16F3132F},SurfaceHidMiniDriver_EventProviderInstall
+
+[SurfaceHidMini.Inst.NT.Services]
+AddService = SurfaceHidMini,, SurfaceHidMini_Service_Inst
+AddService = mshidkmdf, 0x000001fa, mshidkmdf.AddService ;flag 0x2 sets this as the service for the device
+
+[CopyFilterDriver]
+SurfaceHidMiniDriver.sys
+
+[SurfaceHidMiniDriver_EventProviderInstall]
+ProviderName=Microsoft-Surface-SurfaceHidMiniDriver
+ResourceFile=%13%\SurfaceHidMiniDriver.sys
+MessageFile=%13%\SurfaceHidMiniDriver.sys
+AddChannel= Microsoft-Surface-SurfaceHidMiniDriver/Operational,0x2,SurfaceHidMiniDriver_ChannelInstall
+
+[SurfaceHidMiniDriver_ChannelInstall]
+Isolation         = 2
+Enabled           = 1
+
+[mshidkmdf.AddService]
+ServiceType    = %SERVICE_KERNEL_DRIVER% 
+StartType      = %SERVICE_DEMAND_START% 
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %10%\System32\Drivers\mshidkmdf.sys
+
+[SurfaceHidMini_ParametersHW_AddReg]
+HKR,,"LowerFilters",%REG_MULTI_SZ%,"SurfaceHidMini"
+HKR,,"ComboHardwareIdV2Enabled",%REG_DWORD%, 1
+HKR,,"CollectionReenumerateSelfInterfaceEnabled",%REG_DWORD%, 1
+
+[SurfaceHidMini_Service_Inst]
+DisplayName    = %SurfaceHidMini%
+ServiceType    = %SERVICE_KERNEL_DRIVER% 
+StartType      = %SERVICE_DEMAND_START% 
+ErrorControl   = %SERVICE_ERROR_IGNORE% 
+ServiceBinary  = %13%\SurfaceHidMiniDriver.sys 
+
+[Strings] 
+VENDOR="Surface"
+SurfaceHidMini="Surface Hid Mini Driver"
+DiskName = "Surface Hid Mini Driver Installation Disk"
+
+SERVICE_BOOT_START     = 0x0 
+SERVICE_SYSTEM_START   = 0x1 
+SERVICE_AUTO_START     = 0x2 
+SERVICE_DEMAND_START   = 0x3 
+SERVICE_DISABLED       = 0x4 
+
+SERVICE_KERNEL_DRIVER  = 0x1 
+SERVICE_ERROR_IGNORE   = 0x0 
+SERVICE_ERROR_NORMAL   = 0x1 
+SERVICE_ERROR_SEVERE   = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ          = 0x00020000 
+REG_DWORD              = 0x00010001 
+REG_MULTI_SZ           = 0x00010000
+REG_BINARY             = 0x00000001
+REG_SZ                 = 0x00000000
+
+

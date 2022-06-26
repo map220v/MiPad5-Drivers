@@ -1,0 +1,93 @@
+;
+; SurfaceThermalPolicy.inf
+;
+; Copyright (C) Microsoft Corporation.  All Rights Reserved.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=SurfaceSystemManagement
+ClassGuid={DB07C471-C4AD-46D0-AFFF-06B56A65CCF4}
+Provider=%VENDOR%
+CatalogFile=SurfaceThermalPolicy.cat
+DriverVer = 06/02/2021,8.46.139.0
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+SurfaceThermalPolicy.sys=1,,
+
+; ========== Class definition ===========
+ 
+[ClassInstall32]
+AddReg = ClassInstall_AddReg
+ 
+[ClassInstall_AddReg]
+HKR,,,,%ClassName%
+HKR,,NoInstallClass,,1
+HKR,,IconPath,%REG_MULTI_SZ%,"%%systemroot%%\system32\setupapi.dll,-27"
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%VENDOR%=Vendor,NTARM64
+
+[Vendor.NTARM64]
+%SurfaceThermalPolicy%=SurfaceThermalPolicy.Inst, ACPI\MSHW0187
+
+[SurfaceThermalPolicy.Inst.NT]
+CopyFiles = Drivers_Dir
+
+;-------------- Service installation
+
+[SurfaceThermalPolicy.Inst.NT.Services]
+AddService = SurfaceThermalPolicy,%SERVICE_DEMAND_START%,SurfaceThermalPolicy_Service_Inst, SurfaceThermalPolicy_EventLogInst
+
+[Drivers_Dir]
+SurfaceThermalPolicy.sys
+
+[SurfaceThermalPolicy_Service_Inst]
+DisplayName    = %SurfaceThermalPolicy%
+ServiceType    = %SERVICE_KERNEL_DRIVER% 
+StartType      = %SERVICE_DEMAND_START% 
+ErrorControl   = %SERVICE_ERROR_NORMAL% 
+ServiceBinary  = %13%\SurfaceThermalPolicy.sys 
+
+[SurfaceThermalPolicy_EventLogInst]
+AddReg = SurfaceThermalPolicy_EventLogAddReg
+
+[SurfaceThermalPolicy_EventLogAddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\SurfaceThermalPolicy.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[Strings] 
+VENDOR="Surface"
+SurfaceThermalPolicy="Surface Thermal Policy Driver"
+DiskName = "Surface Thermal Policy Driver Installation Disk"
+ClassName="Surface System Management"
+
+SERVICE_BOOT_START     = 0x0 
+SERVICE_SYSTEM_START   = 0x1 
+SERVICE_AUTO_START     = 0x2 
+SERVICE_DEMAND_START   = 0x3 
+SERVICE_DISABLED       = 0x4 
+
+SERVICE_KERNEL_DRIVER  = 0x1 
+SERVICE_ERROR_IGNORE   = 0x0 
+SERVICE_ERROR_NORMAL   = 0x1 
+SERVICE_ERROR_SEVERE   = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ          = 0x00020000 
+REG_DWORD              = 0x00010001 
+REG_MULTI_SZ           = 0x00010000
+REG_BINARY             = 0x00000001
+REG_SZ                 = 0x00000000

@@ -1,0 +1,90 @@
+;
+; SurfaceSystemManagementFrameworkDriver.inf
+;
+; Copyright (C) 2014 Microsoft Corporation.  All Rights Reserved.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=SurfaceSystemManagement
+ClassGuid={DB07C471-C4AD-46D0-AFFF-06B56A65CCF4}
+Provider=%ManufacturerName%
+CatalogFile=SurfaceSystemManagementFrameworkDriver.cat
+DriverVer = 06/02/2021,3.139.139.0
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 13  ; Driver Store
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+SurfaceSystemManagementFrameworkDriver.sys       = 1,,
+
+; ========== Class definition ===========
+ 
+[ClassInstall32]
+AddReg = ClassInstall_AddReg
+ 
+[ClassInstall_AddReg]
+HKR,,,,%ClassName%
+HKR,,NoInstallClass,,1
+HKR,,IconPath,%REG_MULTI_SZ%,"%%systemroot%%\system32\setupapi.dll,-27"
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%SurfaceSystemManagementFrameworkDriver.DeviceDesc%=SurfaceSystemManagementFrameworkDriver_Device, {16C280BF-D438-43C1-BBF3-688CA0D43E2F}\SurfaceSystemManagementFramework
+
+[SurfaceSystemManagementFrameworkDriver_Device.NT]
+CopyFiles=DefaultDestDir
+
+[DefaultDestDir]
+SurfaceSystemManagementFrameworkDriver.sys
+
+[SurfaceSystemManagementFrameworkDriver_Device.NT.HW]
+
+;-------------- Service installation
+[SurfaceSystemManagementFrameworkDriver_Device.NT.Services]
+;
+; %SPSVCINST_ASSOCSERVICE% should only be specified if this is a function driver.
+;
+AddService = SurfaceSystemManagementFrameworkDriver,%SPSVCINST_ASSOCSERVICE%, SurfaceSystemManagementFrameworkDriver_Service_Inst
+
+;-------------- Events installation
+[SurfaceSystemManagementFrameworkDriver_Device.NT.Events]
+AddEventProvider = {0EC12C6E-794A-4B5E-8E27-6D3DC98BBD38},SurfaceSystemManagementFrameworkDriver_EventProviderInstall
+
+[SurfaceSystemManagementFrameworkDriver_EventProviderInstall]
+ProviderName=Microsoft-Surface-SurfaceSmfCoreDriver
+ResourceFile=%13%\SurfaceSystemManagementFrameworkDriver.sys
+MessageFile=%13%\SurfaceSystemManagementFrameworkDriver.sys
+AddChannel= Microsoft-Surface-SurfaceSmfCoreDriver/Operational,0x2,SurfaceSystemManagementFrameworkDriver_ChannelInstall
+
+[SurfaceSystemManagementFrameworkDriver_ChannelInstall]
+Isolation         = 2
+Enabled           = 1
+
+; -------------- SurfaceSystemManagementFrameworkDriver driver install sections
+[SurfaceSystemManagementFrameworkDriver_Service_Inst]
+DisplayName    = %SurfaceSystemManagementFrameworkDriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\SurfaceSystemManagementFrameworkDriver.sys
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+REG_MULTI_SZ= 0x00010000
+ManufacturerName="Surface"
+DiskName = "Surface SMF Core Driver Installation Disk"
+SurfaceSystemManagementFrameworkDriver.DeviceDesc = "Surface SMF Core Driver"
+SurfaceSystemManagementFrameworkDriver.SVCDESC = "Surface SMF Core Driver"
+ClassName="Surface System Management"

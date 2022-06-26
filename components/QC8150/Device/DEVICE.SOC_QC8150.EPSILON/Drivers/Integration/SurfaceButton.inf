@@ -1,0 +1,89 @@
+;;------------------------------------------------------------------------------
+;; File:          SurfaceButton.inf
+;;
+;; Description:   Driver Installation file for SurfaceButton.
+;;
+;; Copyright (C) 2016 Microsoft Corporation.  All Rights Reserved.
+;;------------------------------------------------------------------------------
+;;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ManufacturerName%
+CatalogFile=SurfaceButton.cat
+DriverVer = 05/26/2021,4.28.139.0
+PnpLockdown=1 
+
+[SourceDisksFiles]
+SurfaceButton.sys = 1
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[DestinationDirs]
+CopyFilterDriver = 13
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%SurfaceButton.DeviceDesc%=SurfaceButton_Device, ACPI\MSHW0028
+%SurfaceButton.DeviceDesc%=SurfaceButton_Device, ACPI\MSHW0040
+
+[SurfaceButton_Device.NT]
+CopyFiles = CopyFilterDriver
+AddProperty=HomeButtonNotPresent_Property
+
+[SurfaceButton_Device.NT.HW]
+AddReg=SetSecurityRegkey, SurfaceButton
+
+[SetSecurityRegkey]
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)"
+
+[HomeButtonNotPresent_Property]
+{57ED7A5D-BA63-46B7-A572-E82F709FEF41},2,18,,"HomeButtonNotPresent"
+
+[SurfaceButton_Device.NT.Services]
+AddService = SurfaceButton,%SPSVCINST_ASSOCSERVICE%, SurfaceButton_Service_Inst
+
+[CopyFilterDriver]
+SurfaceButton.sys
+
+[SurfaceButton]
+HKR,,"LowerFilters",%REG_MULTI_SZ%,Vhf
+
+[SurfaceButton_Service_Inst]
+DisplayName    = %SurfaceButton.SVCDESC%
+ServiceType    = %SERVICE_KERNEL_DRIVER% 
+StartType      = %SERVICE_DEMAND_START% 
+ErrorControl   = %SERVICE_ERROR_IGNORE% 
+ServiceBinary  = %13%\SurfaceButton.sys
+
+[Strings]
+SPSVCINST_ASSOCSERVICE      = 0x00000002
+ManufacturerName            = "Surface"
+DiskName                    = "Surface Button Installation Disk"
+SurfaceButton.DeviceDesc    = "Surface Button"
+SurfaceButton.SVCDESC       = "Surface Button Service"
+
+SERVICE_BOOT_START     = 0x0 
+SERVICE_SYSTEM_START   = 0x1 
+SERVICE_AUTO_START     = 0x2 
+SERVICE_DEMAND_START   = 0x3 
+SERVICE_DISABLED       = 0x4 
+
+SERVICE_KERNEL_DRIVER  = 0x1 
+SERVICE_ERROR_IGNORE   = 0x0 
+SERVICE_ERROR_NORMAL   = 0x1 
+SERVICE_ERROR_SEVERE   = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ          = 0x00020000 
+REG_DWORD              = 0x00010001 
+REG_MULTI_SZ           = 0x00010000
+REG_BINARY             = 0x00000001
+REG_SZ                 = 0x00000000
+
+;; eof: SurfaceButton.inx
