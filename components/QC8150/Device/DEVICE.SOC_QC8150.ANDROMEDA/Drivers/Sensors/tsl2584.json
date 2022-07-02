@@ -1,0 +1,28 @@
+{
+  "config":
+  {
+    "hw_platform": ["MTP", "Dragon", "Surf", "URSA", "POLARIS", "PERSEUS", "ANDROMEDA"],
+    "soc_id": ["291", "246", "305", "321", "339"]
+  },
+  "tsl2584":{
+    "owner": "sns_tsl2584",
+    ".als":{
+      "owner": "sns_tsl2584",
+      ".config":{
+        "owner": "sns_tsl2584",
+        "is_dri":{ "type": "int", "ver": "0",
+          "data": "1"
+        },
+        "hw_id":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "res_idx":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "sync_stream":{ "type": "int", "ver": "0",
+          "data": "0"
+        }
+      }
+    }
+  }
+}
