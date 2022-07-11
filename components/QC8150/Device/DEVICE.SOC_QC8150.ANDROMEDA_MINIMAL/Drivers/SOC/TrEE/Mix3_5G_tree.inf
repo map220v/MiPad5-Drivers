@@ -43,6 +43,7 @@ AddReg=WppReg
 
 [QcTrEE.NT.Copy]
 
+rtic.mbn
 hdcpsrm.mbn
 hdcp2p2.mbn
 hdcp1.mbn
@@ -112,6 +113,16 @@ HKR,%AptTestAppService.RegKey%,FileName,,"apttestapp.mbn"
 HKR,%AptTestAppService.RegKey%,MajorVersion,%REG_DWORD%,1
 HKR,%AptTestAppService.RegKey%,MinorVersion,%REG_DWORD%,0
 HKR,%AptTestAppService.RegKey%,OSDependencies,%REG_MULTI_SZ%,%RpmbOsService%,%TzAppsOsService%
+
+; RTIC SECURE APP SERVICE 
+HKR,%RTICService.RegKey%,Enabled,%REG_DWORD%,1
+HKR,%RTICService.RegKey%,SecureApp,%REG_DWORD%,1
+HKR,%RTICService.RegKey%,LoadApp,%REG_DWORD%,1
+HKR,%RTICService.RegKey%,AppName,%REG_SZ%,"rtic"
+HKR,%RTICService.RegKey%,FileName,%REG_SZ%,"rtic.mbn"
+HKR,%RTICService.RegKey%,MajorVersion,%REG_DWORD%,1
+HKR,%RTICService.RegKey%,MinorVersion,%REG_DWORD%,0
+HKR,%RTICService.RegKey%,OSDependencies,%REG_MULTI_SZ%,%RpmbOsService%,%TzAppsOsService%
 
 ; PLAYREADY SECURE APP SERVICE 
 HKR,%PlayReadyService.RegKey%,Enabled,%REG_DWORD%,1
@@ -220,6 +231,7 @@ HKR,%OpsListenerService.RegKey%,BufferSize,%REG_DWORD%,4096
 
 [SourceDisksFiles]
 
+rtic.mbn = 1,
 hdcpsrm.mbn = 1,
 hdcp2p2.mbn = 1,
 hdcp1.mbn = 1,
@@ -240,6 +252,7 @@ TPMService.RegKey = "Parameters\SecureServices\{36DEAA79-C5DD-447C-95E6-B3859589
 EFIVarService.RegKey = "Parameters\SecureServices\{699AA2F1-A42E-40DF-BABE-3AAAD2BB6A47}"
 WinSecAppService.RegKey = "Parameters\SecureServices\{16A1AB50-7413-4875-893D-2E5AA0B79888}"
 AptTestAppService.RegKey = "Parameters\SecureServices\{B6902B2E-44C7-43C5-B840-FF3A406B08FA}"
+RTICService.RegKey = "Parameters\SecureServices\{FEC1DC88-9EE3-4E0D-953F-4DE2C419FEB9}"
 PlayReadyService.RegKey = "Parameters\SecureServices\{F4637010-03C3-42CD-B932-B48ADF3A6A54}"
 DxHdcp2Service.RegKey = "Parameters\SecureServices\{742E7313-2543-4EB8-BBEB-C5B75945063C}"
 Hdcp2p2Service.RegKey = "Parameters\SecureServices\{F5AEA618-0649-49F4-81EF-F2E0F9EAFFCC}"

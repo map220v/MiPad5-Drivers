@@ -1,17 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend">
-  <settings pass="generalize">
+  <settings pass="generalize" wasPassProcessed="true">
     <component name="Microsoft-Windows-Pnp-Sysprep" processorArchitecture="ARM" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <PersistAllDeviceInstalls>false</PersistAllDeviceInstalls>
-      <DoNotCleanUpNonPresentDevices>true</DoNotCleanUpNonPresentDevices>
     </component>
   </settings>
   <settings pass="specialize">
     <component name="Security-Malware-Windows-Defender" processorArchitecture="ARM" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-      <TrustedImageIdentifier>b6dd9a33-a29c-4167-b4cd-0fb45f2752d0</TrustedImageIdentifier>
+      <TrustedImageIdentifier>902c9198-0596-427a-a537-9336e545d441</TrustedImageIdentifier>
     </component>
     <component name="Microsoft-Windows-GPIOButtons" processorArchitecture="ARM" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-      <ConvertibleSlateMode>1</ConvertibleSlateMode>
+      <ConvertibleSlateMode>0</ConvertibleSlateMode>
     </component>
     <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="ARM" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <DesktopOptimization>
@@ -39,12 +38,6 @@
       <OEMInformation>
         <SupportURL>http://www.microsoft.com/surface/support</SupportURL>
       </OEMInformation>
-      <Themes>
-        <ThemeName>Surface</ThemeName>
-        <DesktopBackground>%SystemDrive%\Windows\web\wallpaper\Surface\Surface.jpg</DesktopBackground>
-        <SystemUsesLightTheme>false</SystemUsesLightTheme>
-        <UWPAppsUseLightTheme>true</UWPAppsUseLightTheme>
-      </Themes>
       <FirstLogonCommands>
         <SynchronousCommand>
           <Description>Commands </Description>

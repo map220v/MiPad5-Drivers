@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<WindowsPerformanceRecorder Version="1.0">
+  <Profiles>
+    <!-- Event Collectors-->
+    <EventCollector Id="EventCollector_QWPP" Name ="QWPP_Category_Event_Collector" Private="false" ProcessPrivate="false" Secure ="false" Realtime="false">
+      <BufferSize Value ="256"/>
+      <Buffers Value ="40"/>
+      <MaximumFileSize Value="256" FileMode="Circular"/>
+      <FileMax Value ="3"/>
+    </EventCollector>
+    
+    <!-- Event Providers-->
+    <EventProvider Id="EventProvider_Qualcomm_Windows_Performance_Profiler" Name="6D8A4ED8-F015-4E23-A26D-FA8492281EE1" Level="5" NonPagedMemory="true">
+      <Keywords>
+        <Keyword Value="0x7fffffff"/>
+      </Keywords>
+    </EventProvider>
+  
+    <!-- Profiles-->
+    <Profile Id="QWPPCategory.Verbose.File" LoggingMode="File" Name="QWPPCategory" DetailLevel="Verbose" Description="QWPP Profile">
+      <Collectors>
+        <EventCollectorId Value="EventCollector_QWPP">
+          <EventProviders>
+            <EventProviderId Value="EventProvider_Qualcomm_Windows_Performance_Profiler"/>
+          </EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>  
+  </Profiles>
+</WindowsPerformanceRecorder>

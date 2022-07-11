@@ -1,5 +1,5 @@
-﻿## Surface Duo Drivers BSP - Version 2206.86
-**Released:** 6/26/2022 12:00 PM UTC+2
+﻿## Surface Duo Drivers BSP - Version 2207.32
+**Released:** 7/10/2022 11:00 PM UTC+2
 
 **Quality:** Preview
 
@@ -35,7 +35,8 @@ ________________________________________________________________________________
 
 #### Important information
 
-- ⚠️⚠️ **IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.29.** ⚠️⚠️
+- ⚠️⚠️ **IMPORTANT: This version of the drivers needs to be paired with UEFI version 2.31.** ⚠️⚠️
+- ⚠️⚠️ **IMPORTANT: If you get a BSOD/Bugcheck "SOC_SUBSYSTEM_FAILURE" when upgrading, you will have to reinstall Windows** ⚠️⚠️
 - It is expected currently for the boot process to look very rough on the right panel, when the image will change on the left the panel will act normally. This is the beginning, so bear with us for now :) Your displays aren't broken, and won't get damaged.
 - It is also expected for some rendering glitches to happen right now, do not freak out, it's not going to damage anything, your gpu isn't dying, it's ok. Here's an example of a glitch you may be expecting:
 
@@ -49,33 +50,14 @@ ________________________________________________________________________________
 ### Changelog
 
 
-- Updates to Surface Touch Driver stack
-— Brings improvements to Surface Pen support
-— Brings updated firmware for 3 pen models
-— Adds support for slim pen 2 haptics feature (untested)
-— Improvements to Automatic Bluetooth pen pairing
-— Improvements to pen integration
-- Updates to Surface Integration services
-- Updates to Surface Panel Calibration files (sRGB/Standard)
-- Updates to Qualcomm(R) Adreno(TM) 640 GPU driver
-- Updates to Qualcomm(R) Peripheral Image Loader
-- Updates to Qualcomm(R) Secure Channel Monitor Driver
-- Improved Windows tablet experience support. The device will now be treated as a tablet and thus, bigger taskbar, ui elements, and more will be enabled
-- Improvements to Device Power Consumption under Windows
-- Updates for a future Windows version
-- Fixed an issue preventing Modem EFS from being exposed to the Remote Modem Processor
-- Fixed an issue that would cause modifications to be done on the Android Modem EFS partitions instead of the Windows EFS partitions
-- Removed unused files/drivers
-- Added support for the Modem Radio Interface Layer
-- Added support for Relay Chat Services (RCS)
-- Added support for IP Multimedia System (IMS)
-- Added support for VoLTE
-- Added support for Modem Calls Infrastructure
-- Added support for Modem Text Infrastructure
+- WiFi is now functional (2.5Ghz/5Ghz). Mac Address retrieval is not yet here however
+- Cellular Data is now functional (LTEA/LTE/HSDPA+/HSDPA/EDGE/GPRS)
+- Cellular Texts are now functional. Use the Chat application to send and get messages.
+- Calls, VoLTE, RCS, and more are coming soon in a later release
+- eSIM support is now enabled in this release
+- GPS is now functional
 
-**NOTE: Modem remains disabled in this release despite changes being made in regards to the Modem!**
-
-__This update brings feature parity with the June Surface Pro X Update as well as the March Qualcomm 8cx BSP update (1.7.600.0)__
+**NOTE: Camera remains disabled in this release despite changes being made in regards to the Camera!**
 
 
 ### Sensor Calibration Provisioning (Mandatory)
@@ -365,6 +347,10 @@ What works and what matters from an user point of view:
 - Vibration motor
 - Both Batteries (no charging)
 - 29 Sensors (see above)
+- Cellular Data
+- WiFi
+- GPS
+- SMS
 
 Nothing else works! You have been warned
 
