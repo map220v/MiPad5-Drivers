@@ -18,7 +18,7 @@ Signature="$WINDOWS NT$"
 Class=SYSTEM
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%Surface%
-DriverVer = 12/15/2021,1.0.1680.0000
+DriverVer = 06/05/2022,1.0.1780.0000
 CatalogFile=Mix3_5G_tree.cat
 
 [DestinationDirs]
@@ -244,9 +244,9 @@ SPSVCINST_ASSOCSERVICE = 0x00000002
 Surface = "Surface"
 StdMfg = "(Standard system devices)"
 ClassName = "QcTrEE"
-DiskId1 = "Mix3 5G TrEE Installation Disk #1"
-QcTrEE.DeviceDesc = "Mix3 5G System Manager TrEE Device"
-QcTrEE.SVCDESC = "Mix3 5G System Manager TrEE Device"
+DiskId1 = "Surface Duo TrEE Installation Disk #1"
+QcTrEE.DeviceDesc = "Surface Duo System Manager TrEE Device"
+QcTrEE.SVCDESC = "Surface Duo System Manager TrEE Device"
 PassThroughService.RegKey = "Parameters\SecureServices\{AE865C08-4A07-404D-BE51-D9A0465E23E5}"
 TPMService.RegKey = "Parameters\SecureServices\{36DEAA79-C5DD-447C-95E6-B3859589291A}"
 EFIVarService.RegKey = "Parameters\SecureServices\{699AA2F1-A42E-40DF-BABE-3AAAD2BB6A47}"
