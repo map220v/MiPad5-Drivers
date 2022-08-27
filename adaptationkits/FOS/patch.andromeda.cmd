@@ -27,11 +27,11 @@ ren %HACK_EFIESP%\efi\Microsoft\Boot\SecureBootPolicy.p7b SecureBootPolicy.p7b.b
 xcopy /cheriky %HACK_EFIESP%\* %VIRT_EFIESP%\
 
 reg load HKLM\RTS %MainOS%\Windows\System32\config\SOFTWARE
-for /f %%f in ('dir /b /s %Folder%\REG.EPSILON\SOFTWARE\*.reg') do reg import %%f
+for /f %%f in ('dir /b /s %Folder%\REG.ADNEROMEDA\SOFTWARE\*.reg') do reg import %%f
 reg unload HKLM\RTS
 
 reg load HKLM\RTS %MainOS%\Windows\System32\config\SYSTEM
-for /f %%f in ('dir /b /s %Folder%\REG.EPSILON\SYSTEM\*.reg') do reg import %%f
+for /f %%f in ('dir /b /s %Folder%\REG.ANDROMEDA\SYSTEM\*.reg') do reg import %%f
 reg add HKLM\RTS\ControlSet001\Services\bindflt /v Start /t REG_DWORD /d 0 /f
 reg add HKLM\RTS\ControlSet001\Control\Bitlocker /v PreventDeviceEncryption /t REG_DWORD /d 1 /f
 reg unload HKLM\RTS
