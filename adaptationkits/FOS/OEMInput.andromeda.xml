@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <OEMInput xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/embedded/2019/06/ImageUpdate">
-  <Description>FactoryOSArgon Development_Internal_Epsilon en-us image. EPSILON_SPACES OEMInput for AndromedaH855 on arm64</Description>
-  <DeviceLayoutType>EPSILON_SPACES</DeviceLayoutType>
+  <Description>FactoryOSArgon Development_Internal_Andromeda en-us image. ANDROMEDA_SPACES OEMInput for AndromedaH855 on arm64</Description>
+  <DeviceLayoutType>ANDROMEDA_SPACES</DeviceLayoutType>
   <SV>Microsoft</SV>
   <!-- HACK: Use AndromedaH845 as the device name to enable a few ImageApp customizations -->
   <Device>AndromedaH845</Device>
@@ -12,26 +12,25 @@
   </Languages>
   <AdditionalFMs>
     <!-- Microsoft -->
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\WindowsCoreProductionFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\WindowsCoreNonProductionFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\MobileDeviceSpaceFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\CommonContainerFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\ArgonContainerFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FOSNonProductionFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FactoryOSArgonProductSpecificFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FactoryOSFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FactoryOSProductSpecificFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\FactoryOSRamBootFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\WindowsCoreProductionFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\WindowsCoreNonProductionFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\MobileDeviceSpaceFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\CommonContainerFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\ArgonContainerFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\FOSNonProductionFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\FactoryOSArgonProductSpecificFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\FactoryOSFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\FactoryOSProductSpecificFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\FactoryOSRamBootFM.xml</AdditionalFM>
     <!-- OEM -->
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\OEM\EpsilonDeviceFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\OEM\EpsilonDeviceDriversFM.xml</AdditionalFM>
-    <AdditionalFM>D:\Surface-Drivers-main\adaptationkits\FOS\FMs\OEM\MicrosoftSurfaceDeviceAppsFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\OEM\AndromedaDeviceFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\OEM\AndromedaDeviceDriversFM.xml</AdditionalFM>
+    <AdditionalFM>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\FMs\OEM\MicrosoftSurfaceDeviceAppsFM.xml</AdditionalFM>
   </AdditionalFMs>
-  <MachineInfoFile>D:\Surface-Drivers-main\adaptationkits\FOS\machineinfo.epsilon.xml</MachineInfoFile>
+  <MachineInfoFile>D:\MIX3_5G-Drivers-main\adaptationkits\FOS\machineinfo.andromeda.xml</MachineInfoFile>
   <Features>
     <Microsoft>
       <Feature>ALLOW_CONNECTEDSTANDBY</Feature>
-      <Feature>CAD_CHARGING</Feature>
       <Feature>CORE_WIN32_SUPPORT_ARGON</Feature>
       <Feature>DEBUGGER_IGNORE_UM_EXCEPTIONS</Feature>
       <Feature>DEVICEPORTAL_OPTIONAL_MONITORCONFIG</Feature>
@@ -44,7 +43,7 @@
       <Feature>MICROSOFT_EDGE</Feature>
       <Feature>OEM_IMAGE</Feature>
       <Feature>OFFLINE_CRASH_DUMP_SUPPORTED</Feature>
-      <Feature>RESOLUTION_1440X2560</Feature>
+      <Feature>RESOLUTION_1080X2340</Feature>
       <Feature>SERVICING_STACK</Feature>
       <Feature>SETTINGS_APP</Feature>
       <Feature>SHELL_BOOT</Feature>
@@ -81,7 +80,6 @@
       <Feature>WCOS_WDTF_COMPONENTS</Feature>
       <Feature>WCOS_XBOX_AUTHENTICATION</Feature>
       <Feature>WCOS_XRO_LOGGING</Feature>
-      <Feature>WINDOWS10X_SECURE_BOOT_POLICY</Feature>
     </Microsoft>
   </Features>
   <AppXOptionalPackages>

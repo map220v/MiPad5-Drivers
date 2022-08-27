@@ -9,20 +9,20 @@
 
 
 title [220X.%dtStamp%.prerelease] [Build preparation] [Packing Binaries]
-REM rmdir /Q /S ..\..\SurfaceDuo-Drivers-Release
-REM mkdir ..\..\SurfaceDuo-Drivers-Release
+REM rmdir /Q /S ..\..\MIX3_5G-Drivers-Release
+REM mkdir ..\..\MIX3_5G-Drivers-Release
 
-mkdir SurfaceDuo-Drivers-Full
-mkdir SurfaceDuo-Drivers-Full\components
-mkdir SurfaceDuo-Drivers-Full\definitions
-xcopy /cheriky ..\components\ANYSOC SurfaceDuo-Drivers-Full\components\ANYSOC
-xcopy /cheriky ..\components\QC8150 SurfaceDuo-Drivers-Full\components\QC8150
-xcopy /cheriky ..\definitions\Desktop SurfaceDuo-Drivers-Full\definitions\Desktop
+mkdir MIX3_5G-Drivers-Full
+mkdir MIX3_5G-Drivers-Full\components
+mkdir MIX3_5G-Drivers-Full\definitions
+xcopy /cheriky ..\components\ANYSOC MIX3_5G-Drivers-Full\components\ANYSOC
+xcopy /cheriky ..\components\QC8150 MIX3_5G-Drivers-Full\components\QC8150
+xcopy /cheriky ..\definitions\Desktop MIX3_5G-Drivers-Full\definitions\Desktop
 
-"%ProgramFiles%\7-zip\7z.exe" a -tzip -r ..\..\SurfaceDuo-Drivers-Release\SurfaceDuo-Drivers-Full.zip SurfaceDuo-Drivers-Full\*
+"%ProgramFiles%\7-zip\7z.exe" a -tzip -r ..\..\MIX3_5G-Drivers-Release\MIX3_5G-Drivers-Full.zip MIX3_5G-Drivers-Full\*
 
-REM move SurfaceDuo-Drivers-Full\components\ANYSOC ..\components\ANYSOC
-REM move SurfaceDuo-Drivers-Full\components\QC8150 ..\components\QC8150
-REM move SurfaceDuo-Drivers-Full\definitions\Desktop ..\definitions\Desktop
+REM move MIX3_5G-Drivers-Full\components\ANYSOC ..\components\ANYSOC
+REM move MIX3_5G-Drivers-Full\components\QC8150 ..\components\QC8150
+REM move MIX3_5G-Drivers-Full\definitions\Desktop ..\definitions\Desktop
 
-rmdir /Q /S SurfaceDuo-Drivers-Full
+rmdir /Q /S MIX3_5G-Drivers-Full

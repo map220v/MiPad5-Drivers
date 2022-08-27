@@ -11,6 +11,6 @@
       cd "C:\Program Files (x86)\Windows Kits\10\tools\bin\i386"
       c:
 
-      mkdir "%DIR%\Image_%dtStamp%_Epsilon"
-      imggen "%DIR%\Image_%dtStamp%_Epsilon\Flash.vhdx" "%DIR%\OEMInput.Epsilon.xml" "%DIR%" ARM64
+      mkdir "%DIR%\Image_%dtStamp%_Andromeda"
+      imggen "%DIR%\Image_%dtStamp%_Andromeda\Flash.vhdx" "%DIR%\OEMInput.Andromeda.xml" "%DIR%" ARM64
       cd %DIR%

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <OEMInput xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/embedded/2019/06/ImageUpdate">
-  <Description>ModernPC WCOSCDG_Internal_Andromeda855 en-us image. ANDROMEDA855 OEMInput for Epsilon on arm64</Description>
+  <Description>ModernPC WCOSCDG_Internal_Andromeda855 en-us image. ANDROMEDA855 OEMInput for Andromeda on arm64</Description>
   <DeviceLayoutType>ANDROMEDA855</DeviceLayoutType>
   <SV>Microsoft</SV>
   <Device>Andromeda855</Device>
@@ -43,11 +43,10 @@
     <AdditionalFM>F:\SurfaceDuo-Drivers-main\adaptationkits\CDG\FMs\OEM\Andromeda855DeviceFM.xml</AdditionalFM>
     <AdditionalFM>F:\SurfaceDuo-Drivers-main\adaptationkits\CDG\FMs\OEM\Andromeda855DeviceDriversFM.xml</AdditionalFM>
   </AdditionalFMs>
-  <MachineInfoFile>F:\SurfaceDuo-Drivers-main\adaptationkits\CDG\machineinfo.epsilon.xml</MachineInfoFile>
+  <MachineInfoFile>F:\SurfaceDuo-Drivers-main\adaptationkits\CDG\machineinfo.andromeda.xml</MachineInfoFile>
   <Features>
     <Microsoft>
       <Feature>ALLOW_CONNECTEDSTANDBY</Feature>
-      <Feature>CAD_CHARGING</Feature>
       <Feature>CONTAINERHOST_TESTTOOLS</Feature>
       <Feature>INPUT_COMPANION_COMPOSER</Feature>
       <Feature>MODERNPC_POLICY</Feature>
@@ -66,7 +65,6 @@
       <Feature>WCOS_DISPLAY_ENHANCEMENT_SERVICE</Feature>
       <Feature>WCOS_EVENTLOG_SERVICE</Feature>
       <Feature>WCOS_FEEDBACKHUB_DXDIAG</Feature>
-      <Feature>WCOS_MTP</Feature>
       <Feature>WCOS_NET_CELLULAR_DATA</Feature>
       <Feature>WCOS_NET_PROXIMITY_SERVICE</Feature>
       <Feature>WCOS_NET_RADIO_MANAGEMENT</Feature>

@@ -33,11 +33,11 @@ ren %VIRT_EFIESP%\efi\Microsoft\Boot\SecureBootPolicy.p7b SecureBootPolicy.p7b.b
 move %MainOS%\Windows\System32\EnableWcosUefiSbTest.exe %MainOS%\Windows\System32\EnableWcosUefiSbTest.disabled.exe
 
 reg load HKLM\RTS %MainOS%\Windows\System32\config\SOFTWARE
-for /f %%f in ('dir /b /s %Folder%\REG.EPSILON\SOFTWARE\*.reg') do reg import %%f
+for /f %%f in ('dir /b /s %Folder%\REG.ANDROMEDA\SOFTWARE\*.reg') do reg import %%f
 reg unload HKLM\RTS
 
 reg load HKLM\RTS %MainOS%\Windows\System32\config\SYSTEM
-for /f %%f in ('dir /b /s %Folder%\REG.EPSILON\SYSTEM\*.reg') do reg import %%f
+for /f %%f in ('dir /b /s %Folder%\REG.ANDROMEDA\SYSTEM\*.reg') do reg import %%f
 reg add HKLM\RTS\ControlSet001\Services\bindflt /v Start /t REG_DWORD /d 0 /f
 reg add HKLM\RTS\ControlSet001\Control\Bitlocker /v PreventDeviceEncryption /t REG_DWORD /d 1 /f
 reg unload HKLM\RTS

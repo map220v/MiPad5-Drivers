@@ -8,9 +8,9 @@
 
       set SIGN_OEM=1
       set DIR=%CD%
-      cd "F:\Program Files\Windows Kits\10\tools\bin\i386"
+      cd "E:Windows Kits\10\tools\"
       c:
 
-      mkdir "%DIR%\Image_%dtStamp%_Epsilon"
-      imggen "%DIR%\Image_%dtStamp%_Epsilon\Flash.vhd" "%DIR%\OEMInput.Epsilon.xml" "%DIR%" ARM64
+      mkdir "%DIR%\Image_%dtStamp%_Andromeda"
+      imggen "%DIR%\Image_%dtStamp%_Andromeda\Flash.vhd" "%DIR%\OEMInput.Andromeda.xml" "%DIR%" ARM64
       cd %DIR%
