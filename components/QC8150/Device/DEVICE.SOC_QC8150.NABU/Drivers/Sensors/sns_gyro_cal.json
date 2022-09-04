@@ -1,0 +1,24 @@
+{
+  "config": {
+    "hw_platform": ["MTP", "Dragon", "Surf", "QRD", "HDK", "NABU"],
+    "soc_id": ["291", "246", "300", "301", "305", "321", "336", "347", "339", "341", "360"]
+  },
+  "sns_gyro_cal_config": {
+    "owner": "sns_gyro_cal",
+    "calibration_period": {"type": "int","ver": "4",
+      "data": "3600"
+    },
+    "num_samples": {"type": "int","ver": "2",
+      "data": "100"
+    },
+    "variance_threshold": {"type": "flt","ver": "3",
+      "data": "0.000065"
+    },
+    "sample_rate": {"type": "flt","ver": "2",
+     "data": "400.0"
+    },
+    "bias_threshold": {"type": "flt","ver": "4",
+     "data": "0.001"
+    }
+  }
+}

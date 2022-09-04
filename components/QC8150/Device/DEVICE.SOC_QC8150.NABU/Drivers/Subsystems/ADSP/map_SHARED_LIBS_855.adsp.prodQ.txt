@@ -1,0 +1,10 @@
+../../performance/sysmonapp/build/shared_libs/qdsp6/855.adsp.prod/libsysmon_skel.so
+
+../../performance/sysmonapp/build/shared_libs/qdsp6/855.adsp.prod/libsysmondomain_skel.so
+
+../../performance/sysmonapp/build/shared_libs/qdsp6/855.adsp.prod/libstabilitydomain_skel.so
+
+../../performance/sysmonapp/build/shared_libs/qdsp6/855.adsp.prod/libsysmonquery_skel.so
+
+../bsp/fastrpc_shell_img/build/855.adsp.prod/fastrpc_shell_0
+

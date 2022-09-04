@@ -1,5 +1,5 @@
 
-# Windows Driver pack for Mix3 5G platforms
+# Windows Driver pack for Mi Pad 5 platforms
 
 Pirate Drivers of [SurfaceDuo-Drivers](https://github.com/WOA-Project/SurfaceDuo-Drivers) ! ! !
 

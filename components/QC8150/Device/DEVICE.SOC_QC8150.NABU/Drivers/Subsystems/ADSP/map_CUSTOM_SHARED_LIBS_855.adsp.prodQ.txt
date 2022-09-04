@@ -1,0 +1,4 @@
+../../hap/oem/build/dynamic_modules_hash/capi_v2_voice_imc_rx.so.1
+
+../../hap/oem/build/dynamic_modules_hash/capi_v2_voice_imc_tx.so.1
+

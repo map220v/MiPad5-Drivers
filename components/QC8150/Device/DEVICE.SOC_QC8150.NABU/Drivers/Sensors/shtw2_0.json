@@ -1,0 +1,43 @@
+{
+  "config":
+  {
+    "hw_platform": ["QRD", "MTP", "Dragon", "Surf", "HDK", "CEPHEUS"],
+    "soc_id": ["291", "246", "305", "321", "336", "339", "341", "360"]
+  },
+  "shtw2_0":{
+    "owner": "sns_shtw2",
+    ".ambient_temperature":{
+      "owner": "sns_shtw2",
+      ".config":{
+        "owner": "sns_shtw2",
+        "is_dri":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "hw_id":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "res_idx":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "sync_stream":{ "type": "int", "ver": "0",
+          "data": "0"
+        }
+      }
+    },
+    ".humidity":{
+      "owner": "sns_shtw2",
+      ".config":{
+        "owner": "sns_shtw2",
+        "is_dri":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "hw_id":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "sync_stream":{ "type": "int", "ver": "0",
+          "data": "0"
+        }
+      }
+    }
+  }
+}
