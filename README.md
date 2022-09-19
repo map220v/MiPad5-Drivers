@@ -6,3 +6,14 @@ Pirate Drivers of [SurfaceDuo-Drivers](https://github.com/WOA-Project/SurfaceDuo
 Check Copyright, License, Disclaimers and end user license agreement [Here](https://github.com/WOA-Project/SurfaceDuo-Drivers/blob/main/README.md) 
 
 Commercial use is PROHIBITED
+
+# Driver Installation
+
+[DriverUpdater](https://github.com/WOA-Project/DriverUpdater/releases/)
+
+```
+cd MiPad5-Drivers
+.\DriverUpdater.exe -d .\definitions\Desktop\ARM64\Internal\nabu.txt -r ./ -p D:\
+```
+
+Change "D:\" to disk where windows arm64 installed
