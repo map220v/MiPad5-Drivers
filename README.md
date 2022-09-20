@@ -19,6 +19,5 @@ cd MiPad5-Drivers
 Change "D:\" to disk where windows arm64 installed
 
 # Bugs
-- Wifi (only works after disabling and re enabling wifi device in Device Manager)
 - Display (WIP. after display shutdown it's stays off until reboot)
 - Bluetooth (can't access uart or something (Failed to open FDO I/O target, error:c0000001))
