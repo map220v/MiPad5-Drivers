@@ -22,7 +22,7 @@ PnpLockdown = 1
 AddComponent = PPM_SoftwareComponent          ,, PPM_Install
 
 [PPM_Install]
-ComponentIds = VID_QCOM&PID_0419&SID_0001
+ComponentIds = VID_QCOM&PID_0519&SID_0001
 
 [Strings]
 ;Localizable Strings

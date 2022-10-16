@@ -28,7 +28,7 @@ PPMSettings-8150Profiles.wp.ppkg = 0,,
 %QC% = QC,NTarm64
 
 [QC.NTarm64]
-%PPM.DeviceDesc% = PPM, SWC\VID_QCOM&PID_0419&SID_0001
+%PPM.DeviceDesc% = PPM, SWC\VID_QCOM&PID_0519&SID_0001
 
 [PPM.NTarm64]
 CopyFiles = qcppmsettings.Files
