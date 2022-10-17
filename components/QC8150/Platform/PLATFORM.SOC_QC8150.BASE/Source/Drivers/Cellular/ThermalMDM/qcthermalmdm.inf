@@ -42,32 +42,32 @@ qcthermalmdm.sys  = 1,,
 
 [Standard.NTARM64]
 ;Sensor Devices
-%ThermalMDM_TS1.DeviceDesc%=ThermalMDM_TS1, ACPI\QCOM04C0
-%ThermalMDM_TS2.DeviceDesc%=ThermalMDM_TS2, ACPI\QCOM04C1
-%ThermalMDM_TS3.DeviceDesc%=ThermalMDM_TS3, ACPI\QCOM04C2
-%ThermalMDM_TS4.DeviceDesc%=ThermalMDM_TS4, ACPI\QCOM04C3
-%ThermalMDM_TS5.DeviceDesc%=ThermalMDM_TS5, ACPI\QCOM04C4
-%ThermalMDM_TS6.DeviceDesc%=ThermalMDM_TS6, ACPI\QCOM04C5
-%ThermalMDM_TS7.DeviceDesc%=ThermalMDM_TS7, ACPI\QCOM04C6
-%ThermalMDM_TS8.DeviceDesc%=ThermalMDM_TS8, ACPI\QCOM04C7
-%ThermalMDM_TS9.DeviceDesc%=ThermalMDM_TS9, ACPI\QCOM04C8
-%ThermalMDM_TS10.DeviceDesc%=ThermalMDM_TS10, ACPI\QCOM04C9
-%ThermalMDM_TS11.DeviceDesc%=ThermalMDM_TS11, ACPI\QCOM04CA
-%ThermalMDM_TS12.DeviceDesc%=ThermalMDM_TS12, ACPI\QCOM04CB
+%ThermalMDM_TS1.DeviceDesc%=ThermalMDM_TS1, ACPI\QCOM05C0
+%ThermalMDM_TS2.DeviceDesc%=ThermalMDM_TS2, ACPI\QCOM05C1
+%ThermalMDM_TS3.DeviceDesc%=ThermalMDM_TS3, ACPI\QCOM05C2
+%ThermalMDM_TS4.DeviceDesc%=ThermalMDM_TS4, ACPI\QCOM05C3
+%ThermalMDM_TS5.DeviceDesc%=ThermalMDM_TS5, ACPI\QCOM05C4
+%ThermalMDM_TS6.DeviceDesc%=ThermalMDM_TS6, ACPI\QCOM05C5
+%ThermalMDM_TS7.DeviceDesc%=ThermalMDM_TS7, ACPI\QCOM05C6
+%ThermalMDM_TS8.DeviceDesc%=ThermalMDM_TS8, ACPI\QCOM05C7
+%ThermalMDM_TS9.DeviceDesc%=ThermalMDM_TS9, ACPI\QCOM05C8
+%ThermalMDM_TS10.DeviceDesc%=ThermalMDM_TS10, ACPI\QCOM05C9
+%ThermalMDM_TS11.DeviceDesc%=ThermalMDM_TS11, ACPI\QCOM05CA
+%ThermalMDM_TS12.DeviceDesc%=ThermalMDM_TS12, ACPI\QCOM05CB
 
 ;Mitigation Devices
-%ThermalMDM_MPA.DeviceDesc%=ThermalMDM_MPA, ACPI\QCOM04B4
-%ThermalMDM_MPA1.DeviceDesc%=ThermalMDM_MPA1, ACPI\QCOM04B5
-%ThermalMDM_MBJ0.DeviceDesc%=ThermalMDM_MBJ0, ACPI\QCOM04B6
-%ThermalMDM_MBJ1.DeviceDesc%=ThermalMDM_MBJ1, ACPI\QCOM04B7
-%ThermalMDM_MBJ2.DeviceDesc%=ThermalMDM_MBJ2, ACPI\QCOM04B8
-%ThermalMDM_MBJ3.DeviceDesc%=ThermalMDM_MBJ3, ACPI\QCOM04B9
-%ThermalMDM_MBS0.DeviceDesc%=ThermalMDM_MBS0, ACPI\QCOM04BA
-%ThermalMDM_MBS1.DeviceDesc%=ThermalMDM_MBS1, ACPI\QCOM04BB
-%ThermalMDM_MBS2.DeviceDesc%=ThermalMDM_MBS2, ACPI\QCOM04BC
-%ThermalMDM_MBS3.DeviceDesc%=ThermalMDM_MBS3, ACPI\QCOM04BD
-%ThermalMDM_MSKN.DeviceDesc%=ThermalMDM_MSKN, ACPI\QCOM04BE
-%ThermalMDM_MJCT.DeviceDesc%=ThermalMDM_MJCT, ACPI\QCOM04BF
+%ThermalMDM_MPA.DeviceDesc%=ThermalMDM_MPA, ACPI\QCOM05B4
+%ThermalMDM_MPA1.DeviceDesc%=ThermalMDM_MPA1, ACPI\QCOM05B5
+%ThermalMDM_MBJ0.DeviceDesc%=ThermalMDM_MBJ0, ACPI\QCOM05B6
+%ThermalMDM_MBJ1.DeviceDesc%=ThermalMDM_MBJ1, ACPI\QCOM05B7
+%ThermalMDM_MBJ2.DeviceDesc%=ThermalMDM_MBJ2, ACPI\QCOM05B8
+%ThermalMDM_MBJ3.DeviceDesc%=ThermalMDM_MBJ3, ACPI\QCOM05B9
+%ThermalMDM_MBS0.DeviceDesc%=ThermalMDM_MBS0, ACPI\QCOM05BA
+%ThermalMDM_MBS1.DeviceDesc%=ThermalMDM_MBS1, ACPI\QCOM05BB
+%ThermalMDM_MBS2.DeviceDesc%=ThermalMDM_MBS2, ACPI\QCOM05BC
+%ThermalMDM_MBS3.DeviceDesc%=ThermalMDM_MBS3, ACPI\QCOM05BD
+%ThermalMDM_MSKN.DeviceDesc%=ThermalMDM_MSKN, ACPI\QCOM05BE
+%ThermalMDM_MJCT.DeviceDesc%=ThermalMDM_MJCT, ACPI\QCOM05BF
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;TS1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;-------------- Registry Definition

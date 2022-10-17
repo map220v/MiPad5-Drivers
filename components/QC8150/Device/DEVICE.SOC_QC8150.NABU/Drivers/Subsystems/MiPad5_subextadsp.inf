@@ -109,20 +109,20 @@ ExcludeFromSelect = *
 %Surface%=Extension,NTARM64
 
 [Extension.NTARM64]
-%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_CLS08150
-%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_CDP08150
-%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_MTP08150
-%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_041D&SUBSYS_MTP08150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTP08150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTP08150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTPB8150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTPC8150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_MTPD8150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CLS08150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CLSB8150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CLSC8150
-%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_041B&SUBSYS_CDP08150
-%PIL.DeviceDesc%=PIL_Device_Ext_APQ, ACPI\VEN_QCOM&DEV_041B&SUBSYS_SCNM8150
+%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_051D&SUBSYS_CLS08150
+%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_051D&SUBSYS_CDP08150
+%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_051D&SUBSYS_MTP08150
+%ADSP.DeviceDesc%=SUBSYS_Device_ADSP_ext, ACPI\VEN_QCOM&DEV_051D&SUBSYS_MTP08150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_051B&SUBSYS_MTP08150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_051B&SUBSYS_MTP08150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_051B&SUBSYS_MTPB8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_051B&SUBSYS_MTPC8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_051B&SUBSYS_MTPD8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_051B&SUBSYS_CLS08150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_051B&SUBSYS_CLSB8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_051B&SUBSYS_CLSC8150
+%PIL.DeviceDesc%=PIL_Device_Ext, ACPI\VEN_QCOM&DEV_051B&SUBSYS_CDP08150
+%PIL.DeviceDesc%=PIL_Device_Ext_APQ, ACPI\VEN_QCOM&DEV_051B&SUBSYS_SCNM8150
 
 [SUBSYS_Device_ADSP_ext.NT]
 CopyFiles=WmaStdDecoderModule.so.1,WmaProDecoderModule.so.1,VorbisDecoderModule.so.1,VoiceWakeup_V2_Module.so.1,SVACmnModule.so.1,smecns_v2_module.so.1,SAPlusCmnModule.so.1,map_SHARED_LIBS_855.adsp.prodQ.txt,map_CUSTOM_SHARED_LIBS_855.adsp.prodQ.txt,map_AVS_SHARED_LIBS_855.adsp.prodQ.txt,libsysmon_skel.so,libsysmonquery_skel.so,libsysmondomain_skel.so,libstabilitydomain_skel.so,LdacModule.so.1,HeaacDecoderModule.so.1,fluence_voiceplus_module.so.1,fluence_sm_module.so.1,fluence_pro_vr_module.so.1,fluence_pro_vc_module.so.1,fluence_ef_module.so.1,fluence_bs_module.so.1,FlacDecoderModule.so.1,ffv_module.so.1,fastrpc_shell_0,EtsiEaacPlusEncAndCmnModule.so.1,EtsiAmrWbPlusDecModule.so.1,CFCMModule.so.1,capi_v2_voice_imc_tx.so.1,capi_v2_voice_imc_rx.so.1,AudioSphereModule.so.1,AudioContextDetection.so.1,ApeDecoderModule.so.1,AlacDecoderModule.so.1,SOFiles_ADSP,MBNFiles_ADSP

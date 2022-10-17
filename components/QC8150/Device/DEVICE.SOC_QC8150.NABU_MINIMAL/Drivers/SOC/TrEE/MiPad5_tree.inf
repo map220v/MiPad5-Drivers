@@ -34,7 +34,7 @@ DefaultDestDir = 13
 [Standard.NTARM64]
 ; DisplayName       		Section           DeviceId
 ; -----------       		-------           --------
-%QcTrEE.DeviceDesc%=QcTrEE, ACPI\QCOM0476
+%QcTrEE.DeviceDesc%=QcTrEE, ACPI\QCOM0576
 
 [QcTrEE.NT]
 CopyFiles=QcTrEE.NT.Copy
@@ -49,7 +49,7 @@ hdcp2p2.mbn
 hdcp1.mbn
 fpctzrel.mbn
 
-QcTrEE8180.sys
+QcTrEE8150.sys
 
 [WDTFSOCDeviceCategory]
 {5D078032-6378-437B-8DA5-9B32B7CA3FDD},2,7,,2
@@ -77,7 +77,7 @@ DisplayName    = %QcTrEE.SVCDESC%
 ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
 StartType      = 0               ; SERVICE_BOOT_START
 ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
-ServiceBinary  = %13%\QcTrEE8180.sys
+ServiceBinary  = %13%\QcTrEE8150.sys
 Dependencies   = WindowsTrustedRT,WindowsTrustedRTProxy,fastfat
 LoadOrderGroup = Extended Base
 AddReg         = QcTrEE_SecureServiceReg_common
@@ -237,7 +237,7 @@ hdcp2p2.mbn = 1,
 hdcp1.mbn = 1,
 fpctzrel.mbn = 1,
 
-QcTrEE8180.sys = 1,,
+QcTrEE8150.sys = 1,,
 
 [Strings]
 SPSVCINST_ASSOCSERVICE = 0x00000002

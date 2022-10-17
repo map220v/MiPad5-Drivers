@@ -38,7 +38,7 @@ ADPL using ODL Capture Procedure:
 -----------------------------------------------
 
 1. Boot up the device and bring up the data call
-2. Copy the qcodl.exe from the DPLBridge driver repository folder E.g. "C:\Windows\System32\DriverStore\FileRepository\qcdplbridge8180.inf_arm64_xxxxxxxxxxxx" to the "C:\Windows\System32" directory
+2. Copy the qcodl.exe from the DPLBridge driver repository folder E.g. "C:\Windows\System32\DriverStore\FileRepository\qcdplbridge8150.inf_arm64_xxxxxxxxxxxx" to the "C:\Windows\System32" directory
 3. Execute the following command from an elevated command prompt to start ADPL over ODL logging
                      >qcodl 1
 4. Execute the test scenario

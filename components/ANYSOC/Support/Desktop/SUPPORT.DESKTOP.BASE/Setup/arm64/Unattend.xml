@@ -6,9 +6,6 @@
     </component>
   </settings>
   <settings pass="specialize">
-    <component name="Security-Malware-Windows-Defender" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-      <TrustedImageIdentifier>902c9198-0596-427a-a537-9336e545d441</TrustedImageIdentifier>
-    </component>
     <component name="Microsoft-Windows-GPIOButtons" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <ConvertibleSlateMode>0</ConvertibleSlateMode>
     </component>
@@ -16,7 +13,6 @@
       <DesktopOptimization>
         <ShowWindowsStoreAppsOnTaskbar>true</ShowWindowsStoreAppsOnTaskbar>
       </DesktopOptimization>
-      <ProductKey>37GNV-YCQVD-38XP9-T848R-FC2HD</ProductKey>
       <ShowPowerButtonOnStartScreen>true</ShowPowerButtonOnStartScreen>
       <ConvertibleSlateModePromptPreference>0</ConvertibleSlateModePromptPreference>
     </component>
@@ -32,7 +28,7 @@
   </settings>
   <settings pass="oobeSystem">
     <component name="Microsoft-Windows-Deployment" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-      <DeviceForm>2</DeviceForm>
+      <DeviceForm>1</DeviceForm>
     </component>
     <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <OEMInformation>
