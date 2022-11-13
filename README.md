@@ -18,5 +18,8 @@ cd MiPad5-Drivers
 
 Change "D:\" to disk where windows arm64 installed
 
+# Optional
+For sensors to work, follow this: [Copy over calibration files/configuration files for the sensors](https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/InstallWindows-SurfaceDuo1.md#temporary-and-optional-copy-over-calibration-filesconfiguration-files-for-the-sensors)
+
 # Bugs
 - Display (WIP. after display shutdown it's stays off until reboot)

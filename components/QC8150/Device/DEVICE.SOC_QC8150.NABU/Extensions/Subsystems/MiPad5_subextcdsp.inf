@@ -35,6 +35,7 @@ libsysmonhvxthrottle_skel.so = 13,\CDSP
 libsysmondomain_skel.so = 13,\CDSP
 libstabilitydomain_skel.so = 13,\CDSP
 libimmotion_skel.so = 13,\CDSP
+libhta_dsp_skel.so = 13,\CDSP
 libhcp_rpc_skel.so = 13,\CDSP
 libc++abi.so.1 = 13,\CDSP
 libc++.so.1 = 13,\CDSP
@@ -62,6 +63,7 @@ libsysmonhvxthrottle_skel.so = 1,\CDSP
 libsysmondomain_skel.so = 1,\CDSP
 libstabilitydomain_skel.so = 1,\CDSP
 libimmotion_skel.so = 1,\CDSP
+libhta_dsp_skel.so = 1,\CDSP
 libhcp_rpc_skel.so = 1,\CDSP
 libc++abi.so.1 = 1,\CDSP
 libc++.so.1 = 1,\CDSP
@@ -98,7 +100,7 @@ ExcludeFromSelect = *
 %PIL.DeviceDesc%=PIL_Device_Ext_APQ, ACPI\VEN_QCOM&DEV_051B&SUBSYS_SCNM8150
 
 [SUBSYS_Device_CDSP_ext.NT]
-CopyFiles=ubwcdma_dynlib.so,map_SHARED_LIBS_855.cdsp.prodQ.txt,libvpp_svc_skel.so,libvpp_qbr.so,libvpp_nr.so,libvpp_mvp.so,libvpp_frc.so,libvpp_aie.so,libsysmon_skel.so,libsysmonquery_skel.so,libsysmonhvxthrottle_skel.so,libsysmondomain_skel.so,libstabilitydomain_skel.so,libimmotion_skel.so,libhcp_rpc_skel.so,libc++abi.so.1,libc++.so.1,libbenchmark_skel.so,fastrpc_shell_unsigned_3,fastrpc_shell_3,SOFiles_CDSP,Files_CDSP
+CopyFiles=ubwcdma_dynlib.so,map_SHARED_LIBS_855.cdsp.prodQ.txt,libvpp_svc_skel.so,libvpp_qbr.so,libvpp_nr.so,libvpp_mvp.so,libvpp_frc.so,libvpp_aie.so,libsysmon_skel.so,libsysmonquery_skel.so,libsysmonhvxthrottle_skel.so,libsysmondomain_skel.so,libstabilitydomain_skel.so,libimmotion_skel.so,libhta_dsp_skel.so,libhcp_rpc_skel.so,libc++abi.so.1,libc++.so.1,libbenchmark_skel.so,fastrpc_shell_unsigned_3,fastrpc_shell_3,SOFiles_CDSP,Files_CDSP
 AddReg=SUBSYSReg_CDSP
 
 [SUBSYS_Device_CDSP_ext.NT.HW]
@@ -182,6 +184,8 @@ libsysmondomain_skel.so
 libstabilitydomain_skel.so
 [libimmotion_skel.so]
 libimmotion_skel.so
+[libhta_dsp_skel.so]
+libhta_dsp_skel.so
 [libhcp_rpc_skel.so]
 libhcp_rpc_skel.so
 [libc++abi.so.1]
@@ -221,6 +225,10 @@ hkr,mappings\fastrpc\0949538e62c05fc5d75e30d7706b0c277be443e3a338b95c2daf7cf43bb
 ; Updating registry of libhcp_rpc_skel.so to remote path \cdsp\libhcp_rpc_skel.so
 HKR,Mappings\FASTRPC\478ea85c58f5c082cf031af811d993fcf177075ce6478053311d7f075c9c9519,"Local",%REG_SZ%, %13%\CDSP\libhcp_rpc_skel.so
 hkr,mappings\fastrpc\478ea85c58f5c082cf031af811d993fcf177075ce6478053311d7f075c9c9519,"remote",%reg_sz%, \cdsp\libhcp_rpc_skel.so
+
+; Updating registry of libhta_dsp_skel.so to remote path \cdsp\libhta_dsp_skel.so
+HKR,Mappings\FASTRPC\29004b5c13a64c4bbbc6abdd759fd000a1a88ce58fb4cb8bb1e9a666e6ced480,"Local",%REG_SZ%, %13%\CDSP\libhta_dsp_skel.so
+hkr,mappings\fastrpc\29004b5c13a64c4bbbc6abdd759fd000a1a88ce58fb4cb8bb1e9a666e6ced480,"remote",%reg_sz%, \cdsp\libhta_dsp_skel.so
 
 ; Updating registry of libimmotion_skel.so to remote path \cdsp\libimmotion_skel.so
 HKR,Mappings\FASTRPC\5077063291b7180e71651569de291bc45d3aaca5db9f00901a060431a40a1aaf,"Local",%REG_SZ%, %13%\CDSP\libimmotion_skel.so
