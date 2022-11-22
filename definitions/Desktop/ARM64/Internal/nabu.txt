@@ -6,6 +6,8 @@
 \components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE
 \components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL
 
+\components\ANYSOC\Hardware\nt36523
+
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.BASE
 
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.SURFACE_EXTRAS
