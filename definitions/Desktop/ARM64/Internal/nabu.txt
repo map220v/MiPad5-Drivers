@@ -8,6 +8,8 @@
 
 \components\ANYSOC\Hardware\nt36523
 
+\components\QC8150\Test
+
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.BASE
 
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.SURFACE_EXTRAS

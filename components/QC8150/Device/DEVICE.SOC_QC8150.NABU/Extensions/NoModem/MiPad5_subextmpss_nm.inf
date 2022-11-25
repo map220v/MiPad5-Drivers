@@ -1,0 +1,55 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=Extension
+ClassGuid={e2f84ce7-8efa-411c-aa69-97454ca4cb57}
+ExtensionId={ee745e92-7466-47b5-afaa-ff06e129318f}
+Provider=%Surface%
+DriverVer = 06/05/2022,1.0.1780.0000
+CatalogFile=MiPad5_subextmpss_nm.cat
+PnpLockDown=1
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;*****************************************
+; Subsystem Driver Install Section
+;*****************************************
+
+[Manufacturer]
+%Surface%=Extension,NTARM64
+
+[Extension.NTARM64]
+%AMSS_NM.DeviceDesc%=SUBSYS_Device_AMSS_MSM_Ext, ACPI\VEN_QCOM&DEV_051E&SUBSYS_MTP08150
+
+[SUBSYS_Device_AMSS_MSM_Ext.NT]
+AddReg=SUBSYSReg_AMSS_MSM_NM
+
+[SUBSYS_Device_AMSS_MSM_Ext.NT.HW]
+AddReg=SUBSYSReg_AMSS_MSM_HW_NM
+DelReg=SUBSYSReg_AMSS_MSM_HW_NM_DelReg
+
+[SUBSYSReg_AMSS_MSM_NM]
+HKR,0\AMSS,"RPEC",%REG_MULTI_SZ%,"{2eaf5c83-4fa9-49b3-a247-bfdd66e5655b}"
+
+[SUBSYSReg_AMSS_MSM_HW_NM]
+HKR,Desktop,"NumChildren",%REG_DWORD%,0x00000001
+
+[SUBSYSReg_AMSS_MSM_HW_NM_DelReg]
+HKR,Desktop\1
+
+[Strings]
+;Localizable Strings
+Surface = "Xiaomi"
+DiskId1 = "Mi Pad 5 Combined Subsystem Driver Installation Disk"
+; Below modem description will be used for all AMSS configurations
+; where modem subsystem will be used for only for non-modem needs (WLAN & GPS)
+; In other words when MBB is not loaded but other drivers are loaded and using modem
+AMSS_NM.DeviceDesc = "Qualcomm(R) System Manager Device"
+PIL.DeviceDesc = "Qualcomm(R) System Manager Device"
+FASTRPC = 1
+TFTP = 2
+
+;Non-localizable Strings
+REG_SZ                 = 0x00000000
+REG_DWORD              = 0x00010001
+SPSVCINST_ASSOCSERVICE = 0x00000002
