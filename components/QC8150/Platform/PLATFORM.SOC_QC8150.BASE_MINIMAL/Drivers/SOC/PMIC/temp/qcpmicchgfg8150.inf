@@ -1,0 +1,87 @@
+;/*++
+;
+;Copyright (c) 2011, 2019 by QUALCOMM, Incorporated.  All Rights Reserved.
+;
+;Module Name:
+;    qcpmicchgfg8150.INF
+;
+;Abstract:
+;    INF file for installing the QcPmicChgFg Wdf Driver
+;--*/
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%Provider%
+DriverVer = 11/25/2022,19.21.39.542
+CatalogFile=qcpmicchgfg8150.cat
+PnPLockdown=1
+
+[SourceDisksNames]
+1=%DiskId%
+
+[SourceDisksFiles]
+qcpmicchgfg8150.sys = 1
+
+;13 == Windows\System32\DriverStore
+[DestinationDirs]
+DefaultDestDir = 13
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;*****************************************
+; QcPmicChgFg client driver Install Section
+;*****************************************
+
+[Manufacturer]
+%COMP%=Qualcomm,NTARM64
+
+[Qualcomm.NTARM64]
+%DeviceDesc%=PMICCHGFG_Inst,ACPI\QCOM0580
+
+[PMICCHGFG_Inst.NT]
+Copyfiles = PMICCHGFGCopyFiles
+AddProperty = WDTFSOCDeviceCategory
+
+[PMICCHGFG_Inst.NT.HW]
+Addreg=PGACL
+
+[PGACL]
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)" ;built in admin and local sys access
+
+[PMICCHGFGCopyFiles]
+qcpmicchgfg8150.sys
+
+[WDTFSOCDeviceCategory]
+{5D078032-6378-437B-8DA5-9B32B7CA3FDD},2,7,,2
+
+[PMICCHGFG_Inst.NT.Services]
+AddService = qcpmicchgfg,%SPSVCINST_ASSOCSERVICE%,PMICCHGFG_Service_Inst
+
+[PMICCHGFG_Service_Inst]
+DisplayName    = %PMICCHGFG.SvcDesc%
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %13%\qcpmicchgfg8150.sys
+
+[Strings]
+;Localizable Strings
+Provider            = "MollyTek"
+COMP                = "Qualcomm Incorporated"                                      
+PMICCHGFG.SvcDesc   = "Qualcomm(R) Power Management PMIC Charger Fuel Gauge Device"
+DeviceDesc          = "Qualcomm(R) Power Management PMIC Charger Fuel Gauge Device"
+DiskId              = "Qualcomm PMIC Charger Fuel Gauge Installation Disk"
+REG_DWORD           = 0x00010001
+
+;Non-Localizable Strings
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_DEMAND_START   = 3
+SERVICE_ERROR_NORMAL   = 1
+
+
+
+
