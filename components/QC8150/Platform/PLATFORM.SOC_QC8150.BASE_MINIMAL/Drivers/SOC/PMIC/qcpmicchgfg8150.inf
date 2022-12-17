@@ -14,7 +14,7 @@ Signature="$WINDOWS NT$"
 Class=System
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%Provider%
-DriverVer = 11/25/2022,19.21.39.542
+DriverVer = 12/17/2022,17.39.35.790
 CatalogFile=qcpmicchgfg8150.cat
 PnPLockdown=1
 
