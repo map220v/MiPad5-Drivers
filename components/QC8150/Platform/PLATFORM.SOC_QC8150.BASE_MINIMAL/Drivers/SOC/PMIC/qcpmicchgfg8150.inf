@@ -71,8 +71,8 @@ ServiceBinary  = %13%\qcpmicchgfg8150.sys
 ;Localizable Strings
 Provider            = "MollyTek"
 COMP                = "Qualcomm Incorporated"                                      
-PMICCHGFG.SvcDesc   = "Qualcomm(R) Power Management PMIC Charger Fuel Gauge Device"
-DeviceDesc          = "Qualcomm(R) Power Management PMIC Charger Fuel Gauge Device"
+PMICCHGFG.SvcDesc   = "Qualcomm(R) Power Management PMIC CHGFG Device"
+DeviceDesc          = "Qualcomm(R) Power Management PMIC CHGFG Device"
 DiskId              = "Qualcomm PMIC Charger Fuel Gauge Installation Disk"
 REG_DWORD           = 0x00010001
 
