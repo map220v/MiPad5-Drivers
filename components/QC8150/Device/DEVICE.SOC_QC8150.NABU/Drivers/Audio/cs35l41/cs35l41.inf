@@ -1,0 +1,61 @@
+;
+; cs35l41.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = Media
+ClassGuid   = {4d36e96c-e325-11ce-bfc1-08002be10318}
+Provider    = %ManufacturerName%
+CatalogFile = cs35l41.cat
+DriverVer = 01/23/2023,19.44.19.708
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+cs35l41.sys  = 1,,
+
+;*****************************************
+; cs35l41 Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+; Decorated model section take precedence over undecorated 
+; ones on XP and later.
+[Standard.NTARM64]
+%cs35l41.DeviceDesc%=cs35l41_Device, ACPI\10133541
+
+[cs35l41_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+cs35l41.sys
+
+;-------------- Service installation
+[cs35l41_Device.NT.Services]
+AddService = cs35l41,%SPSVCINST_ASSOCSERVICE%, cs35l41_Service_Inst
+
+; -------------- cs35l41 driver install sections
+[cs35l41_Service_Inst]
+DisplayName    = %cs35l41.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START 
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\cs35l41.sys
+LoadOrderGroup = Base
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName   = "map220v"
+DiskName           = "CS35L41 Installation Disk"
+cs35l41.DeviceDesc = "Cirrus Logic CS35L41 Codec" ; Cirrus Logic CS35L41 I2S Amplifier
+cs35l41.SVCDESC    = "CS35L41 Service"
