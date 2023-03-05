@@ -1,13 +1,13 @@
-## Surface Duo Drivers BSP - Version 2210.41
-**Released:** 10/13/2022 01:00 AM UTC+2
+## Surface Duo Drivers BSP - Version 2302.39
+**Released:** 02/11/2023 06:00 PM UTC+1
 
 **Quality:** Preview
 
-![Surface Duo Dual Screen Windows](https://user-images.githubusercontent.com/3755345/170788230-a42e624a-d2ed-4070-b289-a9b34774bcd0.png)
+![Surface Duo Dual Screen Windows](https://user-images.githubusercontent.com/3755345/197420866-d3bb0534-c848-4cc2-a242-04dae48b0f6e.png)
 
 ### General information
 
-You can view compatibility for this release, along with important information and what works, and what doesn't at this link: https://github.com/WOA-Project/SurfaceDuo-Guides/blob/b95e43f5b2e16ba715d9339012d7beb8f11926b6/Status.md
+You can view compatibility for this release, along with important information and what works, and what doesn't at this link: https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/Status.md
 
 
 ### Release notes
@@ -16,33 +16,48 @@ ________________________________________________________________________________
 
 #### Important information
 
-- ⚠️⚠️ **IMPORTANT: This version of the drivers needs to be paired with UEFI version greater or equal to 2210.38.** ⚠️⚠️
-- ⚠️⚠️ **IMPORTANT: If you get a BSOD/Bugcheck "SOC_SUBSYSTEM_FAILURE" when upgrading, you will have to reinstall Windows** ⚠️⚠️
-- ⚠️⚠️ **IMPORTANT: Upgrades using DriverUpdater *may* lead under some rare cases to the GPU device not being loaded on next boot, to fix this, go to device manager and manually update the GPU device again.** ⚠️⚠️
+- ⚠️ This version of the drivers needs to be paired with UEFI version greater or equal to 2302.35.
+
+- ⚠️ For users that are updating from an earlier release than version 2301.93, please follow the following migration guidance https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/Update/MigrationGuidanceForSecureBoot.md and please download the latest driverupdater release as well!: https://github.com/WOA-Project/DriverUpdater/releases/tag/v1.8.0.0
+
+- ⚠️ If you need dual boot, you will have to make your own image, please follow this guidance: https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/DualBoot.md
+
+- ⚠️ You need to backup your original boot image for OTAs to work with Android. When you'll get an OTA, you will want to revert your boot image for the update to work or you'll have to use an official OTA recovery package.
 
 ### Changelog
 
-- Addresses an issue with reboots and sleeps resulting in a BSOD when performing PSCI Memory Protection SMC calls (UEFI side)
+#### Surface Duo 1
 
-- Updated Surface Integration driver and Cellular provisioning packages
+What's new?
 
-- Improvements to Qualcomm Peripheral Image Loader configuration settings
+- Fixes an issue where rotation was unexpectedly missing in the 2302.35 update
 
-- Started work on Qualcomm Aqstic Speaker Protection driver. A downside of this release is a regression in Mic availability which will be resolved in a future update
+- Addresses some issues reported by Microsoft INF Verification tool.
 
-- Started work on Dolby Access support for Surface Duo Audio stack.
-
-- Call provisioning is work in progress, if calls do not work for you at the moment, you may need to provision the call functionality manually. (Same as on Lumia 950s: https://woa-project.github.io/LumiaWOA/guides/ican0/, value is not different between 950s and Duo either, so if you already have such value, you're good to go, this is temporary!)
+- NOTE: Due to some specific changes sensor functionality may only work on upgraded devices from earlier driver versions to newer driver versions after doing a manual driver update on the device itself, using Device Manager. If this issue affects you, and it should if you upgraded from an older driver release, open device manager, right click each "Qualcomm Sensor" device, select "Update Device", then select "Pick from a list", then select "Manually select from list", then select the first Qualcomm device offered, and click next. Repeat this for all sensor devices, and then reboot the device. Sensors should now work flawlessly.
 
 
-__Improvements to CPU core clock frequency will come in an upcoming release__
+#### Known issues
+
+- Calling is not working under Windows 11 Version 22H2 and higher
+
+- Flipping the device however is not smooth
+
+- Charging remains unavailable in Windows, please charge in Android
+
+- Users upgrading from releases older than the January ones may want to clean install again.
+
+
+#### Surface Duo 2
+
+- Support for Surface Duo 2 is not provided with this release. We are trying to get an update for Surface Duo 2 as part of the next release as soon as we can.
 
 
 ### Sensor Calibration Provisioning (Mandatory)
 
 
 In order to get most sensors currently working, some manual steps are required.
-Please follow the steps described at https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/InstallWindows.md#temporary-copy-over-calibration-filesconfiguration-files-for-the-sensors
+Please follow the steps described at https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/InstallWindows-SurfaceDuo1.md#temporary-and-optional-copy-over-calibration-filesconfiguration-files-for-the-sensors
 
 
 It may also be possible to provision it using data from the SFPD partition exposed in windows. This manual step will not be required in future releases.
@@ -51,7 +66,6 @@ It may also be possible to provision it using data from the SFPD partition expos
 ### Known issues
 
 
-- Automatic Orientation only works for the left panel, using the right panel orientation sensor
 - USB Dongles that are not externally powered may not currently work
 - USB C Billboard devices will not currently work
 - External Display Stream support will not currently work
@@ -59,7 +73,7 @@ It may also be possible to provision it using data from the SFPD partition expos
 - Digitizers will not react to the device being folded over
 - Displays will not react to the device being folded over most of the time
 - Physical device data is incorrect
-- Graphical Rendering Issues
+- Digitizers aren't calibrated correctly
 
 
 ### Accessing Foldable Sensors from your applications
@@ -70,7 +84,7 @@ In order to currently access the sensor data given by the foldable sensors, you 
 
 - Windows.Devices.Sensors.HingeAngleSensor*
 - Windows.Internal.Devices.Sensors.FlipSensor* (2)
-- Windows.Internal.System.TwoPanelHingeFolioPostureDevice* (2)
+- Windows.Internal.System.TwoPanelHingePostureDevice* (2)
 
 
 (2): These apis require the use of an externally sourced winmd available from https://github.com/ADeltaX/InternalWinMD/blob/master/%23winmd/Windows.Internal.Devices.Sensors.winmd
@@ -157,7 +171,7 @@ VOID OnFoldSensorReadingChanged(FoldSensor const&, FoldSensorReadingChangedEvent
 	catch (...) {}
 }
 
-VOID PrintFolioDetails(TwoPanelFolioHingeDevicePostureReading const& args)
+VOID PrintDetails(TwoPanelHingedDevicePostureReading const& args)
 {
 	try {
 		std::cout << "Panel1 " << args.Panel1Id().c_str() << "\n" << std::endl;
@@ -166,7 +180,7 @@ VOID PrintFolioDetails(TwoPanelFolioHingeDevicePostureReading const& args)
 		std::cout << "Panel1 Orientation " << (int)args.Panel1Orientation() << "\n" << std::endl;
 		std::cout << "Panel2 Orientation " << (int)args.Panel2Orientation() << "\n" << std::endl;
 
-		switch (args.Hinge1State())
+		switch (args.HingeState())
 		{
 		case Windows::Internal::System::HingeState::Unknown:
 			std::cout << "Hinge1State Unknown\n" << std::endl;
@@ -187,37 +201,15 @@ VOID PrintFolioDetails(TwoPanelFolioHingeDevicePostureReading const& args)
 			std::cout << "Hinge1State Full\n" << std::endl;
 			break;
 		}
-
-		switch (args.Hinge2State())
-		{
-		case Windows::Internal::System::HingeState::Unknown:
-			std::cout << "Hinge2State Unknown\n" << std::endl;
-			break;
-		case Windows::Internal::System::HingeState::Closed:
-			std::cout << "Hinge2State Closed\n" << std::endl;
-			break;
-		case Windows::Internal::System::HingeState::Concave:
-			std::cout << "Hinge2State Concave\n" << std::endl;
-			break;
-		case Windows::Internal::System::HingeState::Flat:
-			std::cout << "Hinge2State Flat\n" << std::endl;
-			break;
-		case Windows::Internal::System::HingeState::Convex:
-			std::cout << "Hinge2State Convex\n" << std::endl;
-			break;
-		case Windows::Internal::System::HingeState::Full:
-			std::cout << "Hinge2State Full\n" << std::endl;
-			break;
-		}
 	}
 	catch (...) {}
 }
 
-VOID OnFolioPostureChanged(TwoPanelFolioHingeDevicePosture const&, TwoPanelFolioHingeDevicePostureReadingChangedEventArgs const& args)
+VOID OnPostureChanged(TwoPanelHingedDevicePosture const&, TwoPanelHingedDevicePostureReadingChangedEventArgs const& args)
 {
 	try {
-		printf("Folio posture sensor state changed.\n");
-		PrintFolioDetails(args.Reading());
+		printf("Posture sensor state changed.\n");
+		PrintDetails(args.Reading());
 	}
 	catch (...) {}
 }
@@ -265,22 +257,22 @@ int main()
 	}
 	catch (...) {}
 
-	printf("Trying to get folio posture sensor.\n");
+	printf("Trying to get posture sensor.\n");
 	try {
-		TwoPanelFolioHingeDevicePosture folioPosture = TwoPanelFolioHingeDevicePosture::GetDefaultAsync().get();
-		if (folioPosture == nullptr)
+		TwoPanelHingedDevicePosture Posture = TwoPanelHingedDevicePosture::GetDefaultAsync().get();
+		if (Posture == nullptr)
 		{
-			printf("Folio Posture sensor not found.\n");
+			printf("Posture sensor not found.\n");
 		}
 		else
 		{
-			auto curpst = folioPosture.GetCurrentPostureAsync().get();
+			auto curpst = Posture.GetCurrentPostureAsync().get();
 			if (curpst != nullptr)
 			{
-				PrintFolioDetails(curpst);
+				PrintDetails(curpst);
 			}
-			printf("Starting listening session for Folio Posture sensor.\n");
-			folioPosture.PostureChanged(OnFolioPostureChanged);
+			printf("Starting listening session for Posture sensor.\n");
+			Posture.PostureChanged(OnPostureChanged);
 		}
 		printf("Press any key to stop\n");
 		std::cin.get();
