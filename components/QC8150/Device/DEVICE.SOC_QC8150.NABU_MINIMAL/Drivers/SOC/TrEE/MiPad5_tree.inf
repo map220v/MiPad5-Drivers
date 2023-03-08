@@ -18,8 +18,9 @@ Signature="$WINDOWS NT$"
 Class=SYSTEM
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%Surface%
-DriverVer = 06/05/2022,1.0.1780.0000
+DriverVer = 01/19/2023,1.0.1940.0000
 CatalogFile=MiPad5_tree.cat
+PnpLockdown = 1
 
 [DestinationDirs]
 DefaultDestDir = 13

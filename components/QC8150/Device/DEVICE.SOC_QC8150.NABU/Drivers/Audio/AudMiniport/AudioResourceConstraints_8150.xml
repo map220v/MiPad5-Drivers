@@ -11,7 +11,15 @@
       <Consumption>2</Consumption> <!-- Global limitation on OffloadRestrictions streams -->
     </Resource>	
   </Limits>
- 
+
+  <ExclusiveEndpoints>
+    <Endpoint>
+      <HWID>AUDD\QCOM052C</HWID>
+      <TopologyName>TopologyExternalDisplay*</TopologyName>
+      <PinId>1</PinId>
+    </Endpoint>
+  </ExclusiveEndpoints>
+  
   <ResourceConsumer>
     <!-- Active Phone call -->
     <ConsumerInfo>
