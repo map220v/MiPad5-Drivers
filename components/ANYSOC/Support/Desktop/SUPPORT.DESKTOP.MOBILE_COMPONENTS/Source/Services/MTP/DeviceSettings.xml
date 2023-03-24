@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DeviceSettings>
+        <DeviceInfo>
+            <StandardVersion>100</StandardVersion>
+            <VendorExtensionID>6</VendorExtensionID>
+            <VendorExtensionVersion>100</VendorExtensionVersion>
+            <VendorExtensionDesc>microsoft.com: 1.0; microsoft.com/DeviceServices:1.0; microsoft/WindowsPhone:1.0</VendorExtensionDesc>
+            <FunctionMode>0</FunctionMode>
+            <OperationsSupported>
+              <Base>0x1001</Base> <!--GETDEVICEINFO-->
+              <Base>0x1002</Base> <!--OPENSESSION-->
+              <Base>0x1003</Base> <!--CLOSESESSION-->
+              <Base>0x1004</Base> <!--GETSTORAGEIDS-->
+              <Base>0x1005</Base> <!--GETSTORAGEINFO-->
+              <Base>0x1006</Base> <!--GETNUMOBJECTS-->
+              <Base>0x1007</Base> <!--GETOBJECTHANDLES-->
+              <Base>0x1008</Base> <!--GETOBJECTINFO-->
+              <Base>0x1009</Base> <!--GETOBJECT-->
+              <Base>0x100B</Base> <!--DELETEOBJECT-->
+              <Base>0x100C</Base> <!--SENDOBJECTINFO-->
+              <Base>0x1012</Base> <!--SETOBJECTPROTECTION-->
+              <Base>0x100D</Base> <!--SENDOBJECT-->
+              <Base>0x1014</Base> <!--GETDEVICEPROPDESC-->
+              <Base>0x1015</Base> <!--GETDEVICEPROPVALUE-->
+              <Base>0x1016</Base> <!--SETDEVICEPROPVALUE-->
+              <Base>0x101A</Base> <!--COPYOBJECT-->
+              <Base>0x101B</Base> <!--GETPARTIALOBJECT-->
+              <Base>0x9217</Base> <!--GETZMDB-->
+              <Base>0x9234</Base> <!--GETDEVICEASSET-->
+              <Base>0x9301</Base> <!--GETSERVICEIDS-->
+              <Base>0x9302</Base> <!--GETSERVICEINFO-->
+              <Base>0x9303</Base> <!--GETSERVICECAPABILITIES-->
+              <Base>0x9304</Base> <!--GETSERVICEPROPERTIES-->
+              <Base>0x9305</Base> <!--GETSERVICEPROPERTYLIST-->
+              <Base>0x930A</Base> <!--GETFORMATCAPABILITIES-->
+              <Base>0x9401</Base> <!--REBOOTDEVICEFLASHING-->
+              <Base>0x9402</Base> <!--GETOBJECTHANDLEFROMPATH-->
+              <Base>0x9403</Base> <!--GETOBJECTPATHFROMHANDLE-->
+              <Base>0x9404</Base> <!--CLEARACQUIREDITEMS-->
+              <Base>0x9405</Base> <!--REBOOTDEVICE-->
+              <Base>0x9406</Base> <!--ANTITHEFTUNPROTECT-->
+              <Base>0x9407</Base> <!--ANTITHEFTGETSTATUS-->
+              <Base>0x9410</Base> <!--GETDUDIAGINFO-->
+              <Base>0x9411</Base> <!--INITIATEDUINSTALL-->
+              <Base>0x9412</Base> <!--CLEARDUSTAGINGDIR-->
+              <Base>0x9413</Base> <!--SENDIUPACKAGE-->
+              <Base>0x9414</Base> <!--STARTDEVICEUPDATE-->
+              <Base>0x9415</Base> <!--GETPACKAGEINFO-->
+              <Base>0x9416</Base> <!--STARTDEVICEUPDATEOTCSCAN-->
+              <Base>0x9417</Base> <!--GETACTIONLIST-->
+              <Base>0x9801</Base> <!--GETOBJECTPROPSSUPPORTED-->
+              <Base>0x9802</Base> <!--GETOBJECTPROPDESC-->
+              <Base>0x9803</Base> <!--GETOBJECTPROPVALUE-->
+              <Base>0x9804</Base> <!--SETOBJECTPROPVALUE-->
+              <Base>0x9805</Base> <!--GETOBJECTPROPLIST-->
+              <Base>0x9806</Base> <!--SETOBJECTPROPLIST-->
+              <Base>0x9808</Base> <!--SENDOBJECTPROPLIST-->
+              <Base>0x9810</Base> <!--GETOBJECTREFERENCES-->
+              <Base>0x9811</Base> <!--SETOBJECTREFERENCES-->
+              <Base>0x9820</Base> <!--SKIP-->
+            </OperationsSupported>
+            <EventsSupported>
+              <Base>0x4002</Base> <!--OBJECTADDED-->
+              <Base>0x4003</Base> <!--OBJECTREMOVED-->
+              <Base>0x4004</Base> <!--STOREADDED-->
+              <Base>0x4005</Base> <!--STOREREMOVED-->
+              <Base>0x400C</Base> <!--STORAGEINFOCHANGED-->
+              <Base>0xC301</Base> <!--SERVICEADDED-->
+              <Base>0xC303</Base> <!--SERVICEPROPCHANGED-->
+              <Base>0xC304</Base> <!--METHODCOMPLETE-->			  
+              <Base>0xC801</Base> <!--OBJECTPROPCHANGED-->
+             </EventsSupported>
+            <DevicePropertiesSupported>
+              <Base>0x5001</Base> <!--BATTERYLEVEL-->
+              <Base>0xD001</Base> <!--IDENTITYSTRING-->
+              <Base>0xD302</Base> <!--MODELID-->
+              <Base>0xD303</Base> <!--USEDEVICESTAGEFLAG-->
+              <Base>0xD401</Base> <!--DEVICESYNCPARTNER-->
+              <Base>0xD402</Base> <!--DEVICEFRIENDLYNAME-->
+              <Base>0xD405</Base> <!--DEVICEICON-->
+              <Base>0xD407</Base> <!--PERCEIVEDDEVICETYPE-->
+            </DevicePropertiesSupported>
+            <CaptureFormats>
+            </CaptureFormats>
+            <PlaybackFormats>
+              <Value>0x3000</Value> <!--UNDEFINED-->
+              <Value>0x3001</Value> <!--ASSOCIATION-->
+              <Value>0x3004</Value> <!--Text Document-->
+              <Value>0x3009</Value> <!--MP3-->
+              <Value>0x300A</Value> <!--AVI-->
+              <Value>0x3801</Value> <!--IMAGE_EXIF-->
+              <Value>0xB901</Value> <!--WMA-->
+              <Value>0xB903</Value> <!--AAC-->
+              <Value>0xB981</Value> <!--WMV-->
+              <Value>0xBA03</Value> <!--ABSTRACTAUDIOALBUM-->
+              <Value>0xBA05</Value> <!--ABSTRACTAUDIOVIDEOPLAYLIST-->
+              <Value>0xBA0B</Value> <!--ABSTRACTMEDIACAST-->
+              <Value>0x3807</Value> <!--GIFF-->
+              <Value>0x3808</Value> <!--JFIF-->
+              <Value>0x380B</Value> <!--PNG-->
+              <Value>0x380D</Value> <!--TIFF-->
+              <Value>0x3804</Value> <!--BMP-->
+              <Value>0xB804</Value> <!--JPEGXR-->
+              <Value>0xB982</Value> <!--MP4-->
+              <Value>0xB215</Value> <!--M4A-->
+              <Value>0xB216</Value> <!--M4V-->
+              <Value>0xB984</Value> <!--3GP-->
+              <Value>0xB985</Value> <!--3G2-->
+              <Value>0xB990</Value> <!--MKV-->                                
+              <Value>0xBA83</Value> <!--Word Document-->
+              <Value>0xBA85</Value> <!--Excel Workbook-->
+              <Value>0xBA86</Value> <!--PowerPoint Presentation-->
+            </PlaybackFormats>
+            <Manufacturer>Microsoft Corporation</Manufacturer>
+            <Model>Windows Device</Model>
+            <DeviceVersion>100</DeviceVersion>
+            <SerialNumber>12345</SerialNumber>
+        </DeviceInfo>
+</DeviceSettings>
