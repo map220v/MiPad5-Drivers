@@ -16,7 +16,7 @@ Class=Extension
 ClassGuid={e2f84ce7-8efa-411c-aa69-97454ca4cb57}
 ExtensionId={ee01ef1a-c067-43ad-9a1b-5fdec6887c1b}
 Provider=%Surface%
-DriverVer = 06/05/2022,1.0.1780.0000
+DriverVer = 03/14/2023,1.0.1960.0000
 CatalogFile=MiPad5_subextadsp.cat
 PnpLockDown=1
 
