@@ -1,5 +1,5 @@
-## Surface Duo Drivers BSP - Version 2302.39
-**Released:** 02/11/2023 06:00 PM UTC+1
+## Surface Duo Drivers BSP - Version 2305.25
+**Released:** 05/08/2023 10:00 PM UTC+2
 
 **Quality:** Preview
 
@@ -16,7 +16,7 @@ ________________________________________________________________________________
 
 #### Important information
 
-- ⚠️ This version of the drivers needs to be paired with UEFI version greater or equal to 2302.35.
+- ⚠️ This version of the drivers needs to be paired with UEFI version greater or equal to 2305.25.
 
 - ⚠️ For users that are updating from an earlier release than version 2301.93, please follow the following migration guidance https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/Update/MigrationGuidanceForSecureBoot.md and please download the latest driverupdater release as well!: https://github.com/WOA-Project/DriverUpdater/releases/tag/v1.8.0.0
 
@@ -30,42 +30,71 @@ ________________________________________________________________________________
 
 What's new?
 
-- Fixes an issue where rotation was unexpectedly missing in the 2302.35 update
+- **_New!_** Updated a bunch of drivers with stability and enhancements. Notably, you will now notice the GPU driver and Display stack is much more stable, brightness issues are gone, and OpenGL based applications run much better than they used to.
 
-- Addresses some issues reported by Microsoft INF Verification tool.
+- **_New!_** Started reworking Camera Subsystem. No new apparent functionality is enabled as of this release yet.
 
-- NOTE: Due to some specific changes sensor functionality may only work on upgraded devices from earlier driver versions to newer driver versions after doing a manual driver update on the device itself, using Device Manager. If this issue affects you, and it should if you upgraded from an older driver release, open device manager, right click each "Qualcomm Sensor" device, select "Update Device", then select "Pick from a list", then select "Manually select from list", then select the first Qualcomm device offered, and click next. Repeat this for all sensor devices, and then reboot the device. Sensors should now work flawlessly.
+- **_New!_** Started reworking Sensors subsystem. No new apparent functionality is enabled as of this release yet.
+
+- **_New!_** Started reworking Audio subsystem. No new apparent functionality is enabled as of this release yet.
+
+- **_New!_** Started reworking Battery subsystem. No new apparent functionality is enabled as of this release yet.
+
+- **_New!_** Added a debounce delay for the power button to prevent accidental quick wake ups of the display continuously.
+
+- **_New!_** You can now transfer files in and out of the device again using USB MTP.
+
+- **_New!_** The display scaling now defaults to 250% for your eye comfort.
+
+- **_New!_** Applications such as Phone Link will now work again under Windows Zinc Semester builds (ZN_RELEASE).
+
+- **_New!_** Windows Zinc Semester builds are now installable again.
+
+- **_New!_** This update resolves some issues impacting WiFi connectivity and reliability on WiFi 6 networks.
+
+- **_New!_** This update resolves a crash issue under Windows 11 Build 22000 and lower.
+
+- **_New!_** Further Enhancements to Audio Listener Voice activation models for voice assistants such as Alexa or Cortana.
+
+- **_New!_** This update resolves display refresh rate and syncing issues with both screens in tandem.
+
+- **_New!_** This update resolves key issues with Windows Core OS support.
+
+- **_Important!_** Some changes/bug fixes had to be delayed for this release, a newer version will be released mid this week alongside a new flashing method and WCOS ffus. Stay tuned!
+
+- **_Important!_** Surface Duo 2 is now supported again but was untested. Make sure everything is up to date beforehand (UEFI notably)
+
+- **_Important!_** Charging has been permanently removed until further notice. Installing it will not do anything anymore.
+
+- **_Important!_** Sensor functionality and/or calls may be affected under ZN_RELEASE Currently, we're working on a fix.
+
+- **_Important!_** New definition files are present, here's a summary of how to proceed:
 
 
-#### Known issues
+I am running a build < 17763, you are unsupported.
 
-- Calling is not working under Windows 11 Version 22H2 and higher
+I am running a build < 18362, use Driver Updater with ```\definitions\Desktop\ARM64\epsilon_rs5.txt```
 
-- Flipping the device however is not smooth
+I am running a build < 19041, use Driver Updater with ```\definitions\Desktop\ARM64\epsilon_ti.txt```
 
-- Charging remains unavailable in Windows, please charge in Android
+I am running a build < 25346, use Driver Updater with ```\definitions\Desktop\ARM64\epsilon_vb.txt```
 
-- Users upgrading from releases older than the January ones may want to clean install again.
-
-
-#### Surface Duo 2
-
-- Support for Surface Duo 2 is not provided with this release. We are trying to get an update for Surface Duo 2 as part of the next release as soon as we can.
+I am running a build >= 25346, use Driver Updater with ```\definitions\Desktop\ARM64\epsilon_zn.txt```
 
 
-### Sensor Calibration Provisioning (Mandatory)
+Known issues
 
-
-In order to get most sensors currently working, some manual steps are required.
-Please follow the steps described at https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/InstallWindows-SurfaceDuo1.md#temporary-and-optional-copy-over-calibration-filesconfiguration-files-for-the-sensors
-
-
-It may also be possible to provision it using data from the SFPD partition exposed in windows. This manual step will not be required in future releases.
-
-
-### Known issues
-
-
+- Booting Windows 10 18362/18363 will lead to "static screen" effects on the right display much like driver releases from last year did on any version of Windows. A fix is being worked on for the next release.
+- The TPM driver is not working for Windows 10 18362/18363. A fix is being worked on for the next release.
+- The Posture driver is not working for Windows 10 18362/18363. A fix is being worked on for the next release.
+- Enhanced auto rotation is not working for Windows 10 18362/18363. A fix is being worked on for the next release.
+- Brightness control is glitchy on both displays
+- Audio speakers are not functional
+- Dongles are not detected correctly when plugged into the USB Type C port
+- Battery charging remains unstable and not recommended
+- Updating drivers may lead to weird configurations if done on old driver releases
+- MAC Addresses do not reflect the real addresses asigned to the device
+- Bitlocker drive encryption is not available
 - USB Dongles that are not externally powered may not currently work
 - USB C Billboard devices will not currently work
 - External Display Stream support will not currently work
@@ -74,6 +103,18 @@ It may also be possible to provision it using data from the SFPD partition expos
 - Displays will not react to the device being folded over most of the time
 - Physical device data is incorrect
 - Digitizers aren't calibrated correctly
+- Flipping the device however is not smooth
+- Charging remains unavailable in Windows, please charge in Android
+- Users upgrading from releases older than the January ones may want to clean install again.
+- Booting Windows 10 18362/18363 with Secure Boot enabled is not currently supported and will result in a broken installation.
+- In some cases booting the UEFI image may lead to static screen effects on the left display. Please do not force reboot the device as it may interrupt the installation process, if ongoing, and instead please wait a few minutes
+- Windows Recovery environment lacks drivers unless Windows has performed a Feature Update at least once.
+- sRGB is not available currently, and displays will not react to ICC profiles being applied.
+
+
+#### Surface Duo 2
+
+- Support for Surface Duo 2 is not provided with this release. We are trying to get an update for Surface Duo 2 as part of the next release as soon as we can.
 
 
 ### Accessing Foldable Sensors from your applications
