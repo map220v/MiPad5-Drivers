@@ -52,6 +52,3 @@ cd MiPad5-Drivers
 ```
 
 Change "D:\" to disk where windows arm64 installed
-
-# Bugs
-- Display (WIP. after display shutdown it's stays off until reboot)
