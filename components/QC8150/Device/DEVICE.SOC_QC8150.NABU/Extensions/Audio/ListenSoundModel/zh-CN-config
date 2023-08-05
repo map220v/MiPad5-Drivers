@@ -1,0 +1,29 @@
+//Config file format version
+//for future use, if SVA versions changes...
+FORMAT_VERSION:3
+
+// Keyword confidence level for recognition, value is in decimal 
+KEYWORD_CONF_LVL1:10
+
+//KeywordOnly confidence level, value is in decimal 
+KEYWORD_ONLY_CONF_LVL1:10
+
+//User confidence level for recognition, value is in decimal 
+USER_CONF_LVL1:69
+
+//User Recording Confidence Level, value is in decimal 
+USER_RECORDING_CONF_LVL1:69
+
+//sound model filename for each keyword
+MODEL_NAME1:Cortana.bin
+
+//EventId and ProviderId index
+//0 - Cortana, 1 - Alexa
+EventIndex1:0
+
+//KeyWord String
+KeywordStr1:cortana_cn2
+
+//Voice model version number (recommendation: use QC delivery date as YYMMDD)
+//use this to identify update in sound model.
+MODEL_VERSION:150521
