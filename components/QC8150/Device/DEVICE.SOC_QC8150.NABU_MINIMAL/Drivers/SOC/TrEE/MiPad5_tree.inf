@@ -18,7 +18,7 @@ Signature="$WINDOWS NT$"
 Class=SYSTEM
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%Surface%
-DriverVer = 07/06/2023,1.0.2000.0000
+DriverVer = 09/01/2023,1.0.2020.0000
 CatalogFile=MiPad5_tree.cat
 PnpLockdown = 1
 
@@ -33,8 +33,8 @@ DefaultDestDir = 13
 %Surface%=Standard,NTARM64
 
 [Standard.NTARM64]
-; DisplayName       		Section           DeviceId
-; -----------       		-------           --------
+; DisplayName               Section           DeviceId
+; -----------               -------           --------
 %QcTrEE.DeviceDesc%=QcTrEE, ACPI\QCOM0576
 
 [QcTrEE.NT]
