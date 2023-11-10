@@ -23,7 +23,7 @@
   </settings>
   <settings pass="oobeSystem">
     <component name="Microsoft-Windows-Deployment" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-      <DeviceForm>1</DeviceForm>
+      <DeviceForm>2</DeviceForm>
     </component>
     <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <OEMInformation>
