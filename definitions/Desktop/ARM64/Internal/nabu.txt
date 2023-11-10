@@ -9,6 +9,4 @@
 
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.BASE
 
-\components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.SURFACE_EXTRAS
-
 \components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.MOBILE_COMPONENTS
