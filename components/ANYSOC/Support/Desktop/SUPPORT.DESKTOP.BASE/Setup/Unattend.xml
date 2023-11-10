@@ -1,22 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend">
-  <settings pass="generalize" wasPassProcessed="true">
-    <component name="Microsoft-Windows-Pnp-Sysprep" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-      <PersistAllDeviceInstalls>false</PersistAllDeviceInstalls>
-    </component>
-  </settings>
   <settings pass="specialize">
-    <component name="Microsoft-Windows-GPIOButtons" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+    <component name="Microsoft-Windows-GPIOButtons" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <ConvertibleSlateMode>0</ConvertibleSlateMode>
     </component>
-    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <DesktopOptimization>
         <ShowWindowsStoreAppsOnTaskbar>true</ShowWindowsStoreAppsOnTaskbar>
       </DesktopOptimization>
       <ShowPowerButtonOnStartScreen>true</ShowPowerButtonOnStartScreen>
       <ConvertibleSlateModePromptPreference>0</ConvertibleSlateModePromptPreference>
     </component>
-    <component name="Microsoft-Windows-Deployment" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <component name="Microsoft-Windows-Deployment" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <RunSynchronous>
         <RunSynchronousCommand wcm:action="add">
           <Order>1</Order>
@@ -27,22 +22,31 @@
     </component>
   </settings>
   <settings pass="oobeSystem">
-    <component name="Microsoft-Windows-Deployment" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+    <component name="Microsoft-Windows-Deployment" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <DeviceForm>1</DeviceForm>
     </component>
-    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <OEMInformation>
         <SupportURL>http://www.microsoft.com/surface/support</SupportURL>
       </OEMInformation>
       <FirstLogonCommands>
         <SynchronousCommand>
-          <Description>Commands </Description>
+          <Description>OOBE Commands</Description>
           <Order>1</Order>
+          <CommandLine><![CDATA[powershell -ExecutionPolicy RemoteSigned %SystemDrive%\Users\Default\AppData\Local\Microsoft\Surface\OOBE\ImageConfiguration.ps1]]></CommandLine>
+        </SynchronousCommand>
+        <SynchronousCommand>
+          <Description>Commands </Description>
+          <Order>2</Order>
           <CommandLine>cmd.exe /c \Windows\OEM\SilentProvisionerL.exe</CommandLine>
         </SynchronousCommand>
       </FirstLogonCommands>
+      <Themes>
+        <ThemeName>Surface</ThemeName>
+        <DesktopBackground>%WINDIR%\web\wallpaper\oem\surface\Surface_Hero_Platinum.jpg</DesktopBackground>
+      </Themes>
     </component>
-    <component name="Microsoft-Windows-TabletPC-Platform-Input-Core" processorArchitecture="ARM64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+    <component name="Microsoft-Windows-TabletPC-Platform-Input-Core" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <TouchKeyboardAutoInvokeEnabled>True</TouchKeyboardAutoInvokeEnabled>
     </component>
   </settings>
