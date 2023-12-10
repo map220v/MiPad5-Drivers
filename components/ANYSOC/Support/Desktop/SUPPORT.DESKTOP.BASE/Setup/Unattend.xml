@@ -11,15 +11,6 @@
       <ShowPowerButtonOnStartScreen>true</ShowPowerButtonOnStartScreen>
       <ConvertibleSlateModePromptPreference>0</ConvertibleSlateModePromptPreference>
     </component>
-    <component name="Microsoft-Windows-Deployment" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <RunSynchronous>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>1</Order>
-          <Path>\Windows\OEM\SilentProvisioner.exe</Path>
-          <Description>Commands </Description>
-        </RunSynchronousCommand>
-      </RunSynchronous>
-    </component>
   </settings>
   <settings pass="oobeSystem">
     <component name="Microsoft-Windows-Deployment" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -34,11 +25,6 @@
           <Description>OOBE Commands</Description>
           <Order>1</Order>
           <CommandLine><![CDATA[powershell -ExecutionPolicy RemoteSigned %SystemDrive%\Users\Default\AppData\Local\Microsoft\Surface\OOBE\ImageConfiguration.ps1]]></CommandLine>
-        </SynchronousCommand>
-        <SynchronousCommand>
-          <Description>Commands </Description>
-          <Order>2</Order>
-          <CommandLine>cmd.exe /c \Windows\OEM\SilentProvisionerL.exe</CommandLine>
         </SynchronousCommand>
       </FirstLogonCommands>
       <Themes>
