@@ -3,14 +3,15 @@ REM rmdir /Q /S ..\..\MiPad5-Drivers-Release
 mkdir ..\..\MiPad5-Drivers-Release
 
 echo @echo off > ..\OnlineUpdater.cmd
-echo DriverUpdater-arm64.exe -r . -d .\definitions\Desktop\ARM64\Internal\nabu.txt >> ..\OnlineUpdater.cmd
+echo DriverUpdater.%%PROCESSOR_ARCHITECTURE%%.exe -r . -d .\definitions\Desktop\ARM64\Internal\nabu.xml >> ..\OnlineUpdater.cmd
 
 echo @echo off > ..\OfflineUpdater.cmd
 echo set /P DrivePath=Enter Drive letter ^^^(with the semi-column!^^^) of the connected device in mass storage mode ^^^(e.g. D:^^^): >> ..\OfflineUpdater.cmd
-echo DriverUpdater.exe -r . -d .\definitions\Desktop\ARM64\Internal\nabu.txt -p %%DrivePath%% >> ..\OfflineUpdater.cmd
+echo DriverUpdater.%%PROCESSOR_ARCHITECTURE%%.exe -r . -d .\definitions\Desktop\ARM64\Internal\nabu.xml -p %%DrivePath%% >> ..\OfflineUpdater.cmd
 
-copy DriverUpdater.exe ..\
-copy DriverUpdater-arm64.exe ..\
+copy DriverUpdater.ARM64.exe ..\
+copy DriverUpdater.AMD64.exe ..\
+copy DriverUpdater.X86.exe ..\
 
 echo CODE_OF_CONDUCT.md >> filelist_nabu.txt
 echo components\ANYSOC\Changelog >> filelist_nabu.txt
@@ -22,10 +23,11 @@ echo components\QC8150\Graphics\GRAPHICS.SOC_QC8150.NABU_DESKTOP >> filelist_nab
 echo components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE >> filelist_nabu.txt
 echo components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL >> filelist_nabu.txt
 echo components\QC8150\Platform\PLATFORM.SOC_QC8150.BATTERY >> filelist_nabu.txt
-echo definitions\Desktop\ARM64\Internal\nabu.txt >> filelist_nabu.txt
-echo definitions\Desktop\ARM64\PE\nabu.txt >> filelist_nabu.txt
-echo DriverUpdater.exe >> filelist_nabu.txt
-echo DriverUpdater-arm64.exe >> filelist_nabu.txt
+echo definitions\Desktop\ARM64\Internal\nabu.xml >> filelist_nabu.txt
+echo definitions\Desktop\ARM64\PE\nabu.xml >> filelist_nabu.txt
+echo DriverUpdater.ARM64.exe >> filelist_nabu.txt
+echo DriverUpdater.AMD64.exe >> filelist_nabu.txt
+echo DriverUpdater.X86.exe >> filelist_nabu.txt
 echo LICENSE.md >> filelist_nabu.txt
 echo OfflineUpdater.cmd >> filelist_nabu.txt
 echo OnlineUpdater.cmd >> filelist_nabu.txt
@@ -38,6 +40,7 @@ cd tools
 
 del ..\OfflineUpdater.cmd
 del ..\OnlineUpdater.cmd
-del ..\DriverUpdater.exe
-del ..\DriverUpdater-arm64.exe
+del ..\DriverUpdater.ARM64.exe
+del ..\DriverUpdater.AMD64.exe
+del ..\DriverUpdater.X86.exe
 del filelist_nabu.txt

@@ -1,6 +1,0 @@
-[Drivers]
-\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Drivers\Touch=""
-\components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL=""
-\components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL=""
-
-[Apps]
