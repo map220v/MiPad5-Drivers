@@ -1,0 +1,67 @@
+;
+; NanosicFilter.inf
+;
+[Version]
+Signature   = "$Windows NT$"
+Class       = HIDClass
+ClassGuid   = {745a17a0-74d3-11d0-b6fe-00a0c90f57da}
+Provider    = %ProviderName%
+DriverVer = 01/12/2024,21.56.19.844
+CatalogFile = NanosicFilter.cat
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+NanosicFilter.sys = 1,,
+
+[Manufacturer]
+%ProviderName% = Standard, NTARM64
+
+[Standard.NTARM64]
+%DeviceDesc% = NanosicFilter, USB\VID_3206&PID_3FFC&MI_01
+
+[NanosicFilter.NT]
+CopyFiles = NanosicFilter.NT.Copy
+
+[NanosicFilter.NT.Copy]
+NanosicFilter.sys
+
+[NanosicFilter.NT.HW.AddReg]
+HKR,, "LowerFilters", 0x00010008, "NanosicFilter"
+
+[NanosicFilter.NT.HW]
+AddReg = NanosicFilter.NT.HW.AddReg
+
+[NanosicFilter.NT.Services]
+AddService = NanosicFilter,, NanosicFilter_Service_Inst
+AddService = HidUsb, 0x00000002, HidUsb_Service_Inst
+
+[NanosicFilter_Service_Inst]
+DisplayName   = %SvcDesc%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %13%\NanosicFilter.sys
+
+[HidUsb_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %10%\System32\Drivers\HidUsb.sys
+
+[Strings]
+ProviderName   = "woa msmnile"
+DiskId1        = "NanosicFilter Installation Disk #1"
+DeviceDesc     = "NanosicFilter Device"
+SvcDesc        = "NanosicFilter Service"
+
+SERVICE_KERNEL_DRIVER = 1
+SERVICE_AUTO_START = 2
+SERVICE_DEMAND_START = 3
+SERVICE_BOOT_START = 0
+SERVICE_ERROR_NORMAL = 1

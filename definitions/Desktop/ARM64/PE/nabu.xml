@@ -5,6 +5,7 @@
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL\Drivers\SOC\SPI" Name="MiPad5_spi.inf" ID="MiPad5_spi"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL\Drivers\SOC\TrEE" Name="MiPad5_tree.inf" ID="MiPad5_tree"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL\Drivers\SOC\UART" Name="MiPad5_uart.inf" ID="MiPad5_uart"/>
+            <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL\Drivers\SOC\XMKB" Name="NanosicFilter.inf" ID="NanosicFilter"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Drivers\Touch" Name="nt36xxx.inf" ID="nt36xxx"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL\Drivers\HALs" Name="HalExtQCTimer8150.inf" ID="HalExtQCTimer8150"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL\Drivers\HALs" Name="HalExtQCWdogTimer8150.inf" ID="HalExtQCWdogTimer8150"/>

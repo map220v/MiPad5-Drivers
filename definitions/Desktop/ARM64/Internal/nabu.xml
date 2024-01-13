@@ -14,6 +14,7 @@
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL\Drivers\SOC\SPI" Name="MiPad5_spi.inf" ID="MiPad5_spi"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL\Drivers\SOC\TrEE" Name="MiPad5_tree.inf" ID="MiPad5_tree"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL\Drivers\SOC\UART" Name="MiPad5_uart.inf" ID="MiPad5_uart"/>
+            <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL\Drivers\SOC\XMKB" Name="NanosicFilter.inf" ID="NanosicFilter"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Drivers\Audio\AudMiniport" Name="MiPad5_audmini.inf" ID="MiPad5_audmini"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Drivers\Audio\cs35l41" Name="cs35l41.inf" ID="cs35l41"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Drivers\Bluetooth" Name="MiPad5_btfmuart.inf" ID="MiPad5_btfmuart"/>
