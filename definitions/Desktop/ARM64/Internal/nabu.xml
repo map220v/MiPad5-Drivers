@@ -41,8 +41,6 @@
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\Subsystems" Name="MiPad5_subextcdsp.inf" ID="MiPad5_subextcdsp"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\Subsystems" Name="MiPad5_subextmpss.inf" ID="MiPad5_subextmpss"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\Subsystems" Name="MiPad5_subextscss.inf" ID="MiPad5_subextscss"/>
-            <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\WLAN\China" Name="MiPad5_wpextwapi8150.inf" ID="MiPad5_wpextwapi8150"/>
-            <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\WLAN\Settings" Name="MiPad5_WlanMisc.inf" ID="MiPad5_WlanMisc"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Graphics\GRAPHICS.SOC_QC8150.NABU_DESKTOP" Name="MiPad5_dx.inf" ID="MiPad5_dx"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL\Drivers\HALs" Name="HalExtQCTimer8150.inf" ID="HalExtQCTimer8150"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL\Drivers\HALs" Name="HalExtQCWdogTimer8150.inf" ID="HalExtQCWdogTimer8150"/>
