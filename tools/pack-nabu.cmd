@@ -6,7 +6,15 @@ echo @echo off > ..\OnlineUpdater.cmd
 echo DriverUpdater.%%PROCESSOR_ARCHITECTURE%%.exe -r . -d .\definitions\Desktop\ARM64\Internal\nabu.xml >> ..\OnlineUpdater.cmd
 
 echo @echo off > ..\OfflineUpdater.cmd
-echo set /P DrivePath=Enter Drive letter ^^^(with the semi-column!^^^) of the connected device in mass storage mode ^^^(e.g. D:^^^): >> ..\OfflineUpdater.cmd
+echo for /f %%%%a in ('wmic logicaldisk where "VolumeName='WINNABU'" get deviceid^^^|find ":"')do set "DrivePath=%%%%a" >> ..\OfflineUpdater.cmd
+echo if not [%%DrivePath%%]==[] goto start >> ..\OfflineUpdater.cmd
+echo if [%%DrivePath%%]==[] echo Automatic WINNABU detection failed! Enter Drive Letter manually. >> ..\OfflineUpdater.cmd
+echo :sdisk >> ..\OfflineUpdater.cmd
+echo set /P DrivePath=Enter Drive letter of WINNABU ^^^(should be D:^^^): >> ..\OfflineUpdater.cmd
+echo if [%%DrivePath%%]==[] goto sdisk >> ..\OfflineUpdater.cmd
+echo if not "%%DrivePath:~1,1%%"==":" set DrivePath=%%DrivePath%%:>> ..\OfflineUpdater.cmd
+echo :start >> ..\OfflineUpdater.cmd
+echo if not exist "%%DrivePath%%\Windows\" echo Error! Selected Disk "%%DrivePath%%" doesn't have any Windows installation. ^& pause ^& exit >> ..\OfflineUpdater.cmd
 echo DriverUpdater.%%PROCESSOR_ARCHITECTURE%%.exe -r . -d .\definitions\Desktop\ARM64\Internal\nabu.xml -p %%DrivePath%% >> ..\OfflineUpdater.cmd
 
 copy DriverUpdater.ARM64.exe ..\
