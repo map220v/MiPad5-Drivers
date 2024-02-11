@@ -1,0 +1,55 @@
+;
+; qcfmminiport
+;
+[Version]
+Signature   = "$Windows NT$"
+Class       = SoftwareComponent
+ClassGuid   = {5c4c3332-344d-483c-8739-259e934c9cc8}
+Provider    = %QC%
+DriverVer   = 01/04/2018,1.0.7900.0000
+CatalogFile = "qcfmminiport.cat"
+PnpLockdown = 1
+
+[DestinationDirs]
+qcfmminiport.Files = 11
+
+[SourceDisksNames]
+0 = "Disk"
+
+[SourceDisksFiles]
+qcfmminiport.dll = 0,,
+
+[Manufacturer]
+%QC% = QC,NTarm64
+
+[QC.NTarm64]
+%FM.DeviceDesc% = FMS, SWC\VID_QCOM&PID_056F&SID_0001
+
+[FMS.NTarm64]
+CopyFiles = qcfmminiport.Files64
+AddReg    = qcfmminiport_Reg
+
+[qcfmminiport_Reg]
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "MiniportDll", 0x0, "qcfmminiport.dll"
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "newSearchAlgorithm", 0x10001, 0x0
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "NoOfSiNRSamples", 0x10001, 0xA
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "IntDetTHLow", 0x10001, 0x6D
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "IntDetTHHigh", 0x10001, 0x73
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "SiNRTH", 0x10001, 0x3
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "CFOTH12", 0x10001, 0x3A98
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "RMSSIFirstStage", 0x10001, 0xFFFFFF90
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "SiNRFirstStage", 0x10001, 0x0
+HKLM, "System\CurrentControlSet\Control\Tuner\Audio\FmRadio", "SiNRFinalStage", 0x10001, 0x3
+
+[qcfmminiport.Files]
+qcfmminiport.dll
+
+[Strings]
+QC            = "Qualcomm Technologies, Inc."
+FM.DeviceDesc = "Qualcomm FM Transport Miniport Library"
+
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_DWORD     = 0x00010001
+REG_BINARY    = 0x00000001
