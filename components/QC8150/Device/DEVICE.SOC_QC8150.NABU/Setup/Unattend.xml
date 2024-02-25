@@ -16,22 +16,6 @@
     <component name="Microsoft-Windows-Deployment" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <DeviceForm>2</DeviceForm>
     </component>
-    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-      <OEMInformation>
-        <SupportURL>http://www.microsoft.com/surface/support</SupportURL>
-      </OEMInformation>
-      <FirstLogonCommands>
-        <SynchronousCommand>
-          <Description>OOBE Commands</Description>
-          <Order>1</Order>
-          <CommandLine><![CDATA[powershell -ExecutionPolicy RemoteSigned %SystemDrive%\Users\Default\AppData\Local\Microsoft\Surface\OOBE\ImageConfiguration.ps1]]></CommandLine>
-        </SynchronousCommand>
-      </FirstLogonCommands>
-      <Themes>
-        <ThemeName>Surface</ThemeName>
-        <DesktopBackground>%WINDIR%\web\wallpaper\oem\surface\Surface_Hero_Platinum.jpg</DesktopBackground>
-      </Themes>
-    </component>
     <component name="Microsoft-Windows-TabletPC-Platform-Input-Core" processorArchitecture="arm64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <TouchKeyboardAutoInvokeEnabled>True</TouchKeyboardAutoInvokeEnabled>
     </component>
