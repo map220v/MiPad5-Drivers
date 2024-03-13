@@ -10,7 +10,7 @@ echo for /f %%%%a in ('wmic logicaldisk where "VolumeName='WINNABU'" get devicei
 echo if not [%%DrivePath%%]==[] goto start >> ..\OfflineUpdater.cmd
 echo if [%%DrivePath%%]==[] echo Automatic WINNABU detection failed! Enter Drive Letter manually. >> ..\OfflineUpdater.cmd
 echo :sdisk >> ..\OfflineUpdater.cmd
-echo set /P DrivePath=Enter Drive letter of WINNABU ^^^(should be D:^^^): >> ..\OfflineUpdater.cmd
+echo set /P DrivePath=Enter Drive letter of WINNABU ^^^(should be X:^^^): >> ..\OfflineUpdater.cmd
 echo if [%%DrivePath%%]==[] goto sdisk >> ..\OfflineUpdater.cmd
 echo if not "%%DrivePath:~1,1%%"==":" set DrivePath=%%DrivePath%%:>> ..\OfflineUpdater.cmd
 echo :start >> ..\OfflineUpdater.cmd
