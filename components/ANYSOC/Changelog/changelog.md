@@ -1,9 +1,9 @@
-## Surface Duo Drivers BSP - Version 2401.22 (Ghost Valley)
+## Surface Duo Drivers BSP - Version 2403.41 (Hephaestus)
 
 <details>
   <summary>General information</summary>
   <p>
-**Released:** 01/07/2023 08:00 PM UTC+1
+**Released:** 03/13/2024 11:00 PM UTC+1
 
 **Quality:** Preview
 
@@ -14,7 +14,7 @@ You can view compatibility for this release, along with important information an
 <details>
   <summary>Important information</summary>
   <p>
-- ⚠️ This version of the drivers needs to be paired with UEFI version greater than or equal to 2401.22.
+- ⚠️ This version of the drivers needs to be paired with UEFI version greater than or equal to 2403.41.
 
 - ⚠️ For users who are updating from an earlier release than version 2301.93, please reinstall.
 
@@ -30,7 +30,7 @@ You can view compatibility for this release, along with important information an
 
 [▶️ Install Surface Duo 2 UEFI and Drivers for Windows from scratch (Clean Installation)](https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/InstallWindows/InstallWindows-SurfaceDuo2.md)
 
-[▶️ Update from an older version of Surface Duo UEFI and Drivers (both got updated with v2401.22)](https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/Update/UpdateDriversAndUEFI.md)
+[▶️ Update from an older version of Surface Duo UEFI and Drivers (both got updated with v2403.41)](https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/Update/UpdateDriversAndUEFI.md)
 
 ---
 
@@ -40,16 +40,24 @@ You can view compatibility for this release, along with important information an
 
 What's new?
 
-- **_New!_**: We fixed a few issues with USB-C dongles and chargers and USB C accessories in general
+- Introducing Vulkan and OpenCL support (preliminary)
+  This uses the actual GPU and no compat pack, if you have the compatibility pack installed, it can conflict, so please remove it before first use.
+  This remains a bit experimental if there's issues in loading Vulkan or OpenCL please let us know!
 
-- **_New!_**: We added support for new surface docking accessories again
+- Stability Fixes (again)
 
-- **_New!_**: We improved the behavior of automatic brightness, it should be better than ever
+- Updated most drivers to the latest versions from Qualcomm (again) and Surface
 
-- **_New!_**: We updated drivers related to PCIe for a future release, this change will also enable better energy consumption when PCIe is not in use, and requires the very latest uefi available as of this release.
+- We fixed issues that would make devices be unstable or stop working after taking a driver update using driver updater. You should never get update issues from now on. (again)
 
-- Please download ```SurfaceDuo-Drivers-v2401.22-Desktop-Epsilon.zip``` if you want drivers for Surface Duo 1
-- Please download ```SurfaceDuo-Drivers-v2401.22-Desktop-Zeta.zip``` if you want drivers for Surface Duo 2
+- We fixed a big issue that made Surface Duo 2 not work as expected for quite a while, while things aren't still back to where they should be, they're definitely better. We're working on it
+
+- We fixed an issue that resulted in pen input being swapped incorrectly across displays on Surface Duo (1st Gen)
+
+- Please download ```SurfaceDuo-Drivers-v2403.41-Desktop-Epsilon.zip``` if you want drivers for Surface Duo 1
+- Please download ```SurfaceDuo-Drivers-v2403.41-Desktop-Zeta.zip``` if you want drivers for Surface Duo 2
+
+- We are aware auto pairing of the pen will not work anymore on Windows 10, a fix is due in the next update.
 
 <details>
   <summary>Known issues</summary>
@@ -342,19 +350,7 @@ int main()
 <details>
   <summary>How to offline update an existing Windows Desktop installation</summary>
   <p>
-- Switch the device into mass storage.
-- Take note of the drive letter the Windows partition is using, here we will assume it got mounted as I:
-
-- Download [SurfaceDuo-Drivers-Full.zip] from https://github.com/WOA-Project/SurfaceDuo-Drivers/releases/latest
-- Extract said zip file to a folder of your choice, we will assume here we extracted it to C:\UpdatedDrivers
-- Download the DriverUpdater utility from https://github.com/WOA-Project/DriverUpdater/releases/latest
-- Open a command prompt as administrator, where the driver utility got downloaded
-
-- Execute the following command:
-  
-  DriverUpdater.exe -d C:\UpdatedDrivers\SurfaceDuo-Drivers-XXXX\definitions\Desktop\ARM64\Internal\epsilon.txt -r C:\UpdatedDrivers\SurfaceDuo-Drivers-XXXX\ -p I:\
-
-- Reboot the device, the device will now begin PnP setup once again, and hopefully you will be back soon enough to your desktop
+Please follow the steps detailed at https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/Update/UpdateDriversAndUEFI.md
   </p>
 </details>
 
