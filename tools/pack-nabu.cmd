@@ -28,9 +28,9 @@ echo components\ANYSOC\Support\Desktop\SUPPORT.DESKTOP.MOBILE_COMPONENTS >> file
 echo components\QC8150\Device\DEVICE.SOC_QC8150.NABU >> filelist_nabu.txt
 echo components\QC8150\Device\DEVICE.SOC_QC8150.NABU_MINIMAL >> filelist_nabu.txt
 echo components\QC8150\Graphics\GRAPHICS.SOC_QC8150.NABU_DESKTOP >> filelist_nabu.txt
+echo components\QC8150\OEM\OEM.SOC_QC8150.QCOM >> filelist_nabu.txt
 echo components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE >> filelist_nabu.txt
 echo components\QC8150\Platform\PLATFORM.SOC_QC8150.BASE_MINIMAL >> filelist_nabu.txt
-echo components\QC8150\Platform\PLATFORM.SOC_QC8150.BATTERY >> filelist_nabu.txt
 echo definitions\Desktop\ARM64\Internal\nabu.xml >> filelist_nabu.txt
 echo definitions\Desktop\ARM64\PE\nabu.xml >> filelist_nabu.txt
 echo DriverUpdater.ARM64.exe >> filelist_nabu.txt
