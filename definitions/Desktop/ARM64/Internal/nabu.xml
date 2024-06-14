@@ -30,7 +30,6 @@
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\Audio\ACDB" Name="MiPad5_acsp.inf" ID="MiPad5_acsp"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\Audio\AudMiniport" Name="MiPad5_audminiext.inf" ID="MiPad5_audminiext"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\Audio\Device" Name="MiPad5_auddevext.inf" ID="MiPad5_auddevext"/>
-            <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\BatteryCurrentLimiter" Name="MiPad5_fgbclext.inf" ID="MiPad5_fgbclext"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\Bluetooth" Name="MiPad5_btext.inf" ID="MiPad5_btext"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\Camera" Name="MiPad5_camfrontext.inf" ID="MiPad5_camfrontext"/>
             <DriverPackageFile Path="$(mspackageroot)\components\QC8150\Device\DEVICE.SOC_QC8150.NABU\Extensions\Camera" Name="MiPad5_camrearext.inf" ID="MiPad5_camrearext"/>

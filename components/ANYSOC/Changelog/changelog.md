@@ -1,9 +1,11 @@
-## Surface Duo Drivers BSP - Version 2403.41 (Hephaestus)
+## Surface Duo Drivers BSP - Version 2406.36 (Ornithoptera alexandrae)
+
+![A duo of Duos](https://github.com/WOA-Project/SurfaceDuo-Drivers/assets/3755345/5848583d-a569-480e-bfdc-74d569811a53)
 
 <details>
   <summary>General information</summary>
   <p>
-**Released:** 03/13/2024 11:00 PM UTC+1
+**Released:** 05/20/2024 11:00 PM UTC+2
 
 **Quality:** Preview
 
@@ -14,7 +16,7 @@ You can view compatibility for this release, along with important information an
 <details>
   <summary>Important information</summary>
   <p>
-- ⚠️ This version of the drivers needs to be paired with UEFI version greater than or equal to 2403.41.
+- ⚠️ This version of the drivers needs to be paired with UEFI version greater than or equal to 2406.36.
 
 - ⚠️ For users who are updating from an earlier release than version 2301.93, please reinstall.
 
@@ -30,32 +32,77 @@ You can view compatibility for this release, along with important information an
 
 [▶️ Install Surface Duo 2 UEFI and Drivers for Windows from scratch (Clean Installation)](https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/InstallWindows/InstallWindows-SurfaceDuo2.md)
 
-[▶️ Update from an older version of Surface Duo UEFI and Drivers (both got updated with v2403.41)](https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/Update/UpdateDriversAndUEFI.md)
+[▶️ Update from an older version of Surface Duo UEFI and Drivers (both got updated with v2406.36)](https://github.com/WOA-Project/SurfaceDuo-Guides/blob/main/Update/UpdateDriversAndUEFI.md)
 
 ---
 
 ### Release notes
 
-#### Surface Duo (1st Gen)
+Surface Duo (1st Gen):
 
-What's new?
+- Power Management Updates:
 
-- Introducing Vulkan and OpenCL support (preliminary)
-  This uses the actual GPU and no compat pack, if you have the compatibility pack installed, it can conflict, so please remove it before first use.
-  This remains a bit experimental if there's issues in loading Vulkan or OpenCL please let us know!
+	- Improves Surface Duo (1st Gen) thermal performance
 
-- Stability Fixes (again)
+	- Introduces Battery Current Limiter Monitoring and Mitigations to reduce power draw
 
-- Updated most drivers to the latest versions from Qualcomm (again) and Surface
+	- Enables proper Low Power Mode for all CPU cores
 
-- We fixed issues that would make devices be unstable or stop working after taking a driver update using driver updater. You should never get update issues from now on. (again)
+	- Enables support for new thermal firmware features in UEFI vNext
 
-- We fixed a big issue that made Surface Duo 2 not work as expected for quite a while, while things aren't still back to where they should be, they're definitely better. We're working on it
+- Panel Driver Updates:
 
-- We fixed an issue that resulted in pen input being swapped incorrectly across displays on Surface Duo (1st Gen)
+	- Faster init
 
-- Please download ```SurfaceDuo-Drivers-v2403.41-Desktop-Epsilon.zip``` if you want drivers for Surface Duo 1
-- Please download ```SurfaceDuo-Drivers-v2403.41-Desktop-Zeta.zip``` if you want drivers for Surface Duo 2
+	- Simpler init code
+
+	- Handles brightness control differently in conjunction with acpi updates
+
+- GPU Driver Updates
+
+	- Update Qualcomm DirectX Driver
+
+	- Update Qualcomm Elite Gaming Profile Driver
+
+	- Update Qualcomm OpenCL Driver
+
+	- Update Qualcomm Vulkan Driver
+
+- Sensor Driver Updates
+
+- WiFi Driver Updates
+
+---
+
+Common:
+
+- Posture Service Updates:
+
+	- Addresses issues that prevented the device from adapting to correct postures with recent versions of Windows (ZN+)
+
+	- Addresses a recent issue preventing the device from reacting to being flipped and not switching the displays
+
+	- Reworks the behavior of the auto rotation functionality. When rotation lock is enabled, the device will still react to posture changes, without rotation updates
+
+	- Fixes an issue where OOBE would break when a posture change was detected
+
+	- Fixes an issue where rotation lock prevented flipping the device
+
+	- Fixes an issue where the wallpaper wouldn't span properly across both displays
+
+---
+
+Misc:
+
+- Removed E
+
+---
+
+- Please download ```SurfaceDuo-Drivers-v2406.36-Desktop-Epsilon.zip``` if you want drivers for Surface Duo 1
+
+- Please download ```SurfaceDuo-Drivers-v2406.36-Desktop-Zeta.zip``` if you want drivers for Surface Duo 2
+
+---
 
 - We are aware auto pairing of the pen will not work anymore on Windows 10, a fix is due in the next update.
 
@@ -113,13 +160,6 @@ What's new?
 - sRGB is not available currently, and displays will not react to ICC profiles being applied.
   </p>
 </details>
-
-
-#### Surface Duo 2
-
-What's new?
-
-- Surface Duo 2 is still a Proof of Concept (PoC), don't expect much.
 
 ---
 
